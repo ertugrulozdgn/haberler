@@ -46,6 +46,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapCmsRoutes();
+
         //
     }
 
@@ -63,13 +65,13 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web.php'));
     }
 
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
+    protected function mapCmsRoutes()
+    {
+        Route::middleware('cms')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/cms.php'));
+    }
+
     protected function mapApiRoutes()
     {
         Route::prefix('api')
@@ -77,4 +79,6 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
     }
+
+
 }
