@@ -7,7 +7,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="cms/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="{{ asset('cms/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Ertuğrul Özdoğan</p>
@@ -21,7 +21,7 @@
         <li class="active"><a href="{{action('Cms\DashboardController@index')}}"><i class="fa fa-home fa-lg"></i> <span>Anasayfa</span></a></li>
         <li><a href="#"><i class="fa fa-newspaper-o fa-lg"></i> <span>Haberler</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-cog fa-lg"></i> <span>Yönetim</span> 
+          <a href="#"><i class="fa fa-cog fa-lg"></i> <span>Yönetim</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

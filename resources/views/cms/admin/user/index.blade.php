@@ -1,5 +1,5 @@
 @extends('cms.master')
-@section('content')    
+@section('content')
     <div class='content-wrapper'>
         <div class='container-fluid'>
         <br>
@@ -7,7 +7,7 @@
             <div class='box-header with-border'>
                 <h3 class='box-title vertical-middle'><i class="fa fa-user"></i> Editörler</h3>
 
-                <span class="pull-right"><a href="" class="btn btn-success">Yeni</a></span>
+                <span class="pull-right"><a href="{{ action('Cms\Admin\UserController@create') }}" class="btn btn-success">Yeni</a></span>
             </div>
 
             <div class='box-body'>
@@ -33,7 +33,7 @@
                         @endforeach
                         </tbody>
                     </thead>
-                </table> 
+                </table>
             </div>
         </div>
         </div>

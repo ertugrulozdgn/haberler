@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-  
+
     public function index()
     {
         $users = User::all();
@@ -21,7 +21,9 @@ class UserController extends Controller
 
     public function create()
     {
-        //
+        $edit = 0;
+
+        return view('cms.admin.user.edit', compact('edit'));
     }
 
 
