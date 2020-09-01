@@ -1,0 +1,38 @@
+.page-logo {
+    background-color: #a92425 !important;
+} 
+
+.navbar {
+
+    box-shadow: 0 1px 10px 0 rgba(50,50,50,.2) !important;
+    background: #fff !important;
+}
+
+.vertical-middle {
+    vertical-align: middle !important;
+}
+
+.username {
+    color: #7f96ac;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.fa-trash-o {
+    color: tomato;
+}
+
+.fa-pencil-square {
+    color: steelblue;
+}
+
+.alert-light {
+    background-color: #ffcccc !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
