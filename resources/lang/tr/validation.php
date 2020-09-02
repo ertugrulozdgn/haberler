@@ -141,15 +141,4 @@ return [
     | of "email". This simply helps us make our message more expressive.
     |
     */
-
-    'attributes' => [
-        'image' => 'Resim',
-        'title' => 'Başlık',
-        'content' => 'İçerik',
-        'name' => 'Ad Soyad',
-        'password' => 'Şifre',
-        'email' => 'Email',
-        'phone' => 'Telefon Numarası'
-    ],
-
 ];

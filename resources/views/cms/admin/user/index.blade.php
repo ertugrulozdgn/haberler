@@ -27,8 +27,10 @@
                                 <td>{{$user->email}}</td>
                                 <td>Admin</td>
                                 <td>{{$user->last_login}}</td>
-                                <td width='5px'><a href=""><i class="fa fa-pencil-square fa-lg"></i></a></td>
-                                <td width='5px'><a href="javascript:void(0)"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
+                                @if($user->id !== 1)
+                                    <td width='5px'><a href="javascript:void(0)"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>

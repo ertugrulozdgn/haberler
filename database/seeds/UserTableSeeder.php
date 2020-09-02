@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
            'name' => 'Ertuğrul Özdoğan',
             'email' => 'ozdgnertugrul@gmail.com',
             'password' => Hash::make('123456789'),
-            'active' => 1
+            'status' => 1
         ]);
     }
 }

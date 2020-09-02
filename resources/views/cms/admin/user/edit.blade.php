@@ -65,19 +65,19 @@
                     <div class="form-group">
                         <div class="row" style="padding-bottom: 20px;">
                             <div class="col-lg-2">
-                                {{ Form::label('active', 'Yetki', ['class' => 'control-label'])}}
+                                {{ Form::label('status', 'Yetki', ['class' => 'control-label'])}}
                             </div>
                             <div class="col-10">
-                                @foreach($situations as $key => $value)
-                                    {{ Form::radio('active', $key, true, ['class' => 'iradio']) }} <span>{{ $value }}</span>
+                                @foreach($status as $value => $name)
+                                    {{ Form::radio('status', $value, $edit > 0 ? ($user->status == $value ? true : false) : ($name == 'Aktif' ? true : false), ['class' => 'iradio']) }} <span>{{ $name }}</span>
                                 @endforeach
                             </div>
                         </div>
                     </div>
 
                     <div class="container">
-                        <button class="btn btn-primary" type="submit" value="save">Kaydet</button>
-                        <button class="btn btn-primary" type="submit" value="save_and_continue">Kaydet ve Devam Et</button>
+                        <button class="btn btn-primary" type="submit" name="save" value="save">Kaydet</button>
+                        <button class="btn btn-primary" type="submit" name="save" value="save_and_continue">Kaydet ve Devam Et</button>
                         <a href="" class="btn btn-danger">Vazgeç</a>
                     </div>
 

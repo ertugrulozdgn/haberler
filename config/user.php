@@ -2,7 +2,7 @@
 
     return [
         'active' => [
-            0 => 'Pasif',
             1 => 'Aktif',
+            0 => 'Pasif',
         ]
     ];
