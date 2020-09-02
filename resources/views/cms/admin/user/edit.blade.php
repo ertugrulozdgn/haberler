@@ -8,11 +8,15 @@
 
             <div class="box-body">
                 <div class="col-lg-12">
-                    {{ Form::open([
-                        'url' => $edit > 0 ? action('Cms\Admin\UserController@update', [$user->id]) : action('Cms\Admin\UserController@store'),
-                        'method' => $edit > 0 ? 'PUT' : 'POST',
-                        'files' => true
-                    ]) }}
+                    {{
+                        Form::open([
+                            'url' => $edit > 0 ? action('Cms\Admin\UserController@update', [$user->id]) : action('Cms\Admin\UserController@store'),
+                            'method' => $edit > 0 ? 'PUT' : 'POST',
+                            'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
+                        ])
+                    }}
+
+                    <div id="response-status"></div>
 
                     <div class="form-group">
                         <div class="row">
@@ -76,8 +80,7 @@
                     </div>
 
                     <div class="container">
-                        <button class="btn btn-primary" type="submit" name="save" value="save">Kaydet</button>
-                        <button class="btn btn-primary" type="submit" name="save" value="save_and_continue">Kaydet ve Devam Et</button>
+                        <button class="btn btn-primary" type="submit">Kaydet</button>
                         <a href="" class="btn btn-danger">Vazgeç</a>
                     </div>
 

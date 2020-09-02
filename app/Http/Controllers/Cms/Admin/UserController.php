@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Cms\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Cms\UserRequest;
-use App\Http\Requests\StoreUserPost;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -29,7 +28,9 @@ class UserController extends Controller
 
         $status = config('haberler.user.status');
 
-        return view('cms.admin.user.edit', compact('edit', 'status'));
+        $form_referrer = action('Cms\Admin\UserController@index');
+
+        return view('cms.admin.user.edit', compact('edit', 'status', 'form_referrer'));
     }
 
 
@@ -42,18 +43,7 @@ class UserController extends Controller
         $user->status = $request->input('status');
         $user->save();
 
-
-        if($request->get('save') == 'save')
-        {
-            return redirect(action('Cms\Admin\UserController@index'))->with('success', 'Kayıt İşlemi Başarılı');
-
-        } elseif ($request->get('save') == 'save_and_continue')
-        {
-            return redirect()->back()->with('success', 'Kayıt İşlemi Başarılı');
-
-        } else {
-            return redirect()->back()->with('error','Başarısız');
-        }
+        return response()->json(['success' => 'Success'], 200);
 
     }
 
@@ -72,7 +62,9 @@ class UserController extends Controller
 
         $status = config('haberler.user.status');
 
-        return view('cms.admin.user.edit', compact('edit', 'user', 'status'));
+        $form_referrer = action('Cms\Admin\UserController@index');
+
+        return view('cms.admin.user.edit', compact('edit', 'user', 'status', 'form_referrer'));
     }
 
 
@@ -87,17 +79,7 @@ class UserController extends Controller
         $user->status = $request->input('status');
         $user->save();
 
-        if($request->get('save') == 'save')
-        {
-            return redirect(action('Cms\Admin\UserController@index'))->with('success', 'Kayıt işlemi başarılı');
-
-        } elseif ($request->get('save') == 'save_and_continue')
-        {
-            return redirect()->back()->with('success', 'Kayıt İşlemi Başarılı');
-
-        } else {
-            return redirect()->back()->with('error','Başarısız');
-        }
+        return response()->json(['success' => 'success'], 200);
     }
 
 
