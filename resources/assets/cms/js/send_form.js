@@ -41,4 +41,4 @@ SendForm.init = function(el, referrer) {
         }
     });
     return false;
-}
+};

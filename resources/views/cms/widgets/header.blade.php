@@ -50,7 +50,7 @@
           <!-- The user image in the navbar-->
           <img src="{{ asset('cms/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
           <!-- hidden-xs hides the username on small devices so only the image appears. -->
-          <span class="hidden-xs username">Ertuğrul Özdoğan</span>
+          <span class="hidden-xs username">{{ Auth::user()->name }}</span>
         </a>
         <ul class="dropdown-menu">
           <!-- The user image in the menu -->
@@ -58,17 +58,17 @@
             <img src="{{ asset('cms/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
             <p>
-              Ertuğrul Özdoğan
+              {{ Auth::user()->name }}
             </p>
           </li>
           <!-- Menu Body -->
           <!-- Menu Footer-->
           <li class="user-footer">
             <div class="pull-left">
-              <a href="#" class="btn btn-default btn-flat">Profile</a>
+              <a href="#" class="btn btn-default btn-flat">Profil</a>
             </div>
             <div class="pull-right">
-              <a onClick="event.preventDefault();$('#logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
+              <a onClick="event.preventDefault();$('#logout-form').submit();" class="btn btn-default btn-flat">Çıkış</a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
               </form>

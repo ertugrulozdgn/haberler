@@ -8,11 +8,12 @@ Route::group([
 ], function () {
 
     Auth::routes();
-    
+
     Route::group(['middleware' => 'auth'], function() {
         Route::get('/', 'DashboardController@index');
         Route::resource('user','Admin\UserController');
         Route::resource('category', 'Admin\CategoryController');
+        Route::resource('page','Admin\PageController');
     });
 });
 

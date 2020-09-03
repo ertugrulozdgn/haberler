@@ -37276,7 +37276,7 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/**
+/*
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
@@ -37370,7 +37370,7 @@ SendForm.init = function (el, referrer) {
       } // console.log(response_errors);
 
 
-      var error_html = '<div class="alert alert-warning">3<ul>';
+      var error_html = '<div class="alert alert-warning"><ul>';
       $.each(response_errors, function (index, error_message) {
         error_html += '<li>' + error_message + '</li>';
       });
@@ -37398,8 +37398,10 @@ Table.init = function () {
 
 Table.deleteRecord = function () {
   $('table').on('click', 'a[data-action="delete"]', function () {
-    var btn = $(this);
-    console.log(btn.attr('href'));
+    var btn = $(this); //tıklananı tuttuk.
+
+    console.log(btn.attr('href')); //tıklananın yolunu aldık
+
     alertify.confirm('Silme işlemini onaylıyor musunuz?', 'Bu işlem geri alınamaz', function () {
       $.ajax({
         headers: {
@@ -37407,9 +37409,11 @@ Table.deleteRecord = function () {
         },
         type: "DELETE",
         url: btn.attr('href'),
+        //tıklananın url sini verdik(silme butonuna tıklandıgında ki url aldık)
         success: function success(msg) {
           if (msg) {
-            btn.closest('tr').remove(); //$("#item-"+destroy_id).remove();
+            btn.closest('tr').remove(); //parent ile de olurdu tıkladıgımız butonun üstündeki tr yi sil dedik.
+            //$("#item-"+destroy_id).remove();
 
             alertify.success("Silme işlemi Başarılı");
           } else {
@@ -37444,8 +37448,8 @@ Table.deleteRecord = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/assets/cms/js/build.js */"./resources/assets/cms/js/build.js");
-module.exports = __webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Laravel\haberler\resources\assets\cms\js\build.js */"./resources/assets/cms/js/build.js");
+module.exports = __webpack_require__(/*! C:\Laravel\haberler\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

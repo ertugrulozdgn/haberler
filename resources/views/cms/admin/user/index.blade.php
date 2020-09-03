@@ -27,10 +27,12 @@
                                 <td>{{$user->email}}</td>
                                 <td>Admin</td>
                                 <td>{{$user->last_login}}</td>
-                                <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
-                                {{-- @if($user->id !== 1) --}}
+                                @if(Auth::user()->id == 1)
+                                    <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
+                                @endif
+                                @if($user->id !== 1)
                                     <td width='5px'><a href="{{ action('Cms\Admin\UserController@destroy', $user->id) }}" data-action="delete"><i id="{{ $user->id }}" class="fa fa-trash-o fa-lg"></i></a></td>
-                                {{-- @endif --}}
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>
@@ -41,7 +43,7 @@
         </div>
     </div>
 
-{{--     
+{{--
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {

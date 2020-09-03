@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <div class='box box-danger'>
             <div class='box-header with-border'>
-                <h3 class='box-title vertical-middle'><i class="fa fa-plus-square-o"></i> {{{ $edit > 0 ? 'Kategori Düzenleme' : 'Yeni Kategori Ekle' }}}</h3>
+                <h3 class='box-title vertical-middle'><i class="fa fa-plus-square-o"></i> {{ $edit > 0 ? 'Kategori Düzenleme' : 'Yeni Kategori Ekle' }}</h3>
             </div>
 
             <div class="box-body">
@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    
+
 
                     <div class="container">
                         <button class="btn btn-primary" type="submit">Kaydet</button>

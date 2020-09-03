@@ -29,4 +29,16 @@ return [
             0 => 'Gösterme'
         ]
     ],
+
+
+    'page' => [
+        'show_in_footer' => [
+            1 => 'Göster',
+            0 => 'Gösterme'
+        ],
+        'status' => [
+            0 => 'Pasif',
+            1 => 'Aktif'
+        ]
+    ],
 ];

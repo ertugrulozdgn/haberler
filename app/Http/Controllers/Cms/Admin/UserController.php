@@ -88,7 +88,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         try {
-            //$user->delete();
+            $user->delete();
             return 1;
         } catch(\Exception $ex) {
             return 0;
