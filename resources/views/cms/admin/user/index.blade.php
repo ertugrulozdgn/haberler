@@ -22,14 +22,14 @@
                         </tr>
                         <tbody>
                         @foreach($users as $user)
-                            <tr>
+                            <tr id="item-{{ $user->id }}">
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>Admin</td>
                                 <td>{{$user->last_login}}</td>
                                 <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                 @if($user->id !== 1)
-                                    <td width='5px'><a href="javascript:void(0)"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                    <td width='5px'><a href="javascript:void(0)"><i id="{{ $user->id }}" class="fa fa-trash-o fa-lg"></i></a></td>
                                 @endif
                             </tr>
                         @endforeach
@@ -40,4 +40,40 @@
         </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(".fa-trash-o").click(function () {
+            destroy_id = $(this).attr('id');
+
+            alertify.confirm('Silme işlemini onaylıyor musunuz?','Bu işlem geri alınamaz',
+                function () {
+                    $.ajax({
+                        type:"DELETE",
+                        url:"user/"+destroy_id,
+                        success: function (msg) {
+                            if (msg)
+                            {
+                                $("#item-"+destroy_id).remove();
+                                alertify.success("Silme işlemi Başarılı");
+                            }
+                            else
+                            {
+                                alertify.error("İşlem Tamamlanamadı");
+                            }
+                        }
+                    });
+
+                },
+                function () {
+                    alertify.error('Silme işlemi iptal edildi.')
+                },
+            )
+        });
+    </script>
 @endsection

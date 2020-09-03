@@ -28,7 +28,7 @@ SendForm.init = function(el, referrer) {
             }
             // console.log(response_errors);
 
-            var error_html = '<div class="alert alert-warning"><ul>';
+            var error_html = '<div class="alert alert-warning">3<ul>';
 
             $.each(response_errors, function(index, error_message) {
                 error_html += '<li>' + error_message + '</li>';

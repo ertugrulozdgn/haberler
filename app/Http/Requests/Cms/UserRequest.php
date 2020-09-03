@@ -43,7 +43,7 @@ class UserRequest extends FormRequest
         return $rules;
     }
 
-    public function attributes()
+    public function attributes()  // Lang dosyasında attributes = [] yapmamıza gerek kalmadı bu daha kullanışlı
     {
         return [
             'name' => 'Ad',

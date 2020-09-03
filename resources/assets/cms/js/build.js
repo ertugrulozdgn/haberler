@@ -4,6 +4,8 @@ window.$ = window.jQuery = require('jquery');
 
 require('./send_form');
 
-require('./app')
+require('./app');
+
+require('./delete_form');
 
 
