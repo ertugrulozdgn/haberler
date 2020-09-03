@@ -17,6 +17,7 @@ SendForm.init = function(el, referrer) {
         processData: false,
         contentType: false,
         success: function(response) {
+            alertify.success("İşlem Başarılı");
             window.location.replace(referrer);
         },
         error: function(response) {
@@ -28,7 +29,7 @@ SendForm.init = function(el, referrer) {
             }
             // console.log(response_errors);
 
-            var error_html = '<div class="alert alert-warning">3<ul>';
+            var error_html = '<div class="alert alert-warning"><ul>';
 
             $.each(response_errors, function(index, error_message) {
                 error_html += '<li>' + error_message + '</li>';

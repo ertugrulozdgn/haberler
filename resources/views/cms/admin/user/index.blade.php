@@ -22,15 +22,15 @@
                         </tr>
                         <tbody>
                         @foreach($users as $user)
-                            <tr id="item-{{ $user->id }}">
+                            <tr id="item-{{ $user->id }}" class=" {{ $user->status == 0 ? 'alert alert-light' : ''}}">
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>Admin</td>
                                 <td>{{$user->last_login}}</td>
                                 <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
-                                @if($user->id !== 1)
-                                    <td width='5px'><a href="javascript:void(0)"><i id="{{ $user->id }}" class="fa fa-trash-o fa-lg"></i></a></td>
-                                @endif
+                                {{-- @if($user->id !== 1) --}}
+                                    <td width='5px'><a href="{{ action('Cms\Admin\UserController@destroy', $user->id) }}" data-action="delete"><i id="{{ $user->id }}" class="fa fa-trash-o fa-lg"></i></a></td>
+                                {{-- @endif --}}
                             </tr>
                         @endforeach
                         </tbody>
@@ -41,6 +41,7 @@
         </div>
     </div>
 
+{{--     
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -75,5 +76,5 @@
                 },
             )
         });
-    </script>
+    </script> --}}
 @endsection

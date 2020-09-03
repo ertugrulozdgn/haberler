@@ -37328,6 +37328,10 @@ __webpack_require__(/*! ./send_form */ "./resources/assets/cms/js/send_form.js")
 
 __webpack_require__(/*! ./app */ "./resources/assets/cms/js/app.js");
 
+__webpack_require__(/*! ./table */ "./resources/assets/cms/js/table.js");
+
+Table.init();
+
 /***/ }),
 
 /***/ "./resources/assets/cms/js/send_form.js":
@@ -37353,6 +37357,7 @@ SendForm.init = function (el, referrer) {
     processData: false,
     contentType: false,
     success: function success(response) {
+      alertify.success("İşlem Başarılı");
       window.location.replace(referrer);
     },
     error: function error(response) {
@@ -37365,7 +37370,7 @@ SendForm.init = function (el, referrer) {
       } // console.log(response_errors);
 
 
-      var error_html = '<div class="alert alert-warning"><ul>';
+      var error_html = '<div class="alert alert-warning">3<ul>';
       $.each(response_errors, function (index, error_message) {
         error_html += '<li>' + error_message + '</li>';
       });
@@ -37374,6 +37379,49 @@ SendForm.init = function (el, referrer) {
     }
   });
   return false;
+};
+
+/***/ }),
+
+/***/ "./resources/assets/cms/js/table.js":
+/*!******************************************!*\
+  !*** ./resources/assets/cms/js/table.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+window.Table = {};
+
+Table.init = function () {
+  Table.deleteRecord();
+};
+
+Table.deleteRecord = function () {
+  $('table').on('click', 'a[data-action="delete"]', function () {
+    var btn = $(this);
+    console.log(btn.attr('href'));
+    alertify.confirm('Silme işlemini onaylıyor musunuz?', 'Bu işlem geri alınamaz', function () {
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: "DELETE",
+        url: btn.attr('href'),
+        success: function success(msg) {
+          if (msg) {
+            btn.closest('tr').remove(); //$("#item-"+destroy_id).remove();
+
+            alertify.success("Silme işlemi Başarılı");
+          } else {
+            alertify.error("İşlem Tamamlanamadı");
+          }
+        }
+      });
+    }, function () {
+      alertify.error('Silme işlemi iptal edildi.');
+    });
+    return false;
+  });
 };
 
 /***/ }),

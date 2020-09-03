@@ -36,7 +36,7 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $user = new User();
+        $user = new User;
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
@@ -87,12 +87,11 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        $user->delete();
-
-        if($user->delete())
-        {
+        try {
+            //$user->delete();
             return 1;
-        }
+        } catch(\Exception $ex) {
             return 0;
+        }
     }
 }

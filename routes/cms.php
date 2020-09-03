@@ -6,7 +6,13 @@ Route::group([
     'domain' => config('routes.domains.cms'),
     'namespace' => config('routes.namespaces.cms')
 ], function () {
-    Route::get('/', 'DashboardController@index');
-    Route::resource('user','Admin\UserController');
+
+    Auth::routes();
+    
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('/', 'DashboardController@index');
+        Route::resource('user','Admin\UserController');
+        Route::resource('category', 'Admin\CategoryController');
+    });
 });
 

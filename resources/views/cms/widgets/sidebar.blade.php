@@ -27,8 +27,9 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{action('Cms\Admin\UserController@index')}}">Editörler</a></li>
             <li><a href="#">Ayarlar</a></li>
+            <li><a href="{{ action('Cms\Admin\UserController@index') }}">Editörler</a></li>
+            <li><a href="{{ action('Cms\Admin\CategoryController@index') }}">Kategoriler</a></li>
           </ul>
         </li>
       </ul>

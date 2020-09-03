@@ -6,6 +6,8 @@ require('./send_form');
 
 require('./app');
 
-require('./delete_form');
+require('./table');
+
+Table.init();
 
 

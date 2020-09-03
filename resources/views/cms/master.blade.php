@@ -55,8 +55,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
-    <script src="{{ mix("assets/cms/js/build.js") }}"></script>
-
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -81,5 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @foreach($errors->all() as $error)
         <script>alertify.error('{{ $error }}')</script>
     @endforeach
+
+    <script src="{{ mix("assets/cms/js/build.js") }}"></script>
 </body>
 </html>

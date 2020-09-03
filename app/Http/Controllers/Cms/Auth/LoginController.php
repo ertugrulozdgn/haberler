@@ -40,6 +40,8 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('cms.auth.login');
+        $form_referrer = action('Cms\Admin\UserController@index');
+
+        return view('cms.auth.login', compact('form_referrer'));
     }
 }
