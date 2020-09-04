@@ -31,7 +31,7 @@
                                     <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                 @endif
                                 @if($user->id !== 1 && Auth::user()->id !== $user->id)
-                                    <td width='5px'><a href="{{ action('Cms\Admin\UserController@destroy', $user->id) }}" data-action="delete"><i class="fa fa-trash-o fa-lg"></i></a></td>
+                                    <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                 @endif
                             </tr>
                         @endforeach 

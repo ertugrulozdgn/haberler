@@ -14,6 +14,7 @@ Route::group([
         Route::resource('user','Admin\UserController');
         Route::resource('category', 'Admin\CategoryController');
         Route::resource('page','Admin\PageController');
+        Route::resource('news', 'Post\NewsController');
     });
 });
 

@@ -19,7 +19,7 @@
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{action('Cms\DashboardController@index')}}"><i class="fa fa-home fa-lg"></i> <span>Anasayfa</span></a></li>
-        <li><a href="#"><i class="fa fa-newspaper-o fa-lg" style="margin-right: 4px"></i> <span>Haberler</span></a></li>
+        <li><a href="{{ action('Cms\Post\NewsController@index') }}"><i class="fa fa-newspaper-o fa-lg" style="margin-right: 4px"></i> <span>Haberler</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-cog fa-lg"></i> <span>Yönetim</span>
             <span class="pull-right-container">

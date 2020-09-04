@@ -9,15 +9,6 @@ return [
     ],
 
 
-    'post' => [
-        'status' => [
-            0 => 'Pasif',
-            1 => 'Aktif',
-            2 => 'Zamanlanmış'
-        ]
-    ],
-
-
     'category' => [
         'status' => [
             0 => 'Pasif',
@@ -39,6 +30,21 @@ return [
         'status' => [
             0 => 'Pasif',
             1 => 'Aktif'
+        ]
+    ],
+
+
+
+    'post' => [
+        'status' => [
+            0 => 'Pasif',
+            1 => 'Aktif',
+            2 => 'Zamanlanmış'
+        ],
+        'location' => [
+            1 => 'Normal',
+            2 => 'Manşet',
+            3 => 'Sürmanşet'
         ]
     ],
 ];
