@@ -6,7 +6,7 @@
         <br>
         <div class='box box-danger'>
             <div class='box-header with-border'>
-                <h3 class='box-title vertical-middle'><i class="fa fa-user"></i> Kategoriler</h3>
+                <h3 class='box-title vertical-middle'><i class="fa fa-tag"></i> Kategoriler</h3>
 
                 <span class="pull-right"><a href="{{ action('Cms\Admin\CategoryController@create') }}" class="btn btn-success">Yeni</a></span>
             </div>

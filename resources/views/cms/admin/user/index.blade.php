@@ -15,26 +15,26 @@
                     <thead>
                         <tr>
                             <th style='min-width: 200px'>Adı</th>
-                            <th>E-posta</th>
-                            <th>Yetki</th>
-                            <th>Son Giriş</th>
-                            <th>İşlemler</th>
+                            <th style="width: 250px">E-posta</th>
+                            <th style="width: 150px">Yetki</th>
+                            <th style="width: 150px">Son Giriş</th>
+                            <th style="width: 50px">İşlemler</th>
                         </tr>
                         <tbody>
                         @foreach($users as $user)
-                            <tr id="item-{{ $user->id }}" class=" {{ $user->status == 0 ? 'alert alert-light' : ''}}">
+                            <tr class=" {{ $user->status == 0 ? 'alert alert-light' : ''}}">
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>Admin</td>
                                 <td>{{$user->last_login}}</td>
-                                @if(Auth::user()->id == 1)
+                                @if($user->id !== 1 || Auth::user()->id == 1)
                                     <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                 @endif
-                                @if($user->id !== 1)
-                                    <td width='5px'><a href="{{ action('Cms\Admin\UserController@destroy', $user->id) }}" data-action="delete"><i id="{{ $user->id }}" class="fa fa-trash-o fa-lg"></i></a></td>
+                                @if($user->id !== 1 && Auth::user()->id !== $user->id)
+                                    <td width='5px'><a href="{{ action('Cms\Admin\UserController@destroy', $user->id) }}" data-action="delete"><i class="fa fa-trash-o fa-lg"></i></a></td>
                                 @endif
                             </tr>
-                        @endforeach
+                        @endforeach 
                         </tbody>
                     </thead>
                 </table>
@@ -42,41 +42,4 @@
         </div>
         </div>
     </div>
-
-{{--
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $(".fa-trash-o").click(function () {
-            destroy_id = $(this).attr('id');
-
-            alertify.confirm('Silme işlemini onaylıyor musunuz?','Bu işlem geri alınamaz',
-                function () {
-                    $.ajax({
-                        type:"DELETE",
-                        url:"user/"+destroy_id,
-                        success: function (msg) {
-                            if (msg)
-                            {
-                                $("#item-"+destroy_id).remove();
-                                alertify.success("Silme işlemi Başarılı");
-                            }
-                            else
-                            {
-                                alertify.error("İşlem Tamamlanamadı");
-                            }
-                        }
-                    });
-
-                },
-                function () {
-                    alertify.error('Silme işlemi iptal edildi.')
-                },
-            )
-        });
-    </script> --}}
 @endsection

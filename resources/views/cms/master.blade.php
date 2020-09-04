@@ -44,6 +44,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <![endif]-->
 
 
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
+
     <!-- JavaScript -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <!-- CSS -->

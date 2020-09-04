@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title vertical-middle"><i class="fa fa-plus-square-o"></i>{{ $edit > 0 ? 'Sayfa Düzenleme' : 'Sayfa Ekleme' }}</h3>
+                <h3 class="box-title vertical-middle"><i class="fa fa-plus-square-o"></i> {{ $edit > 0 ? 'Sayfa Düzenleme' : 'Sayfa Ekleme' }}</h3>
             </div>
 
             <div class="box-body">
@@ -12,13 +12,16 @@
                     {{ Form::open([
                         'url' => $edit > 0 ? action('Cms\Admin\PageController@update', $page->id) : action('Cms\Admin\PageController@store'),
                         'method' => $edit > 0 ? 'PUT' : 'POST',
+                        'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
                         ])
                     }}
+
+                    <div class="container" id="response-status"></div>
 
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-2">
-                                {{ Form::label('title', 'Başlık') }}
+                                {{ Form::label('title', 'Başlık', ['class' => 'control-label']) }}
                                 <span class="required control-label">*</span>
                             </div>
                             <div class="col-lg-10">
@@ -30,11 +33,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-2">
-                                {{ Form::label('content', 'İçerik') }}
+                                {{ Form::label('content', 'İçerik', ['class' => 'control-label']) }}
                                 <span class="required control-label">*</span>
                             </div>
                             <div class="col-lg-10">
-                                {{ Form::textarea('content', $edit > 0 ? ($page->content) : '', ['class' => 'form-control']) }}
+                                {{ Form::textarea('content', $edit > 0 ? ($page->content) : '', ['class' => 'form-control', 'id' => 'editor']) }}
                             </div>
                         </div>
                     </div>
@@ -64,6 +67,11 @@
                                 @endforeach
                             </div>
                         </div>
+                    </div>
+
+                    <div class="container">
+                        <button class="btn btn-primary" type="submit">Kaydet</button>
+                    <a href="{{ action('Cms\Admin\PageController@index') }}" class="btn btn-danger">Vazgeç</a>
                     </div>
 
                     {{ Form::close() }}

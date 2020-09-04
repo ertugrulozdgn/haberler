@@ -64,3 +64,22 @@ a {
     margin: 15px 0 0 10px !important;
 }
 
+.badge-roundless {
+    border-radius: 0 !important;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #36c6d3;
+}
+
+
+.badge-danger {
+    color: #fff;
+    background-color:  #ed6b75;
+}
+
+
+.sidebar-menu-margin {
+    margin-bottom: 5px !important;
+}

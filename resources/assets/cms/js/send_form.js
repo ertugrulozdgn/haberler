@@ -7,8 +7,13 @@ SendForm.init = function(el, referrer) {
     var method = $(el).attr('method');
 
     $(el).find('#response-status').html('');
+    
+    $.each(CKEDITOR.instances, function (key, editor) {
+        editor.updateElement();
+    });
 
     var data = new FormData(el);
+
 
     $.ajax({
         url: action,

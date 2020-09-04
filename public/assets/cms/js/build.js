@@ -37330,7 +37330,27 @@ __webpack_require__(/*! ./app */ "./resources/assets/cms/js/app.js");
 
 __webpack_require__(/*! ./table */ "./resources/assets/cms/js/table.js");
 
+__webpack_require__(/*! ./html_editor */ "./resources/assets/cms/js/html_editor.js");
+
 Table.init();
+HtmlEditor.init();
+
+/***/ }),
+
+/***/ "./resources/assets/cms/js/html_editor.js":
+/*!************************************************!*\
+  !*** ./resources/assets/cms/js/html_editor.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+window.HtmlEditor = {};
+
+HtmlEditor.init = function () {
+  CKEDITOR.replace('editor', {
+    height: 400
+  });
+};
 
 /***/ }),
 
@@ -37349,6 +37369,9 @@ SendForm.init = function (el, referrer) {
   var action = $(el).attr('action');
   var method = $(el).attr('method');
   $(el).find('#response-status').html('');
+  $.each(CKEDITOR.instances, function (key, editor) {
+    editor.updateElement();
+  });
   var data = new FormData(el);
   $.ajax({
     url: action,
@@ -37448,8 +37471,8 @@ Table.deleteRecord = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\haberler\resources\assets\cms\js\build.js */"./resources/assets/cms/js/build.js");
-module.exports = __webpack_require__(/*! C:\Laravel\haberler\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/assets/cms/js/build.js */"./resources/assets/cms/js/build.js");
+module.exports = __webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
