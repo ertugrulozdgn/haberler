@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $category->name = $request->input('name');
         $category->slug = Str::slug($category->title);
         $category->seo_title = $request->input('seo_title');
-        $category->seo_desc = $request->input('seo_desc');
+        $category->seo_description = $request->input('seo_description');
         $category->show_in_menu = $request->get('show_in_menu');
         $category->status = $request->input('status');
         $category->save();
@@ -76,7 +76,7 @@ class CategoryController extends Controller
         $category->name = $request->input('name');
         $category->slug = Str::slug($category->title);
         $category->seo_title = $request->input('seo_title');
-        $category->seo_desc = $request->input('seo_desc');
+        $category->seo_description = $request->input('seo_description');
         $category->show_in_menu = $request->get('show_in_menu');
         $category->status = $request->input('status');
         $category->save();

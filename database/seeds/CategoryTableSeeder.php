@@ -26,7 +26,7 @@ class CategoryTableSeeder extends Seeder
             'İnternet',
             'Güvenlik',
             'Eğitim',
-            'Nasıl Yapılır',
+            'Nasıl Yapılır'
         ];
 
         foreach ($categories as $category) {

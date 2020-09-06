@@ -15,6 +15,10 @@ Route::group([
         Route::resource('category', 'Admin\CategoryController');
         Route::resource('page','Admin\PageController');
         Route::resource('news', 'Post\NewsController');
+
+        Route::get('deneme', function () {
+            return view('cms.deneme');
+        });
     });
 });
 

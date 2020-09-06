@@ -37471,8 +37471,8 @@ Table.deleteRecord = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/assets/cms/js/build.js */"./resources/assets/cms/js/build.js");
-module.exports = __webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Laravel\haberler\resources\assets\cms\js\build.js */"./resources/assets/cms/js/build.js");
+module.exports = __webpack_require__(/*! C:\Laravel\haberler\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

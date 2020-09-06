@@ -45,6 +45,14 @@ return [
             1 => 'Normal',
             2 => 'Manşet',
             3 => 'Sürmanşet'
+        ],
+        'show_in_mainpage' => [
+            0 => 'Görünmesin',
+            1 => 'Görünsün'
+        ],
+        'commentable' => [
+            0 => 'Yapılmasın',
+            1 => 'Yapılsın'
         ]
     ],
 ];

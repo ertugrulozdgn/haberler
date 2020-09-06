@@ -26,9 +26,9 @@ class CategoryRequest extends FormRequest
         $rules = [
             'name' => 'required',
             'seo_title' => 'required',
-            'seo_desc' => 'required'
+            'seo_description' => 'required'
         ];
-        
+
         return $rules;
     }
 
@@ -38,7 +38,7 @@ class CategoryRequest extends FormRequest
 
         'name' => 'Kategori isim',
         'seo_title' => 'Seo başlık',
-        'seo_desc' => 'Seo açıklama'
+        'seo_description' => 'Seo açıklama'
 
         ];
     }
