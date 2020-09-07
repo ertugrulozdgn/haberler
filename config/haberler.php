@@ -47,12 +47,12 @@ return [
             3 => 'Sürmanşet'
         ],
         'show_in_mainpage' => [
+            1 => 'Görünsün',
             0 => 'Görünmesin',
-            1 => 'Görünsün'
         ],
         'commentable' => [
+            1 => 'Yapılsın',
             0 => 'Yapılmasın',
-            1 => 'Yapılsın'
         ]
     ],
 ];

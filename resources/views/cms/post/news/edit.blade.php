@@ -17,6 +17,7 @@
                         ])
                     }}
 
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-2">
@@ -31,155 +32,172 @@
                         </div>
                         </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('published_at', 'Yayınlanma Tarihi', ['class' => 'control-label']) }}
-                                <span class="required control-label">*</span>
-                            </div>
-                            <div class="col-lg-10">
-                                {{ Form::date('name', \Carbon\Carbon::now(), ['class' => 'form-control']) }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('short_title', 'Kısa Başlık', ['class' => 'control-label']) }}
-                                <span class="required control-label">*</span>
-                            </div>
-                            <div class="col-lg-10">
-                                {{ Form::text('short_title', $edit > 0 ? $post->short_title : '', ['class' => 'form-control']) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('published_at', 'Yayınlanma Tarihi', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::dateTime('name', \Carbon\Carbon::now()->format('d/m/Y H:i'), ['class' => 'form-control']) }}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                             <div class="col-lg-2">
-                                 {{ Form::label('title', 'Başlık', ['class' => 'control-label']) }}
-                                 <span class="required control-label">*</span>
-                             </div>
-                            <div class="col-lg-10">
-                                {{ Form::text('title', $edit > 0 ? $post->title : '', ['class' => 'form-control']) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('short_title', 'Kısa Başlık', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::text('short_title', $edit > 0 ? $post->short_title : '', ['class' => 'form-control']) }}
+                                    <span class="help-block">Bütün listelerde görünecek başlık</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('seo_title', 'Seo Başlık', ['class' => 'control-label']) }}
-                                <span class="required control-label">*</span>
-                            </div>
-                            <div class="col-lg-10">
-                                {{ Form::text('seo_title', $edit > 0 ? $post->seo_title : '', ['class' => 'form-control']) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('title', 'Başlık', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::text('title', $edit > 0 ? $post->title : '', ['class' => 'form-control']) }}
+                                    <span class="help-block">Detay sayfada görünecek başlık(Boş bırakılırsa kısa başlık eklenecektir).</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('summary', 'Özet', ['class' => ' control-label']) }}
-                                <span class="required control-label">*</span>
-                            </div>
-                            <div class="col-lg-10">
-                                {{ Form::textarea('summary', $edit > 0 ? $post->summary : '', ['class' => 'form-control']) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('seo_title', 'Seo Başlık', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::text('seo_title', $edit > 0 ? $post->seo_title : '', ['class' => 'form-control']) }}
+                                    <span class="help-block">Detay sayfalarda meta olarak görünecek başlık(Boş bırakılırsa başlık(başlık da boş ise kısa başlık) eklenecektir).</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('content', 'Başlık', ['class' => 'control-label']) }}
-                                <span class="required control-label">*</span>
-                            </div>
-                            <div class="col-lg-10">
-                                {{ Form::textarea('content', $edit > 0 ? $post->content : '', ['class' => 'form-control', 'id' => 'editor']) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('summary', 'Özet', ['class' => ' control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('summary', $edit > 0 ? $post->summary : '', ['class' => 'form-control', 'rows' => 6]) }}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('name', 'Editör', ['class' => 'control-label', 'placeholder' => 'Editör Seçin']) }}
-                                <span class="required control-label">*</span>
-                            </div>
-                            <div class="col-lg-10">
-                                    {{ Form::select('name', $users, null,['class' => 'form-control']) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('content', 'İçerik', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('content', $edit > 0 ? $post->content : '', ['class' => 'form-control', 'id' => 'editor']) }}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('category', 'Kategori', ['class' => 'control-label']) }}
-                            </div>
-                            <div class="col-lg-10">
-                                    {{ Form::select('category', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control']) }}
+                        <div class="form-group">
+                            <div class="row" style="padding-bottom: 10px;">
+                                <div class="col-lg-2">
+                                    {{ Form::label('editor_id', 'Editör', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10" style="margin-top: 10px">
+                                    {{ Form::select('editor_id', $users, null,['class' => 'form-control select2']) }}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label(null, 'Kapak Resmi', ['class' => 'control-label']) }}
-                            </div>
-                            <div class="col-lg-10">
-                                {{ Form::file(null, ['class' => 'form-control']) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('category', 'Kategori', ['class' => 'control-label']) }}
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::select('category', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control my-multiselect', 'id' => 'my-select']) }}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('show_in_mainpage', 'Anasayfada', ['class' => 'control-label']) }}
-                            </div>
-                            <div class="col-lg-10">
-                                @foreach($show_in_mainpage as $value => $name)
-                                    {{ Form::radio('show_in_mainpage', $value, $edit > 0 ? ($post->show_in_mainpage == $value ? true : false) : ($name == 'Görünsün' ? true : false), ['class' => 'iradio']) }} {{ $name }}
-                                @endforeach
+                        <div class="form-group">
+                            <div class="row" style="height: 260px">
+                                <div class="col-lg-2">
+                                    {{ Form::label(null, 'Kapak Resmi', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    <input type="file" id="select_image" name="image" onchange="putImage()" style="margin: 10px 0 10px 0" />
+                                    <img style="height: 195px" id="target" />
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                 {{ Form::label('commentable', 'Yorum', ['class' => 'control-label']) }}
-                            </div>
-                            <div class="col-lg-10">
-                                @foreach($commentable as $value => $name)
-                                    {{ Form::radio('commentable', $value, $edit > 0 ? ($post->commentable == $value ? true : false) : ($name == 'Yapılsın' ? true : false), ['class' => 'iradio']) }} {{ $name }}
-                                @endforeach
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('redirect_link', 'Yönlendirme Linki', ['class' => 'control-label']) }}
+                                </div>
+                                <div class="col-lg-10">
+                                    {{ Form::text('redirect_link', $edit > 0 ? $post->redirect_link : '', ['class' => 'form-control']) }}
+                                    <span class="help-block">Haber buraya yazdığınız adrese otomatik olarak yönlenir.</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                {{ Form::label('status', 'Durum', ['class' => 'control-label']) }}
-                            </div>
-                            <div class="col-lg-10">
-                                @foreach($status as $value => $name)
-                                    {{ Form::radio('status', $value, $edit > 0 ? ($post->status == $value ? true : false) : ($name == 'Aktif' ? true : false), ['class' => 'iradio']) }} {{ $name }}
-                                @endforeach
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('show_in_mainpage', 'Anasayfada', ['class' => 'control-label', 'style' => 'padding-bottom:15px']) }}
+                                </div>
+                                <div class="col-lg-10">
+                                    @foreach($show_in_mainpage as $value => $name)
+                                        {{ Form::radio('show_in_mainpage', $value, $edit > 0 ? ($post->show_in_mainpage == $value ? true : false) : ($name == 'Görünsün' ? true : false), ['class' => 'iradio']) }} {{ $name }}
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="container">
-                        <button class="btn btn-primary" type="submit">Kaydet</button>
-                        <a href="{{ action('Cms\Admin\CategoryController@index') }}" class="btn btn-danger">Vazgeç</a>
-                    </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('commentable', 'Yorum', ['class' => 'control-label' , 'style' => 'padding-bottom:15px']) }}
+                                </div>
+                                <div class="col-lg-10">
+                                    @foreach($commentable as $value => $name)
+                                        {{ Form::radio('commentable', $value, $edit > 0 ? ($post->commentable == $value ? true : false) : ($name == 'Yapılsın' ? true : false), ['class' => 'iradio']) }} {{ $name }}
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    {{ Form::label('status', 'Durum', ['class' => 'control-label', 'style' => 'padding-bottom:15px']) }}
+                                </div>
+                                <div class="col-lg-10">
+                                    @foreach($status as $value => $name)
+                                        {{ Form::radio('status', $value, $edit > 0 ? ($post->status == $value ? true : false) : ($name == 'Aktif' ? true : false), ['class' => 'iradio']) }} {{ $name }}
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <button class="btn btn-primary" type="submit">Kaydet</button>
+                            <a href="{{ action('Cms\Admin\CategoryController@index') }}" class="btn btn-danger">Vazgeç</a>
+                        </div>
 
                     {{ Form::close() }}
 
@@ -191,8 +209,21 @@
 
 @section('js')
     <script type="text/javascript">
-        CKEDITOR.replace('editor', {
-            height:400
-        });
+
+    function showImage(src, target) {
+            var fr = new FileReader();
+
+             fr.onload = function(){
+      target.src = fr.result;
+    }
+           fr.readAsDataURL(src.files[0]);
+
+        }
+        function putImage() {
+            var src = document.getElementById("select_image");
+            var target = document.getElementById("target");
+            showImage(src, target);
+        }
+    
     </script>
 @endsection

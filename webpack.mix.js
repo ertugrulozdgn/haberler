@@ -12,4 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/cms/js/build.js', 'public/assets/cms/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/assets/cms/scss/build.scss', 'public/assets/cms/css');
+

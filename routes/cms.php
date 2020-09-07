@@ -16,8 +16,8 @@ Route::group([
         Route::resource('page','Admin\PageController');
         Route::resource('news', 'Post\NewsController');
 
-        Route::get('deneme', function () {
-            return view('cms.deneme');
+        Route::get('denemee', function () {
+            return view('cms.deneme2');
         });
     });
 });

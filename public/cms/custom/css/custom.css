@@ -83,3 +83,7 @@ a {
 .sidebar-menu-margin {
     margin-bottom: 5px !important;
 }
+
+#ms-my-select {
+    width: 700px !important;
+}
