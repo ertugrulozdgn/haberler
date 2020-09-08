@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Cms\Post;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Cms\NewsRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -52,7 +55,59 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'short_title' => 'required',
+            'published_at' => 'required|date',
+            'summary' => 'required',
+            'content' => 'required',
+            // 'cover_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $post = new Post();
+        
+        $post->short_title = $request->input('short_title');
+        $post->location = $request->input('location');
+        //$post->published_at = $request->input('published_at');
+        $post->show_on_mainpage = $request->input('show_in_mainpage');
+        $post->commentable = $request->input('commentable');
+        $post->created_by = Auth::user()->id;
+        $post->content = $request->input('content');
+        $post->summary = $request->input('summary');
+        $post->status = $request->input('status');
+        $post->editor_id = $request->input('editor_id');
+        
+        if(!empty($request->input('title'))) 
+        {
+            $post->title = $request->input('title');
+        } else {
+            $post->title = $request->input('short_title');
+        }
+
+        if(empty($request->input('seo_title')))
+        {
+           if(empty($request->input('title')))
+           {
+                $post->seo_title = $request->input('short_title');
+           } else{
+                $post->seo_title = $request->input('title');
+           }
+        } else {
+            $post->seo_title = $request->input('seo_title');
+        }
+
+        if(!empty($request->input('redirect_link')))
+        {
+            $post->redirect_link = $request->input('redirect_link');
+        }
+
+        $post->slug = Str::slug($post->title);
+
+        $post->save();
+
+        return redirect(action('Cms\Post\NewsController@index'))->with('success', 'İşlem Başarılı');
+        
+
     }
 
 
@@ -76,6 +131,13 @@ class NewsController extends Controller
 
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        try{
+            $post->delete();
+            return 1;
+        } catch(\Exception $ex) {
+            return 0;
+        }
     }
 }

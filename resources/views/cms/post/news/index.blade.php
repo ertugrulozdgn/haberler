@@ -15,26 +15,25 @@
                     <table class="table table-stripped">
                         <thead>
                             <tr>
-                                <th style="width: 80px">Resim</th>
+                                <th class="text-center" style="width: 80px">Resim</th>
                                 <th style="min-width: 200px">Başlık</th>
-                                <th style="width: 150px">Oluşturan</th>
-                                <th style="width: 150px">Yerleşim Türü</th>
-                                <th style="width: 150px">Yayın Tarihi</th>
-                                <th style="width: 100px">Hit</th>
-                                <th style="width: 50px">İşlemler</th>
+                                <th class="text-center" style="width: 150px">Oluşturan</th>
+                                <th class="text-center" style="width: 150px">Yerleşim Türü</th>
+                                <th class="text-center" style="width: 150px">Yayın Tarihi</th>
+                                <th class="text-center" style="width: 150px">Hit</th>
+                                <th class="text-center">İşlemler</th>
                             </tr>
                             <tbody>
                                 @foreach ($posts as $post)
                                 <tr>
-                                    <td>Resim</td>
+                                    <td class="text-center">Resim</td>
                                     <td>{{ $post->title }}</td>
-                                    <td>{{ $post->create_by }}</td>
-                                    <td>{{ $post->location }}</td>
-                                    <td>{{ $post->published_at }}</td>
-                                    <td>{{ $post->hit}}</td>
+                                    <td class="text-center">{{ $post->created_by_name }}</td>
+                                    <td class="text-center">{{ $post->location_name }}</td>
+                                    <td class="text-center">{{ $post->published_at }}</td>
+                                    <td class="text-center">{{ $post->hit }}</td>
                                     <td width='5px'><a href=""><i class="fa fa-pencil-square fa-lg"></i></a></td>
-                                    <td width='5px'><a href=""><i class="fa fa-pencil-square fa-lg"></i></a></td>
-                                </tr>
+                                    <td width='5px'><a href="{{ action('Cms\Post\NewsController@destroy', $post->id) }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
                                 @endforeach
                             </tbody>
                         </thead>

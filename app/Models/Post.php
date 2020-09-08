@@ -8,6 +8,8 @@ use Illuminate\Support\Carbon;
 
 class Post extends BaseModel
 {
+
+    //Relationships
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
@@ -27,4 +29,34 @@ class Post extends BaseModel
     {
         return $this->belongsToMany(Category::class);
     }
+
+
+
+    //Attributes
+    public function getCreatedByNameAttribute()
+    {
+        return User::where('id', $this->created_by)->first()->name;
+    }
+
+    public function getLocationNameAttribute()
+    {
+        switch ($this->location)
+        {
+            case 1:
+                return 'Normal';
+                break;
+
+            case 2:
+                return 'Manşet';
+                break;
+
+            case 3:
+                return 'Sürmanşet';
+
+            default:
+                return 'normal';
+                break;
+        }
+    }
+
 }

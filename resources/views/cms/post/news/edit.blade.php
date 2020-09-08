@@ -13,9 +13,12 @@
                         Form::open([
                             'url' => $edit > 0 ? action('Cms\Post\NewsController@update', $post->id) : action('Cms\Post\NewsController@store'),
                             'method' => $edit > 0 ? 'PUT' : 'POST',
-                            'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
+                            // 'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
                         ])
                     }}
+                    
+
+                    <div id="response-status"></div>
 
 
                     <div class="form-group">
@@ -39,7 +42,7 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::dateTime('name', \Carbon\Carbon::now()->format('d/m/Y H:i'), ['class' => 'form-control']) }}
+                                    {{ Form::dateTime('published_at', \Carbon\Carbon::now()->format('d/m/Y H:i'), ['class' => 'form-control']) }}
                                 </div>
                             </div>
                         </div>
@@ -125,7 +128,7 @@
                                     {{ Form::label('category', 'Kategori', ['class' => 'control-label']) }}
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::select('category', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control my-multiselect', 'id' => 'my-select']) }}
+                                    {{ Form::select('category', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control multiselect', 'id' => 'my-select']) }}
                                 </div>
                             </div>
                         </div>
@@ -133,15 +136,28 @@
                         <div class="form-group">
                             <div class="row" style="height: 260px">
                                 <div class="col-lg-2">
-                                    {{ Form::label(null, 'Kapak Resmi', ['class' => 'control-label']) }}
+                                    {{ Form::label('cover_img', 'Kapak Resmi', ['class' => 'control-label']) }}
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    <input type="file" id="select_image" name="image" onchange="putImage()" style="margin: 10px 0 10px 0" />
-                                    <img style="height: 195px" id="target" />
+                                    <input type="file" class="select_image" name="cover_img" id="cover_img" style="margin: 10px 0 10px 0" />
+                                    <img style="height: 195px" class="target" />
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="row" style="height: 260px">
+                                <div class="col-lg-2">
+                                    {{ Form::label('headline_img', 'Manşet Resmi', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10">
+                                    <input type="file" class="select_image" name="headline_img" id="headline_img" style="margin: 10px 0 10px 0" />
+                                    <img style="height: 195px" class="target" />
+                                </div>
+                            </div>
+                        </div>
+                        
 
                         <div class="form-group">
                             <div class="row">
@@ -196,7 +212,7 @@
 
                         <div class="container">
                             <button class="btn btn-primary" type="submit">Kaydet</button>
-                            <a href="{{ action('Cms\Admin\CategoryController@index') }}" class="btn btn-danger">Vazgeç</a>
+                            <a href="{{ action('Cms\Post\NewsController@index') }}" class="btn btn-danger">Vazgeç</a>
                         </div>
 
                     {{ Form::close() }}
@@ -207,23 +223,3 @@
     </div>
 @endsection
 
-@section('js')
-    <script type="text/javascript">
-
-    function showImage(src, target) {
-            var fr = new FileReader();
-
-             fr.onload = function(){
-      target.src = fr.result;
-    }
-           fr.readAsDataURL(src.files[0]);
-
-        }
-        function putImage() {
-            var src = document.getElementById("select_image");
-            var target = document.getElementById("target");
-            showImage(src, target);
-        }
-    
-    </script>
-@endsection

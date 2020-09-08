@@ -23,15 +23,18 @@
                         <tbody>
                         @foreach($users as $user)
                             <tr class=" {{ $user->status == 0 ? 'alert alert-light' : ''}}">
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>Admin</td>
-                                <td>{{$user->last_login}}</td>
+                                <td class="vertical-middle">{{$user->name}}</td>
+                                <td class="vertical-middle">{{$user->email}}</td>
+                                <td class="vertical-middle">Admin</td>
+                                <td>
+                                    {{  \Carbon\Carbon::parse($user->last_login)->format('d.m.Y') }} <br>
+                                    {{  \Carbon\Carbon::parse($user->last_login)->format('H:i') }}
+                                </td>
                                 @if($user->id !== 1 || Auth::user()->id == 1)
-                                    <td width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
+                                    <td class="vertical-middle" width='5px'><a href="{{ action('Cms\Admin\UserController@edit', [$user->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                 @endif
                                 @if($user->id !== 1 && Auth::user()->id !== $user->id)
-                                <td width='5px'><a href="{{ action('Cms\Admin\UserController@destroy', $user->id) }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
+                                <td class="vertical-middle" width='5px'><a href="{{ action('Cms\Admin\UserController@destroy', $user->id) }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
                                 @endif
                             </tr>
                         @endforeach 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Cms\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Carbon;
 
 class LoginController extends Controller
 {
@@ -43,5 +45,11 @@ class LoginController extends Controller
         $form_referrer = action('Cms\Admin\UserController@index');
 
         return view('cms.auth.login', compact('form_referrer'));
+    }
+
+    public function authenticated(Request $request, $user)
+    {   
+        $user->last_login = Carbon::now()->toDateTimeString();
+        $user->save();
     }
 }

@@ -15,18 +15,19 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->integer('cover_id')->unsigned();
-            $table->integer('headline_id')->unsigned();
-            $table->tinyInteger('post_type')->unsigned();
+            $table->integer('editor_id');
+            $table->integer('cover_id')->unsigned()->nullable();
+            $table->integer('headline_id')->unsigned()->nullable();
+            $table->tinyInteger('post_type')->unsigned()->nullable();
             $table->string('title');
             $table->string('short_title');
             $table->string('seo_title');
             $table->mediumText('summary');
             $table->string('slug');
             $table->tinyInteger('status')->unsigned();
-            $table->string('redirect_link');
+            $table->string('redirect_link')->nullable();
             $table->tinyInteger('location')->unsigned();
-            $table->bigInteger('hit')->unsigned();
+            $table->bigInteger('hit')->unsigned()->default(0);
             $table->dateTime('published_at')->nullable();
             $table->tinyInteger('show_on_mainpage')->unsigned();
             $table->tinyInteger('commentable')->unsigned();
