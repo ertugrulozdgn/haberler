@@ -15,22 +15,22 @@ class Post extends BaseModel
         return $this->belongsToMany(Tag::class);
     }
 
-    public function cover_img()
-    {
-        return $this->hasOne(Attachment::class, 'cover_id');
-    }
-
-    public function headline_img()
-    {
-        return $this->hasOne(Attachment::class, 'headline_id');
-    }
+    // public function cover_img()
+    // {
+    //     return $this->hasOne(Attachment::class, 'cover_id');
+    // }
+    
+    // public function headline_img()
+    // {
+    //     return $this->hasOne(Attachment::class, 'headline_id');
+    // }
 
     public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
 
-
+    
 
     //Attributes
     public function getCreatedByNameAttribute()
@@ -59,4 +59,26 @@ class Post extends BaseModel
         }
     }
 
+    
+
+    //Functions
+    public function a($column, $attachment_type)
+    {
+
+        $file_name = $this->slug. '_' . $attachment_type. '_' . uniqid();
+        $storage_path = request()->$attachment_type->storeAs('file/images/' . date('Y/m/d'), $file_name);
+
+        $attcehmentent = new Attachment();
+        $attcehmentent->type = $attachment_type;
+        $attcehmentent->mime_type = request()->$attachment_type->getClientOriginalExtension();
+        $attcehmentent->file_name = $file_name;
+        $attcehmentent->storage_path = $storage_path;
+        $attcehmentent->public_path = '/storage/' . $storage_path;
+        $attcehmentent->width = getimagesize(request()->file($attachment_type))[0];
+        $attcehmentent->height = getimagesize(request()->file($attachment_type))[1];
+        $attcehmentent->save();
+
+        $this->$column = $attcehmentent->id;
+      //$post->cover_id = $attcehmentent->id;
+    }
 }

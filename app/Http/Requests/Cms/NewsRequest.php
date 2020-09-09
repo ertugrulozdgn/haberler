@@ -24,9 +24,11 @@ class NewsRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'title' => 'required',
+            'short_title' => 'required',
+            'published_at' => 'required|date',
             'summary' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'cover_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ];
 
         

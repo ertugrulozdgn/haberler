@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Cms\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Cms\NewsRequest;
+use App\Models\Attachment;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -53,19 +54,10 @@ class NewsController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-
-        $request->validate([
-            'short_title' => 'required',
-            'published_at' => 'required|date',
-            'summary' => 'required',
-            'content' => 'required',
-            // 'cover_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
-
         $post = new Post();
-        
+        $post->post_type = 0;
         $post->short_title = $request->input('short_title');
         $post->location = $request->input('location');
         //$post->published_at = $request->input('published_at');
@@ -76,37 +68,52 @@ class NewsController extends Controller
         $post->summary = $request->input('summary');
         $post->status = $request->input('status');
         $post->editor_id = $request->input('editor_id');
-        
-        if(!empty($request->input('title'))) 
+        $post->title = $request->filled('title') ? $request->input('title') : $request->input('short_title');
+        $post->redirect_link = $request->input('redirect_link') ?? '';
+        $post->slug = $request->filled('title') ? Str::slug($post->title) : Str::slug($post->short_title);
+        $post->seo_title = $request->filled('seo_title') ? ($request->input('seo_title')) : ($request->filled('title') ? $request->input('title') : $request->input('short_title'));
+        $post->a('cover_id', 'cover_img');
+        if($request->hasFile('headline_img'))
         {
-            $post->title = $request->input('title');
-        } else {
-            $post->title = $request->input('short_title');
+            $post->a('headline_id', 'headline_img');
         }
-
-        if(empty($request->input('seo_title')))
-        {
-           if(empty($request->input('title')))
-           {
-                $post->seo_title = $request->input('short_title');
-           } else{
-                $post->seo_title = $request->input('title');
-           }
-        } else {
-            $post->seo_title = $request->input('seo_title');
-        }
-
-        if(!empty($request->input('redirect_link')))
-        {
-            $post->redirect_link = $request->input('redirect_link');
-        }
-
-        $post->slug = Str::slug($post->title);
-
         $post->save();
 
         return redirect(action('Cms\Post\NewsController@index'))->with('success', 'İşlem Başarılı');
-        
+
+
+        $file_name = $post->slug. '_' . 'cover'. '_' . mt_rand(1000, 9999);
+        $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);
+
+        $attcehmentent = new Attachment;
+        $attcehmentent->type = 'cover_img';
+        $attcehmentent->mime_type = $request->cover_img->getClientOriginalExtension();
+        $attcehmentent->file_name = $file_name;
+        $attcehmentent->storage_path = $storage_path;
+        $attcehmentent->public_path = '/storage/' . $storage_path;
+        $attcehmentent->width = getimagesize($request->file('cover_img'))[0];
+        $attcehmentent->height = getimagesize($request->file('cover_img'))[1];
+        $attcehmentent->save();
+
+        $post->cover_id = $attcehmentent->id;
+
+        // if($request->hasFile('headline_img'))
+        // {
+            
+            // $file_name = $post->slug. '_' . 'headline'. '_' . mt_rand(1000, 9999);
+            // $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);
+
+            // $attcehmentent = new Attachment;
+            // $attcehmentent->type = '_img';
+            // $attcehmentent->mime_type = $request->cover_img->getClientOriginalExtension();
+            // $attcehmentent->file_name = $file_name;
+            // $attcehmentent->storage_path = $storage_path;
+            // $attcehmentent->public_path = '/storage/' . $storage_path;
+            // $attcehmentent->width = getimagesize($request->file('cover_img'))[0];
+            // $attcehmentent->height = getimagesize($request->file('cover_img'))[1];
+            // $attcehmentent->save();
+            // $post->headline_id = $attcehmentent->id;
+        // }
 
     }
 
