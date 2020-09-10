@@ -31,9 +31,11 @@ class CreatePostsTable extends Migration
             $table->dateTime('published_at')->nullable();
             $table->tinyInteger('show_on_mainpage')->unsigned();
             $table->tinyInteger('commentable')->unsigned();
+            $table->text('content');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-            $table->text('content');
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

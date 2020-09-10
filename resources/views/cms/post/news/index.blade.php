@@ -15,23 +15,32 @@
                     <table class="table table-stripped">
                         <thead>
                             <tr>
-                                <th class="text-center" style="width: 80px">Resim</th>
+                                <th style="width: 80px">Resim</th>
                                 <th style="min-width: 200px">Başlık</th>
-                                <th class="text-center" style="width: 150px">Oluşturan</th>
-                                <th class="text-center" style="width: 150px">Yerleşim Türü</th>
-                                <th class="text-center" style="width: 150px">Yayın Tarihi</th>
-                                <th class="text-center" style="width: 150px">Hit</th>
-                                <th class="text-center">İşlemler</th>
+                                <th style="width: 150px">Oluşturan</th>
+                                <th style="width: 150px">Yerleşim Türü</th>
+                                <th style="width: 150px">Yayın Tarihi</th>
+                                <th style="width: 100px">Hit</th>
+                                <th>İşlemler</th>
                             </tr>
                             <tbody>
                                 @foreach ($posts as $post)
                                 <tr>
-                                    <td class="text-center">Resim</td>
-                                    <td>{{ $post->title }}</td>
-                                    <td class="text-center">{{ $post->created_by_name }}</td>
-                                    <td class="text-center">{{ $post->location_name }}</td>
-                                    <td class="text-center">{{ $post->published_at }}</td>
-                                    <td class="text-center">{{ $post->hit }}</td>
+                                    
+                                <td class="vertical-middle"><img src="{{  }}" alt=""></td>
+                                    <td>
+                                        {{ $post->title }} <br>
+                                        @foreach ($post->categories as $category)
+                                            <span class="badge badge-danger badge-roundless"> {{ $category->name }} </span>
+                                        @endforeach
+                                    </td>
+                                    <td class="vertical-middle">{{ $post->created_by_name }}</td>
+                                    <td class="vertical-middle">{{ $post->location_name }}</td>
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($post->published_at)->format('d.m.Y') }} <br>
+                                        {{ \Carbon\Carbon::parse($post->published_at)->format('H:i')}}
+                                    </td>
+                                    <td class="vertical-middle">{{ $post->hit }}</td>
                                     <td width='5px'><a href=""><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                     <td width='5px'><a href="{{ action('Cms\Post\NewsController@destroy', $post->id) }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
                                 @endforeach

@@ -16,9 +16,13 @@ Route::group([
         Route::resource('page','Admin\PageController');
         Route::resource('news', 'Post\NewsController');
 
-        Route::get('denemee', function () {
-            return view('cms.deneme2');
+        Route::get('deneme', function () {
+            return view('cms.deneme3');
         });
     });
+
+    // Route::get('ertu', function() {
+    //     echo c
+    // });
 });
 

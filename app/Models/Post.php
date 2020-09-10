@@ -4,10 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 class Post extends BaseModel
 {
+
+    use SoftDeletes;
+
+   protected $dates = ['deleted_at', 'published_at'];
+
+   
 
     //Relationships
     public function tags()
@@ -62,10 +69,10 @@ class Post extends BaseModel
     
 
     //Functions
-    public function a($column, $attachment_type)
+    public function attcehmentent($column, $attachment_type)
     {
 
-        $file_name = $this->slug. '_' . $attachment_type. '_' . uniqid();
+        $file_name = $this->slug. '_' . $attachment_type. '_' . uniqid(). '.' .request()->$attachment_type->getClientOriginalExtension();
         $storage_path = request()->$attachment_type->storeAs('file/images/' . date('Y/m/d'), $file_name);
 
         $attcehmentent = new Attachment();

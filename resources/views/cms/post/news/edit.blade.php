@@ -14,7 +14,7 @@
                             'url' => $edit > 0 ? action('Cms\Post\NewsController@update', $post->id) : action('Cms\Post\NewsController@store'),
                             'method' => $edit > 0 ? 'PUT' : 'POST',
                             'files' => true,
-                            // 'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
+                            'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
                         ])
                     }}
                     
@@ -43,7 +43,8 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::dateTime('published_at', \Carbon\Carbon::now()->format('d/m/Y H:i'), ['class' => 'form-control']) }}
+                                    {{-- {{ Form::input('date', 'published_at', \Carbon\Carbon::now()->format('d-m-Y'), ['class' => 'form-control']) }} --}}
+                                    {{ Form::text('published_at', $edit > 0 ? $post->published_at->format('d-m-Y H:i') : \Carbon\Carbon::now()->format('d-m-Y H:i'), ['class' => 'form-control'] ) }}
                                 </div>
                             </div>
                         </div>
@@ -126,10 +127,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-2">
-                                    {{ Form::label('category', 'Kategori', ['class' => 'control-label']) }}
+                                    {{ Form::label('category_id[]', 'Kategori', ['class' => 'control-label']) }}
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::select('category', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control multiselect', 'id' => 'my-select']) }}
+                                    {{ Form::select('category_id[]', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control multiselect', 'id' => 'my-select', 'multiple' => 'multiple']) }}
                                 </div>
                             </div>
                         </div>
@@ -138,7 +139,6 @@
                             <div class="row" style="height: 260px">
                                 <div class="col-lg-2">
                                     {{ Form::label('cover_img', 'Kapak Resmi', ['class' => 'control-label']) }}
-                                    <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
                                     <input type="file" class="select_image" name="cover_img" id="cover_img" style="margin: 10px 0 10px 0" />

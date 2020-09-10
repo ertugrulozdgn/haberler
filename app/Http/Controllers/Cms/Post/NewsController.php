@@ -17,14 +17,15 @@ class NewsController extends Controller
 
     public function index()
     {
-        $posts = Post::orderBy('published_at', 'desc')->get();
-
+        $posts = Post::orderBy('published_at', 'desc')->with('categories')->get();  //post-categroy ilişkisindeki post->category->name değerini almak için with('categories') yazdım. Post modelin içindeki func adı categories.
+    
         return view('cms.post.news.index', compact('posts'));
     }
 
 
     public function create()
     {
+
         $edit = 0;
 
         $location = config('haberler.post.location');
@@ -40,6 +41,8 @@ class NewsController extends Controller
         $categories = Category::pluck('name', 'id');
 
         $status = config('haberler.post.status');
+
+        
 
         return view('cms.post.news.edit', compact(
             'edit',
@@ -60,7 +63,7 @@ class NewsController extends Controller
         $post->post_type = 0;
         $post->short_title = $request->input('short_title');
         $post->location = $request->input('location');
-        //$post->published_at = $request->input('published_at');
+        $post->published_at = $request->input('published_at');
         $post->show_on_mainpage = $request->input('show_in_mainpage');
         $post->commentable = $request->input('commentable');
         $post->created_by = Auth::user()->id;
@@ -72,30 +75,32 @@ class NewsController extends Controller
         $post->redirect_link = $request->input('redirect_link') ?? '';
         $post->slug = $request->filled('title') ? Str::slug($post->title) : Str::slug($post->short_title);
         $post->seo_title = $request->filled('seo_title') ? ($request->input('seo_title')) : ($request->filled('title') ? $request->input('title') : $request->input('short_title'));
-        $post->a('cover_id', 'cover_img');
+        $post->attcehmentent('cover_id', 'cover_img');
         if($request->hasFile('headline_img'))
         {
-            $post->a('headline_id', 'headline_img');
+            $post->attcehmentent('headline_id', 'headline_img');
         }
         $post->save();
 
-        return redirect(action('Cms\Post\NewsController@index'))->with('success', 'İşlem Başarılı');
+        $post->categories()->attach($request->input('category_id'));
+
+        return response()->json(['success' => 'Success'], 200);
 
 
-        $file_name = $post->slug. '_' . 'cover'. '_' . mt_rand(1000, 9999);
-        $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);
+        // $file_name = $post->slug. '_' . 'cover'. '_' . mt_rand(1000, 9999);
+        // $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);
 
-        $attcehmentent = new Attachment;
-        $attcehmentent->type = 'cover_img';
-        $attcehmentent->mime_type = $request->cover_img->getClientOriginalExtension();
-        $attcehmentent->file_name = $file_name;
-        $attcehmentent->storage_path = $storage_path;
-        $attcehmentent->public_path = '/storage/' . $storage_path;
-        $attcehmentent->width = getimagesize($request->file('cover_img'))[0];
-        $attcehmentent->height = getimagesize($request->file('cover_img'))[1];
-        $attcehmentent->save();
+        // $attcehmentent = new Attachment;
+        // $attcehmentent->type = 'cover_img';
+        // $attcehmentent->mime_type = $request->cover_img->getClientOriginalExtension();
+        // $attcehmentent->file_name = $file_name;
+        // $attcehmentent->storage_path = $storage_path;
+        // $attcehmentent->public_path = '/storage/' . $storage_path;
+        // $attcehmentent->width = getimagesize($request->file('cover_img'))[0];
+        // $attcehmentent->height = getimagesize($request->file('cover_img'))[1];
+        // $attcehmentent->save();
 
-        $post->cover_id = $attcehmentent->id;
+        // $post->cover_id = $attcehmentent->id;
 
         // if($request->hasFile('headline_img'))
         // {
@@ -139,8 +144,11 @@ class NewsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $post->deleted_by = Auth::user()->id;
+        $post->save();
 
         try{
+            // $post->categories()->detach();
             $post->delete();
             return 1;
         } catch(\Exception $ex) {

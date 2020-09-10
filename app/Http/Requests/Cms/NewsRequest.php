@@ -29,9 +29,23 @@ class NewsRequest extends FormRequest
             'summary' => 'required',
             'content' => 'required',
             'cover_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'category_id' => 'required',
+            'redirect_link' => 'nullable|url'
         ];
 
-        
         return $rules;
     }
+
+    public function attributes()
+        {
+            return [
+                'short_title' => 'Kısa başlık',
+                'published_at' => 'Yayın tarihi',
+                'summary' => 'Özet',
+                'content' => 'İçerik',
+                'cover_img' => 'Kapak resmi',
+                'category_id' => 'Kategori',
+                'redirect_link' => 'Yönlendir linki'
+            ];
+        }
 }

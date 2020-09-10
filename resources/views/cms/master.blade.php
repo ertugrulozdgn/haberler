@@ -17,12 +17,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
+
     
+    <link rel="stylesheet" href="{{ mix('assets/cms/css/build.css') }}">
+    <link rel="stylesheet" href="{{ asset('cms/bower_components//jquery-tags-input/src/jquery.tagsinput.css') }}" />
     <link rel="stylesheet" href="{{ asset('cms/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cms/dist/css/skins/skin-blue.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="{{ asset('cms/custom/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ mix('assets/cms/css/build.css') }}">
+   
+   
 
 
 </head>
