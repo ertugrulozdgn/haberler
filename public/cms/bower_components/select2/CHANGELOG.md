@@ -1,5 +1,129 @@
 # Change Log
 
+## 4.1.0 (unreleased)
+
+### Breaking changes
+
+* The minimum jQuery version supported is the latest version in the 1.x, 2.x, and 3.x series (#5225)
+* Removed support for legacy Internet Explorer (versions older than IE 11) (#5834)
+* Removed modules deprecated in 4.0.0 (#5815)
+  * Removed legacy support for `<input />` tags
+  * Removed legacy support for `initSelection`
+  * Removed legacy support for `query`
+  * Removed old `select2/compat/matcher` module
+* Removed undocumented CSS-related options (#5815)
+  * Removed `dropdownCss` option
+  * Removed `adaptDropdownCss` option
+  * Removed `containerCss` option
+  * Removed `adaptContainerCss` option
+* The `containerCssClass` option has been renamed to `selectionCssClass` (#5815, #5847)
+* Significant changes to the HTML/CSS for the selection area impacting custom themes (#5842)
+* New CSS classes for the dropdown results to better target highlighted / selected results (#5841)
+
+### New features / improvements
+
+* `dropdownCssClass` and `selectionCssClass` are now available in all builds of Select2 (#5815)
+* Calls to get the currently selected options are now considerably faster on large datasets (#5775)
+* Selected results in the dropdown should now be properly announced to screen readers (#5841)
+* Significant improvements were made to make the selection area accessible (#5842)
+
+### Bug fixes
+
+* Resize the selection search on close to properly display the placeholder (#5766)
+* Change internal data ID generation to be more unique and prevent conflicts with numeric IDs (#5840)
+* Internet Explorer 11 no longer steals focus of search box while tagging (#5842)
+
+### Translations
+
+* Add Esperanto translation (`eo`) (#5823)
+* Add Punjabi translations (`pa`) (#5831)
+
+### Miscellaneous
+
+* The `amdLanguageBase` option no longer has an effect because the full build does not include any dynamically loaded modules (#5815)
+
+## 4.0.13
+
+### New features / improvements
+
+* Trigger `input` event before `change` events (#4649)
+* Feed back the keypress code that was responsible for the 'close' event (#5513)
+* Only trigger `selection:update` once on DOM change events (#5734)
+
+### Bug fixes
+
+* Prevent opening of disabled elements (#5751)
+
+### Documentation
+
+* Fix "edit this page" links in docs (#5689)
+
+### Miscellaneous
+
+* Registered Select2 on Open Collective (#5700, #5721, #5741)
+
+## 4.0.12
+
+### Bug fixes
+
+* Fixes incorrect offset when using the Shadow DOM and styling the `<html>` element (#5682)
+
+### Miscellaneous
+
+* Replace cdnjs with jsDelivr in the documentation (#5687)
+* Fix incorrect provider for the automated NPM deployment (#5686)
+
+## 4.0.11
+
+### Bug fixes
+
+* Fixes jQuery migrate error when getting offset when dropdownParent not in document (#5584)
+
+### Miscellaneous
+
+* Enable GitHub actions for CI (#5591)
+* Documentation has been moved into and is deployed from the code repository (#5638)
+* Remove Travis CI integration (#5665)
+
+## 4.0.10
+
+### New features / improvements
+
+* Support passing in a selector for `dropdownParent` option (#5622)
+
+### Bug fixes
+
+* Fix bug where dropdowns pointing upwards were incorrectly positioned (#5621)
+
+## 4.0.9
+
+### New features / improvements
+
+* Mirror disabled state through aria-disabled on selection (#5579)
+* Select2 now clears the internal ID when it is destroyed (#5587)
+* Set the main ARIA 1.1 roles and properties for comboboxes (#5582)
+* The `language` option now has a clearly defined fallback chain (#5602)
+
+### Bug fixes
+
+* Do not propagate click when search box is not empty (#5580)
+* Fix `maximumSelectionLength` being ignored by `closeOnSelect` (#5581)
+* Fix generated options not receiving result IDs (#5586)
+* Remove selection title attribute if text is empty (#5589)
+* Reposition dropdown whenever items are selected (#5590)
+* Fix dropdown positioning when displayed above with messages (#5592)
+* Fix search box expanding width of container (#5595)
+* `allowClear` no longer shifts selections to a new line (#5603)
+
+### Translations
+
+* Fix error in German translations (#5604)
+
+### Miscellaneous
+
+* Updated development grunt version so it no longer shows as vulnerable (#5597)
+* Remove unused variables (#5554)
+
 ## 4.0.8
 
 ### New features / improvements

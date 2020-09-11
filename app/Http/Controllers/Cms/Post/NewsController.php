@@ -7,6 +7,7 @@ use App\Http\Requests\Cms\NewsRequest;
 use App\Models\Attachment;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -40,6 +41,8 @@ class NewsController extends Controller
 
         $categories = Category::pluck('name', 'id');
 
+        $tags = Tag::pluck('name', 'id');
+
         $status = config('haberler.post.status');
 
         
@@ -52,13 +55,15 @@ class NewsController extends Controller
             'show_in_mainpage',
             'commentable',
             'categories',
-            'status'
+            'status',
+            'tags'
         ));
     }
 
 
     public function store(NewsRequest $request)
     {
+
         $post = new Post();
         $post->post_type = 0;
         $post->short_title = $request->input('short_title');
@@ -80,12 +85,25 @@ class NewsController extends Controller
         {
             $post->attcehmentent('headline_id', 'headline_img');
         }
-        $post->save();
+        
 
+             
+        $tags = explode(',',$request->get('tags'));
+        $tagIds = [];
+        foreach($tags as $tag)
+        {
+            $tag = Tag::firstOrCreate(['name'=>$tag]);
+            $tagIds[] = $tag->id;
+        
+        }
+                   
+        $post->save();
+        $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
 
-        return response()->json(['success' => 'Success'], 200);
+        // return response()->json(['success' => 'Success'], 200);
 
+        return redirect(action('Cms\Post\NewsController@index'))->with('success', 'İşlem Başarılı');
 
         // $file_name = $post->slug. '_' . 'cover'. '_' . mt_rand(1000, 9999);
         // $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);

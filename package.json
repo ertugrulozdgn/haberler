@@ -31,7 +31,6 @@
         "jquery-ui": "^1.12.1",
         "multiselect": "^0.9.12",
         "save": "^2.4.0",
-        "select2": "^4.0.13",
         "tags-input": "^1.1.1"
     }
 }

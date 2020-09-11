@@ -13,7 +13,7 @@ define([
   SingleSelection.prototype.render = function () {
     var $selection = SingleSelection.__super__.render.call(this);
 
-    $selection.addClass('select2-selection--single');
+    $selection[0].classList.add('select2-selection--single');
 
     $selection.html(
       '<span class="select2-selection__rendered"></span>' +
@@ -93,7 +93,14 @@ define([
     var formatted = this.display(selection, $rendered);
 
     $rendered.empty().append(formatted);
-    $rendered.attr('title', selection.title || selection.text);
+
+    var title = selection.title || selection.text;
+
+    if (title) {
+      $rendered.attr('title', title);
+    } else {
+      $rendered.removeAttr('title');
+    }
   };
 
   return SingleSelection;

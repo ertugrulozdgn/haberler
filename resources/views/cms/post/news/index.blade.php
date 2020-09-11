@@ -27,7 +27,7 @@
                                 @foreach ($posts as $post)
                                 <tr>
                                     
-                                <td class="vertical-middle"><img src="{{  }}" alt=""></td>
+                                <td class="vertical-middle"><img src="" alt=""></td>
                                     <td>
                                         {{ $post->title }} <br>
                                         @foreach ($post->categories as $category)

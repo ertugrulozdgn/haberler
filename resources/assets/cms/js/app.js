@@ -13,16 +13,18 @@ App.imagePreview = function() {
     });
 }
 
+
 App.textEditor = function() {
     CKEDITOR.replace('editor', {
         height:400
     });
 }
 
-App.select2 = function() {
-    $(".select2").select2();
-}
-
 App.multiSelect = function() {
     $('.multiselect').multiSelect();
 }
+// App.select2 = function() {
+//     $('.select2').select2({
+//             tags: true,
+//         });
+// }

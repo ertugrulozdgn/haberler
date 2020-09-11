@@ -1,9 +1,8 @@
 define([
-  'require',
   'jquery',
   './defaults',
   './utils'
-], function (require, $, Defaults, Utils) {
+], function ($, Defaults, Utils) {
   function Options (options, $element) {
     this.options = options;
 
@@ -11,16 +10,11 @@ define([
       this.fromElement($element);
     }
 
-    this.options = Defaults.apply(this.options);
-
-    if ($element && $element.is('input')) {
-      var InputCompat = require(this.get('amdBase') + 'compat/inputData');
-
-      this.options.dataAdapter = Utils.Decorate(
-        this.options.dataAdapter,
-        InputCompat
-      );
+    if ($element != null) {
+      this.options = Defaults.applyFromElement(this.options, $element);
     }
+
+    this.options = Defaults.apply(this.options);
   }
 
   Options.prototype.fromElement = function ($e) {
@@ -34,12 +28,8 @@ define([
       this.options.disabled = $e.prop('disabled');
     }
 
-    if (this.options.language == null) {
-      if ($e.prop('lang')) {
-        this.options.language = $e.prop('lang').toLowerCase();
-      } else if ($e.closest('[lang]').prop('lang')) {
-        this.options.language = $e.closest('[lang]').prop('lang');
-      }
+    if (this.options.autocomplete == null && $e.prop('autocomplete')) {
+      this.options.autocomplete = $e.prop('autocomplete');
     }
 
     if (this.options.dir == null) {
@@ -120,7 +110,7 @@ define([
     data = Utils._convertData(data);
 
     for (var key in data) {
-      if ($.inArray(key, excludedData) > -1) {
+      if (excludedData.indexOf(key) > -1) {
         continue;
       }
 

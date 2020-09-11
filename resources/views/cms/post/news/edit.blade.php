@@ -14,7 +14,7 @@
                             'url' => $edit > 0 ? action('Cms\Post\NewsController@update', $post->id) : action('Cms\Post\NewsController@store'),
                             'method' => $edit > 0 ? 'PUT' : 'POST',
                             'files' => true,
-                            'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
+                            // 'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
                         ])
                     }}
                     
@@ -127,7 +127,8 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-2">
-                                    {{ Form::label('category_id[]', 'Kategori', ['class' => 'control-label']) }}
+                                    {{ Form::label('category_id', 'Kategori', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
                                     {{ Form::select('category_id[]', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control multiselect', 'id' => 'my-select', 'multiple' => 'multiple']) }}
@@ -136,9 +137,22 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="row" style="padding-bottom: 10px;">
+                                <div class="col-lg-2">
+                                    {{ Form::label('tags', 'Etiketler', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
+                                </div>
+                                <div class="col-lg-10" style="margin-top: 10px">
+                                    {{ Form::select('tags', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="row" style="height: 260px">
                                 <div class="col-lg-2">
                                     {{ Form::label('cover_img', 'Kapak Resmi', ['class' => 'control-label']) }}
+                                    <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
                                     <input type="file" class="select_image" name="cover_img" id="cover_img" style="margin: 10px 0 10px 0" />
@@ -222,5 +236,13 @@
             </div>
         </div>
     </div>
+
+    @section('js')
+    <script>
+        $('.select2').select2({
+            tags: true,
+        });
+    </script> 
+    @endsection
 @endsection
 

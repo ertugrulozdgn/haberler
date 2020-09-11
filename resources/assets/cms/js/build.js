@@ -7,10 +7,9 @@ require('./table');
 
 // NPM Packages
 require('multiselect');
-require('select2');
+//require('select2');
 require('fontawesome-4.7');
 require('jquery-ui');
-require('tags-input');
 
 import alertifyjs from 'alertifyjs';
 window.alertify = alertifyjs;
@@ -24,9 +23,9 @@ window.alertify = alertifyjs;
 Table.init();
 
 App.imagePreview();
-App.textEditor();
-App.select2();
 App.multiSelect();
+App.textEditor();
+//App.select2();
 
 
 

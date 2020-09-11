@@ -30,7 +30,7 @@ class NewsRequest extends FormRequest
             'content' => 'required',
             'cover_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'category_id' => 'required',
-            'redirect_link' => 'nullable|url'
+            'redirect_link' => 'nullable|url',
         ];
 
         return $rules;
