@@ -23,6 +23,7 @@
     "dependencies": {
         "alertifyjs": "^1.13.1",
         "bootstrap-switch-button": "^1.1.0",
+        "bootstrap-tagsinput": "^0.7.1",
         "bootstrap3": "^3.3.5",
         "ckeditor": "^4.12.1",
         "fontawesome-4.7": "^4.7.0",
@@ -30,7 +31,6 @@
         "jquery": "^3.5.1",
         "jquery-ui": "^1.12.1",
         "multiselect": "^0.9.12",
-        "save": "^2.4.0",
-        "tags-input": "^1.1.1"
+        "save": "^2.4.0"
     }
 }

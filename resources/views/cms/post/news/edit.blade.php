@@ -17,7 +17,7 @@
                             // 'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
                         ])
                     }}
-                    
+
 
                     <div id="response-status"></div>
 
@@ -139,11 +139,11 @@
                         <div class="form-group">
                             <div class="row" style="padding-bottom: 10px;">
                                 <div class="col-lg-2">
-                                    {{ Form::label('tags', 'Etiketler', ['class' => 'control-label']) }}
+                                    {{ Form::label('tags[]', 'Etiketler', ['class' => 'control-label']) }}
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10" style="margin-top: 10px">
-                                    {{ Form::select('tags', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
+                                    {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
                         <div class="form-group">
                             <div class="row">
@@ -232,6 +232,12 @@
 
                     {{ Form::close() }}
 
+                    <select class="form-control select2" multiple="multiple">
+                        <option>orange</option>
+                        <option>white</option>
+                        <option>purple</option>
+                    </select>
+
                 </div>
             </div>
         </div>
@@ -242,7 +248,7 @@
         $('.select2').select2({
             tags: true,
         });
-    </script> 
+    </script>
     @endsection
 @endsection
 

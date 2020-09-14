@@ -19,7 +19,7 @@ class NewsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('published_at', 'desc')->with('categories')->get();  //post-categroy ilişkisindeki post->category->name değerini almak için with('categories') yazdım. Post modelin içindeki func adı categories.
-    
+
         return view('cms.post.news.index', compact('posts'));
     }
 
@@ -41,11 +41,11 @@ class NewsController extends Controller
 
         $categories = Category::pluck('name', 'id');
 
-        $tags = Tag::pluck('name', 'id');
+        $tags = Tag::pluck('name', 'slug');
 
         $status = config('haberler.post.status');
 
-        
+
 
         return view('cms.post.news.edit', compact(
             'edit',
@@ -85,18 +85,19 @@ class NewsController extends Controller
         {
             $post->attcehmentent('headline_id', 'headline_img');
         }
-        
 
-             
-        $tags = explode(',',$request->get('tags'));
+
+
+//        $tags = explode(',',$request->get('tags'));
+        $tags = $request->get('tags');
         $tagIds = [];
         foreach($tags as $tag)
         {
-            $tag = Tag::firstOrCreate(['name'=>$tag]);
+            $tag = Tag::firstOrCreate(['name' => $tag, 'slug' => Str::slug($tag)]);
             $tagIds[] = $tag->id;
-        
+
         }
-                   
+
         $post->save();
         $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
@@ -122,7 +123,7 @@ class NewsController extends Controller
 
         // if($request->hasFile('headline_img'))
         // {
-            
+
             // $file_name = $post->slug. '_' . 'headline'. '_' . mt_rand(1000, 9999);
             // $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);
 

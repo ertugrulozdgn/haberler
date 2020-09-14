@@ -108,7 +108,62 @@
  * AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.
  * Copyright 2019 Mohammad Younes <Mohammad@alertifyjs.com> (http://alertifyjs.com) 
  * Licensed under GPL 3 <https://opensource.org/licenses/gpl-3.0>*/
-.alertify .ajs-dimmer{background-color:#000;opacity:.5}.alertify .ajs-dialog{max-width:600px;min-height:122px;background-color:#fff;border:1px solid rgba(0,0,0,.2);box-shadow:0 5px 15px rgba(0,0,0,.5);border-radius:6px}.alertify .ajs-header{color:#333;border-bottom:1px solid #e5e5e5;border-radius:6px 6px 0 0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:18px}.alertify .ajs-body{font-family:Roboto,sans-serif;color:#000}.alertify.ajs-maximized:not(.ajs-resizable) .ajs-content,.alertify.ajs-resizable .ajs-content{top:58px;bottom:68px}.alertify .ajs-footer{background-color:#fff;padding:15px;border-top:1px solid #e5e5e5;border-radius:0 0 6px 6px}.alertify-notifier .ajs-message{background:rgba(255,255,255,.95);color:#000;text-align:center;border:solid 1px #ddd;border-radius:2px}.alertify-notifier .ajs-message.ajs-success{color:#fff;background:rgba(91,189,114,.95);text-shadow:-1px -1px 0 rgba(0,0,0,.5)}.alertify-notifier .ajs-message.ajs-error{color:#fff;background:rgba(217,92,92,.95);text-shadow:-1px -1px 0 rgba(0,0,0,.5)}.alertify-notifier .ajs-message.ajs-warning{background:rgba(252,248,215,.95);border-color:#999}.tags-input{display:inline-block;padding:0 2px;background:#FFF;border:1px solid #CCC;width:16em;border-radius:2px;box-shadow:inset 0 1px 2px rgba(0,0,0,.1)}.tags-input .tag{display:inline-block;background:#EEE;color:#444;padding:0 4px;margin:2px;border:1px solid #CCC;border-radius:2px;font:inherit;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;transition:all .1s ease}.tags-input .tag.selected{background-color:#777;border-color:#777;color:#EEE}.tags-input .tag.dupe{transform:scale3d(1.2,1.2,1.2);background-color:#FCC;border-color:#700}.tags-input input{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;display:inline-block!important;padding:3px;margin:0!important;background:0 0!important;border:none!important;box-shadow:none!important;font:inherit!important;font-size:100%!important;outline:0!important}.tags-input .selected~input{opacity:.3}@charset "UTF-8";
+.alertify .ajs-dimmer{background-color:#000;opacity:.5}.alertify .ajs-dialog{max-width:600px;min-height:122px;background-color:#fff;border:1px solid rgba(0,0,0,.2);box-shadow:0 5px 15px rgba(0,0,0,.5);border-radius:6px}.alertify .ajs-header{color:#333;border-bottom:1px solid #e5e5e5;border-radius:6px 6px 0 0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:18px}.alertify .ajs-body{font-family:Roboto,sans-serif;color:#000}.alertify.ajs-maximized:not(.ajs-resizable) .ajs-content,.alertify.ajs-resizable .ajs-content{top:58px;bottom:68px}.alertify .ajs-footer{background-color:#fff;padding:15px;border-top:1px solid #e5e5e5;border-radius:0 0 6px 6px}.alertify-notifier .ajs-message{background:rgba(255,255,255,.95);color:#000;text-align:center;border:solid 1px #ddd;border-radius:2px}.alertify-notifier .ajs-message.ajs-success{color:#fff;background:rgba(91,189,114,.95);text-shadow:-1px -1px 0 rgba(0,0,0,.5)}.alertify-notifier .ajs-message.ajs-error{color:#fff;background:rgba(217,92,92,.95);text-shadow:-1px -1px 0 rgba(0,0,0,.5)}.alertify-notifier .ajs-message.ajs-warning{background:rgba(252,248,215,.95);border-color:#999}.bootstrap-tagsinput {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  display: inline-block;
+  padding: 4px 6px;
+  color: #555;
+  vertical-align: middle;
+  border-radius: 4px;
+  max-width: 100%;
+  line-height: 22px;
+  cursor: text;
+}
+.bootstrap-tagsinput input {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0 6px;
+  margin: 0;
+  width: auto;
+  max-width: inherit;
+}
+.bootstrap-tagsinput.form-control input::-moz-placeholder {
+  color: #777;
+  opacity: 1;
+}
+.bootstrap-tagsinput.form-control input:-ms-input-placeholder {
+  color: #777;
+}
+.bootstrap-tagsinput.form-control input::-webkit-input-placeholder {
+  color: #777;
+}
+.bootstrap-tagsinput input:focus {
+  border: none;
+  box-shadow: none;
+}
+.bootstrap-tagsinput .tag {
+  margin-right: 2px;
+  color: white;
+}
+.bootstrap-tagsinput .tag [data-role="remove"] {
+  margin-left: 8px;
+  cursor: pointer;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:after {
+  content: "x";
+  padding: 0px 2px;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+@charset "UTF-8";
 
 /*!
   Ionicons, v2.0.1

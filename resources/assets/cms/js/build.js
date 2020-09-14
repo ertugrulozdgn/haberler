@@ -10,6 +10,7 @@ require('multiselect');
 //require('select2');
 require('fontawesome-4.7');
 require('jquery-ui');
+require('bootstrap-tagsinput');
 
 import alertifyjs from 'alertifyjs';
 window.alertify = alertifyjs;
