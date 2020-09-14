@@ -9,8 +9,10 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
+use App\Observers\PostObserver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class NewsController extends Controller
@@ -18,6 +20,7 @@ class NewsController extends Controller
 
     public function index()
     {
+
         $posts = Post::orderBy('published_at', 'desc')->with('categories')->get();  //post-categroy ilişkisindeki post->category->name değerini almak için with('categories') yazdım. Post modelin içindeki func adı categories.
 
         return view('cms.post.news.index', compact('posts'));
@@ -63,23 +66,22 @@ class NewsController extends Controller
 
     public function store(NewsRequest $request)
     {
-
         $post = new Post();
         $post->post_type = 0;
         $post->short_title = $request->input('short_title');
         $post->location = $request->input('location');
-        $post->published_at = $request->input('published_at');
+        $post->status = $request->input('status');
         $post->show_on_mainpage = $request->input('show_in_mainpage');
         $post->commentable = $request->input('commentable');
         $post->created_by = Auth::user()->id;
         $post->content = $request->input('content');
         $post->summary = $request->input('summary');
-        $post->status = $request->input('status');
         $post->editor_id = $request->input('editor_id');
-        $post->title = $request->filled('title') ? $request->input('title') : $request->input('short_title');
+        $post->title = request()->filled('title') ? $request->input('title') : $request->input('short_title');
         $post->redirect_link = $request->input('redirect_link') ?? '';
         $post->slug = $request->filled('title') ? Str::slug($post->title) : Str::slug($post->short_title);
-        $post->seo_title = $request->filled('seo_title') ? ($request->input('seo_title')) : ($request->filled('title') ? $request->input('title') : $request->input('short_title'));
+        $post->seo_title = $request->filled('seo_title') ? ($request->input('seo_title')) : ($request->filled('title') ? $request->input('title') : request()->input('short_title'));
+        $post->published_at = $request->input('published_at');
         $post->attcehmentent('cover_id', 'cover_img');
         if($request->hasFile('headline_img'))
         {
@@ -87,24 +89,22 @@ class NewsController extends Controller
         }
 
 
-
-//        $tags = explode(',',$request->get('tags'));
         $tags = $request->get('tags');
         $tagIds = [];
         foreach($tags as $tag)
         {
             $tag = Tag::firstOrCreate(['name' => $tag, 'slug' => Str::slug($tag)]);
             $tagIds[] = $tag->id;
-
         }
 
         $post->save();
         $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
 
-        // return response()->json(['success' => 'Success'], 200);
+        //return response()->json(['success' => 'Success'], 200);
 
         return redirect(action('Cms\Post\NewsController@index'))->with('success', 'İşlem Başarılı');
+
 
         // $file_name = $post->slug. '_' . 'cover'. '_' . mt_rand(1000, 9999);
         // $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);

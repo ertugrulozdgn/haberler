@@ -21,8 +21,8 @@ Route::group([
         });
     });
 
-    // Route::get('ertu', function() {
-    //     echo c
-    // });
+    Route::get('ertu', function() {
+        echo asset('/storage/file/images/2020/09/14/deneme_cover_img_5f5f1c46eb57b.jpg');
+    });
 });
 

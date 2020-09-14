@@ -21,8 +21,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="{{ asset('cms/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cms/dist/css/skins/skin-blue.min.css') }}">
-    <link rel="stylesheet" href="{{ mix('assets/cms/css/build.css') }}">
     <link rel="stylesheet" href="{{ asset('cms/custom/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ mix('assets/cms/css/build.css') }}">
 
 
 
@@ -43,10 +43,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <script src="https://cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
+    <script src="{{ mix("assets/cms/js/build.js") }}"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <script src="{{ asset('cms/dist/js/adminlte.min.js') }}"></script>
-    <script src="{{ mix("assets/cms/js/build.js") }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     @yield('js')
 

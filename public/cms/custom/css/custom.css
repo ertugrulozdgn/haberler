@@ -35,6 +35,10 @@
     background-color: #ffcccc !important;
 }
 
+.alert-primary {
+    background-color: #DFEFF9 !important;
+}
+
 a {
     text-decoration: none !important;
     color: black;
@@ -66,6 +70,10 @@ a {
     margin: 15px 0 0 10px !important;
 }
 
+.badge{
+    background: #95a5a6 !important;
+}
+
 .badge-roundless {
     border-radius: 0 !important;
 }
@@ -79,6 +87,11 @@ a {
 .badge-danger {
     color: #fff;
     background-color:  #ed6b75;
+}
+
+
+.badge-warning {
+    background-color: #f2784b!important;
 }
 
 

@@ -14,7 +14,7 @@
                             'url' => $edit > 0 ? action('Cms\Post\NewsController@update', $post->id) : action('Cms\Post\NewsController@store'),
                             'method' => $edit > 0 ? 'PUT' : 'POST',
                             'files' => true,
-                            // 'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
+                            //'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
                         ])
                     }}
 
@@ -231,12 +231,6 @@
                         </div>
 
                     {{ Form::close() }}
-
-                    <select class="form-control select2" multiple="multiple">
-                        <option>orange</option>
-                        <option>white</option>
-                        <option>purple</option>
-                    </select>
 
                 </div>
             </div>

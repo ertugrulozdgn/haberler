@@ -25,24 +25,24 @@
                             </tr>
                             <tbody>
                                 @foreach ($posts as $post)
-                                <tr>
+                                <tr class=" {{ $post->status == 0 ? ('alert alert-light') : ( $post->status == 2 ? 'alert alert-primary' : '' ) }}">
                                     
-                                <td class="vertical-middle"><img src="" alt=""></td>
-                                    <td>
+                                <td class="vertical-middle"><img class="img-fluid" width="100px" src="{{ $post->cover_image }}" alt=""></td>
+                                    <td class="vertical-middle">
                                         {{ $post->title }} <br>
                                         @foreach ($post->categories as $category)
-                                            <span class="badge badge-danger badge-roundless"> {{ $category->name }} </span>
+                                            <span class="badge badge-roundless"> {{ $category->name }} </span>
                                         @endforeach
                                     </td>
                                     <td class="vertical-middle">{{ $post->created_by_name }}</td>
                                     <td class="vertical-middle">{{ $post->location_name }}</td>
-                                    <td>
+                                    <td class="vertical-middle">
                                         {{ \Carbon\Carbon::parse($post->published_at)->format('d.m.Y') }} <br>
                                         {{ \Carbon\Carbon::parse($post->published_at)->format('H:i')}}
                                     </td>
                                     <td class="vertical-middle">{{ $post->hit }}</td>
-                                    <td width='5px'><a href=""><i class="fa fa-pencil-square fa-lg"></i></a></td>
-                                    <td width='5px'><a href="{{ action('Cms\Post\NewsController@destroy', $post->id) }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
+                                    <td class="vertical-middle" width='5px'><a href=""><i class="fa fa-pencil-square fa-lg"></i></a></td>
+                                    <td class="vertical-middle" width='5px'><a href="{{ action('Cms\Post\NewsController@destroy', $post->id) }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
                                 @endforeach
                             </tbody>
                         </thead>

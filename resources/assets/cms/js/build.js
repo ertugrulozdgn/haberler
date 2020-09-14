@@ -11,6 +11,9 @@ require('multiselect');
 require('fontawesome-4.7');
 require('jquery-ui');
 require('bootstrap-tagsinput');
+require('jquery');
+require('imask');
+require('moment')
 
 import alertifyjs from 'alertifyjs';
 window.alertify = alertifyjs;

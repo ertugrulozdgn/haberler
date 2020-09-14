@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Storage;
 
 class Post extends Model
 {
@@ -22,15 +24,15 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    // public function cover_img()
-    // {
-    //     return $this->hasOne(Attachment::class, 'cover_id');
-    // }
+    public function cover_img()
+    {
+        return $this->hasOne(Attachment::class, 'id', 'cover_id');
+    }
     
-    // public function headline_img()
-    // {
-    //     return $this->hasOne(Attachment::class, 'headline_id');
-    // }
+    public function headline_img()
+    {
+        return $this->hasOne(Attachment::class, 'id', 'headline_id');
+    }
 
     public function categories()
     {
@@ -44,6 +46,7 @@ class Post extends Model
     {
         return User::where('id', $this->created_by)->first()->name;
     }
+
 
     public function getLocationNameAttribute()
     {
@@ -64,6 +67,19 @@ class Post extends Model
                 return 'normal';
                 break;
         }
+    }
+
+
+    public function getCoverImageAttribute()
+    {
+        return env('APP_URL') . $this->cover_img->public_path;
+    }
+
+
+
+    public function getHeadlineImageAttribute()
+    {
+        return env('APP_URL') . $this->headline_img->public_path;
     }
 
     
