@@ -21,6 +21,18 @@
         <li class="active"><a href="{{action('Cms\DashboardController@index')}}"><i class="fa fa-home fa-lg"></i> <span>Anasayfa</span></a></li>
         <li><a href="{{ action('Cms\Post\NewsController@index') }}"><i class="fa fa-newspaper-o fa-lg" style="margin-right: 4px"></i> <span>Haberler</span></a></li>
         <li class="treeview">
+          <a href="#"><i class="fa fa-align-center fa-lg"></i> <span>Sıralamalar</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="sidebar-menu-margin"><a href="{{ action('Cms\Post\PostSortingController@index', 'location=2') }}">Manşet</a></li>
+            <li class="sidebar-menu-margin"><a href="{{ action('Cms\Post\PostSortingController@index', 'location=3') }}">Sürmanşet</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview">
           <a href="#"><i class="fa fa-cog fa-lg"></i> <span>Yönetim</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>

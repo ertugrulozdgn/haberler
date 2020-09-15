@@ -179,6 +179,7 @@ return [
         //--------------------------------
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
     ],
 
     /*
@@ -233,6 +234,7 @@ return [
 
         //-------------------------------------------
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Date' => Jenssegers\Date\Date::class,
 
     ],
 

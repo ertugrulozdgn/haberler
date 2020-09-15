@@ -13,7 +13,7 @@ class PublishTimedPost extends Command
      *
      * @var string
      */
-    protected $signature = 'bp:publishtimedpost';
+    protected $signature = 'command:publishtimedpost';
 
     /**
      * The console command description.
@@ -39,12 +39,12 @@ class PublishTimedPost extends Command
      */
     public function handle()
     {
-        $posts = Post::where('published_at', '<', Carbon::now())->where('status', 2)->get();
+        $posts = Post::where('published_at', '<=', Carbon::now())->where('status', 2)->get();
         foreach ($posts as $post) {
             $post->status = 1;
             $post->save();
 
-            $this->info($post->id .' eklendi.');
+            $this->info('İşlem Tamamlandı');
         }
     }
 }

@@ -75,33 +75,56 @@ class Post extends Model
         return env('APP_URL') . $this->cover_img->public_path;
     }
 
-
-
     public function getHeadlineImageAttribute()
     {
         return env('APP_URL') . $this->headline_img->public_path;
     }
 
+    public function getEditLinkAttribute()
+    {
+        switch ($this->post_type) {
+            case 0:
+                return action('Cms\Post\NewsController@edit', [$this->id]);
+                break;
+            case 1:
+                return action('Cms\Post\GalleryController@edit', [$this->id]);
+                break;
+        }
+    }
+
+    public function getDeleteLinkAttribute()
+    {
+        switch ($this->post_type) {
+            case 0:
+                return action('Cms\Post\NewsController@destroy', [$this->id]);
+                break;
+            case 1:
+                return action('Cms\Post\GalleryController@destroy', [$this->id]);
+                break;
+        }
+    }
+
     
 
     //Functions
-    public function attcehmentent($column, $attachment_type)
-    {
-
+    public function attachment($attachment_type)
+    {   
         $file_name = $this->slug. '_' . $attachment_type. '_' . uniqid(). '.' .request()->$attachment_type->getClientOriginalExtension();
         $storage_path = request()->$attachment_type->storeAs('file/images/' . date('Y/m/d'), $file_name);
 
-        $attcehmentent = new Attachment();
-        $attcehmentent->type = $attachment_type;
-        $attcehmentent->mime_type = request()->$attachment_type->getClientOriginalExtension();
-        $attcehmentent->file_name = $file_name;
-        $attcehmentent->storage_path = $storage_path;
-        $attcehmentent->public_path = '/storage/' . $storage_path;
-        $attcehmentent->width = getimagesize(request()->file($attachment_type))[0];
-        $attcehmentent->height = getimagesize(request()->file($attachment_type))[1];
-        $attcehmentent->save();
+        $attachment = new Attachment();
+        $attachment->type = $attachment_type;
+        $attachment->mime_type = request()->$attachment_type->getClientOriginalExtension();
+        $attachment->file_name = $file_name;
+        $attachment->storage_path = $storage_path;
+        $attachment->public_path = '/storage/' . $storage_path;
+        $attachment->width = getimagesize(request()->file($attachment_type))[0];
+        $attachment->height = getimagesize(request()->file($attachment_type))[1];
+        $attachment->save();
 
-        $this->$column = $attcehmentent->id;
+        return $attachment->id;
+
+        // $this->$column = $attcehmentent->id;
       //$post->cover_id = $attcehmentent->id;
     }
 }

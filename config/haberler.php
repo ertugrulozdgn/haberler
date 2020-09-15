@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'app' => [
+        'sorting_type_limit' => [2 => 20, 3 => 4],
+    ],
+
+
     'user' => [
         'status' => [
             1 => 'Aktif',

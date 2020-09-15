@@ -67975,7 +67975,8 @@ SendForm.init = function (el, referrer) {
     processData: false,
     contentType: false,
     success: function success(response) {
-      alertify.success("İşlem Başarılı"); //window.location.replace(referrer);      // controller da dd ile request leri ekranda bastırmak için bu satırı yorum yap(incele diyip network kısmına gel)
+      alertify.success("İşlem Başarılı");
+      window.location.replace(referrer); // controller da dd ile request leri ekranda bastırmak için bu satırı yorum yap(incele diyip network kısmına gel)
     },
     error: function error(response) {
       var response_errors = [];

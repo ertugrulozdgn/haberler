@@ -24,14 +24,19 @@ class NewsRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'short_title' => 'required',
+            'short_title' => 'required|max:70',
+            'title' => 'nullable|max:250',
+            'seo_title' => 'nullable|max:250',
             'published_at' => 'required|date',
-            'summary' => 'required',
+            'summary' => 'required|max:500',
             'content' => 'required',
-            'cover_img' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'category_id' => 'required',
             'redirect_link' => 'nullable|url',
         ];
+
+        if($this->method() == 'POST') {
+            $rules['cover_img'] = 'required|image|mimes:jpg,jpeg,png|max:2048';
+        }
 
         return $rules;
     }
@@ -40,6 +45,8 @@ class NewsRequest extends FormRequest
         {
             return [
                 'short_title' => 'Kısa başlık',
+                'title' => 'Başlık',
+                'seo_title' => 'Seo başlık',
                 'published_at' => 'Yayın tarihi',
                 'summary' => 'Özet',
                 'content' => 'İçerik',

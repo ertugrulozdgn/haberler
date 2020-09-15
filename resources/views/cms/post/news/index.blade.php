@@ -41,8 +41,9 @@
                                         {{ \Carbon\Carbon::parse($post->published_at)->format('H:i')}}
                                     </td>
                                     <td class="vertical-middle">{{ $post->hit }}</td>
-                                    <td class="vertical-middle" width='5px'><a href=""><i class="fa fa-pencil-square fa-lg"></i></a></td>
-                                    <td class="vertical-middle" width='5px'><a href="{{ action('Cms\Post\NewsController@destroy', $post->id) }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
+                                    <td class="vertical-middle" width='5px'><a href="{{ $post->edit_link }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
+                                    <td class="vertical-middle" width='5px'><a href="{{ $post->delete_link }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
+                                </tr>   
                                 @endforeach
                             </tbody>
                         </thead>

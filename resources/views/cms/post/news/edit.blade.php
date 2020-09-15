@@ -14,7 +14,7 @@
                             'url' => $edit > 0 ? action('Cms\Post\NewsController@update', $post->id) : action('Cms\Post\NewsController@store'),
                             'method' => $edit > 0 ? 'PUT' : 'POST',
                             'files' => true,
-                            //'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
+                            'onsubmit' => "return SendForm.init(this, '". $form_referrer . "');"
                         ])
                     }}
 
@@ -56,7 +56,7 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::text('short_title', $edit > 0 ? $post->short_title : '', ['class' => 'form-control']) }}
+                                    {{ Form::text('short_title', $edit > 0 ? $post->short_title : '', ['class' => 'form-control', 'placeholder' => 'En fazla 70 karakter olmalıdır.']) }}
                                     <span class="help-block">Bütün listelerde görünecek başlık</span>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::text('title', $edit > 0 ? $post->title : '', ['class' => 'form-control']) }}
+                                    {{ Form::text('title', $edit > 0 ? $post->title : '', ['class' => 'form-control', 'placeholder' => 'En fazla 250 karakter olmalıdır.']) }}
                                     <span class="help-block">Detay sayfada görünecek başlık(Boş bırakılırsa kısa başlık eklenecektir).</span>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::text('seo_title', $edit > 0 ? $post->seo_title : '', ['class' => 'form-control']) }}
+                                    {{ Form::text('seo_title', $edit > 0 ? $post->seo_title : '', ['class' => 'form-control', 'placeholder' => 'En fazla 250 karakter olmalıdır.']) }}
                                     <span class="help-block">Detay sayfalarda meta olarak görünecek başlık(Boş bırakılırsa başlık(başlık da boş ise kısa başlık) eklenecektir).</span>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::textarea('summary', $edit > 0 ? $post->summary : '', ['class' => 'form-control', 'rows' => 6]) }}
+                                    {{ Form::textarea('summary', $edit > 0 ? $post->summary : '', ['class' => 'form-control', 'placeholder' => 'En fazla 500 karakter olmalıdır.', 'rows' => 6]) }}
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10" style="margin-top: 10px">
-                                    {{ Form::select('editor_id', $users, null,['class' => 'form-control select2']) }}
+                                    {{ Form::select('editor_id', $users, $edit > 0 ? $post->editor_id : '',['class' => 'form-control select2']) }}
                                 </div>
                             </div>
                         </div>
@@ -131,7 +131,8 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    {{ Form::select('category_id[]', $categories, $edit > 0 ? ($category->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control multiselect', 'id' => 'my-select', 'multiple' => 'multiple']) }}
+                                    {{-- {{ Form::select('category_id[]', $categories, $edit > 0 ? ($categori->id == $post->category_id ? $post->category_id : '') : '', ['class' => 'form-control multiselect', 'id' => 'my-select', 'multiple' => 'multiple']) }} --}}
+                                    {{ Form::select('category_id[]', $categories, $edit > 0 ? $post->categories->pluck('id') : '', ['class' => 'form-control multiselect', 'id' => 'my-select', 'multiple' => 'multiple']) }}
                                 </div>
                             </div>
                         </div>
@@ -143,7 +144,7 @@
                                     <span class="required control-label">*</span>
                                 </div>
                                 <div class="col-lg-10" style="margin-top: 10px">
-                                    {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
+                                    {{ Form::select('tags[]', $tags, $edit > 0 ? $post->tags->pluck('slug') : '', ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
                                 </div>
                             </div>
                         </div>
@@ -156,7 +157,10 @@
                                 </div>
                                 <div class="col-lg-10">
                                     <input type="file" class="select_image" name="cover_img" id="cover_img" style="margin: 10px 0 10px 0" />
-                                    <img style="height: 195px" class="target" />
+                                    @if ($edit > 0) 
+                                        <input type="hidden" value="1" name="cover_img_archive">
+                                    @endif  
+                                    <img style="height: 195px" class="target"  src="{{ $edit > 0 ? $post->cover_image : '' }}"/>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +172,7 @@
                                 </div>
                                 <div class="col-lg-10">
                                     <input type="file" class="select_image" name="headline_img" id="headline_img" style="margin: 10px 0 10px 0" />
-                                    <img style="height: 195px" class="target" />
+                                    <img style="height: 195px" class="target" src="{{ $edit > 0 && !empty($post->headline_img) ? $post->headline_img : '' }}" />
                                 </div>
                             </div>
                         </div>
@@ -192,8 +196,8 @@
                                     {{ Form::label('show_in_mainpage', 'Anasayfada', ['class' => 'control-label', 'style' => 'padding-bottom:15px']) }}
                                 </div>
                                 <div class="col-lg-10">
-                                    @foreach($show_in_mainpage as $value => $name)
-                                        {{ Form::radio('show_in_mainpage', $value, $edit > 0 ? ($post->show_in_mainpage == $value ? true : false) : ($name == 'Görünsün' ? true : false), ['class' => 'iradio']) }} {{ $name }}
+                                    @foreach($show_in_mainpage as $key => $value)
+                                        {{ Form::radio('show_in_mainpage', $key, $edit > 0 ? ($post->show_in_mainpage == $key ? true : false) : ($value == 'Görünsün' ? true : false), ['class' => 'iradio']) }} {{ $value }}
                                     @endforeach
                                 </div>
                             </div>
@@ -205,8 +209,8 @@
                                     {{ Form::label('commentable', 'Yorum', ['class' => 'control-label' , 'style' => 'padding-bottom:15px']) }}
                                 </div>
                                 <div class="col-lg-10">
-                                    @foreach($commentable as $value => $name)
-                                        {{ Form::radio('commentable', $value, $edit > 0 ? ($post->commentable == $value ? true : false) : ($name == 'Yapılsın' ? true : false), ['class' => 'iradio']) }} {{ $name }}
+                                    @foreach($commentable as $key => $value)
+                                        {{ Form::radio('commentable', $key, $edit > 0 ? ($post->commentable == $key ? true : false) : ($value == 'Yapılsın' ? true : false), ['class' => 'iradio']) }} {{ $value }}
                                     @endforeach
                                 </div>
                             </div>
@@ -218,8 +222,8 @@
                                     {{ Form::label('status', 'Durum', ['class' => 'control-label', 'style' => 'padding-bottom:15px']) }}
                                 </div>
                                 <div class="col-lg-10">
-                                    @foreach($status as $value => $name)
-                                        {{ Form::radio('status', $value, $edit > 0 ? ($post->status == $value ? true : false) : ($name == 'Aktif' ? true : false), ['class' => 'iradio']) }} {{ $name }}
+                                    @foreach($status as $key => $value)
+                                        {{ Form::radio('status', $key, $edit > 0 ? ($post->status == $key ? true : false) : ($value == 'Aktif' ? true : false), ['class' => 'iradio']) }} {{ $value }}
                                     @endforeach
                                 </div>
                             </div>

@@ -82,12 +82,17 @@ class NewsController extends Controller
         $post->slug = $request->filled('title') ? Str::slug($post->title) : Str::slug($post->short_title);
         $post->seo_title = $request->filled('seo_title') ? ($request->input('seo_title')) : ($request->filled('title') ? $request->input('title') : request()->input('short_title'));
         $post->published_at = $request->input('published_at');
-        $post->attcehmentent('cover_id', 'cover_img');
-        if($request->hasFile('headline_img'))
-        {
-            $post->attcehmentent('headline_id', 'headline_img');
+        
+        if($request->hasFile('cover_img')) {
+            $post->cover_id = $post->attachment('cover_img');
         }
-
+        if($request->hasFile('headline_img')) {
+            $post->headline_id = $post->attachment('headline_img');
+        }
+        
+        if ((new \Date($request->input('published_at'))) > (new \Date())) {
+            $post->status = 2;
+        }
 
         $tags = $request->get('tags');
         $tagIds = [];
@@ -101,44 +106,7 @@ class NewsController extends Controller
         $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
 
-        //return response()->json(['success' => 'Success'], 200);
-
-        return redirect(action('Cms\Post\NewsController@index'))->with('success', 'İşlem Başarılı');
-
-
-        // $file_name = $post->slug. '_' . 'cover'. '_' . mt_rand(1000, 9999);
-        // $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);
-
-        // $attcehmentent = new Attachment;
-        // $attcehmentent->type = 'cover_img';
-        // $attcehmentent->mime_type = $request->cover_img->getClientOriginalExtension();
-        // $attcehmentent->file_name = $file_name;
-        // $attcehmentent->storage_path = $storage_path;
-        // $attcehmentent->public_path = '/storage/' . $storage_path;
-        // $attcehmentent->width = getimagesize($request->file('cover_img'))[0];
-        // $attcehmentent->height = getimagesize($request->file('cover_img'))[1];
-        // $attcehmentent->save();
-
-        // $post->cover_id = $attcehmentent->id;
-
-        // if($request->hasFile('headline_img'))
-        // {
-
-            // $file_name = $post->slug. '_' . 'headline'. '_' . mt_rand(1000, 9999);
-            // $storage_path = $request->cover_img->storeAs('file/images/' . date('Y/m/d'), $file_name);
-
-            // $attcehmentent = new Attachment;
-            // $attcehmentent->type = '_img';
-            // $attcehmentent->mime_type = $request->cover_img->getClientOriginalExtension();
-            // $attcehmentent->file_name = $file_name;
-            // $attcehmentent->storage_path = $storage_path;
-            // $attcehmentent->public_path = '/storage/' . $storage_path;
-            // $attcehmentent->width = getimagesize($request->file('cover_img'))[0];
-            // $attcehmentent->height = getimagesize($request->file('cover_img'))[1];
-            // $attcehmentent->save();
-            // $post->headline_id = $attcehmentent->id;
-        // }
-
+        return response()->json(['success' => 'success'], 200);
     }
 
 
@@ -150,14 +118,84 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        //
+        $edit = 1;
+        
+        $post = Post::find($id);
+
+
+        $form_referrer = action('Cms\Post\NewsController@index');
+
+        $location = config('haberler.post.location');
+
+        $users = User::pluck('name', 'id');
+
+        $categories = Category::pluck('name', 'id');
+
+        $tags = Tag::pluck('name', 'slug');
+
+        $show_in_mainpage = config('haberler.post.show_in_mainpage');
+
+        $commentable = config('haberler.post.commentable');
+
+        $status = config('haberler.post.status');
+
+        return view('cms.post.news.edit', compact(
+            'edit', 
+            'post',
+            'form_referrer', 
+            'location',
+            'users',
+            'categories',
+            'tags',
+            'show_in_mainpage',
+            'commentable',
+            'status'
+        ));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(NewsRequest $request, $id)
     {
-        //
-    }
+        $post = Post::find($id);
+        $post->short_title = $request->input('short_title');
+        $post->location = $request->input('location');
+        $post->status = $request->input('status');
+        $post->show_on_mainpage = $request->input('show_in_mainpage');
+        $post->commentable = $request->input('commentable');
+        $post->updated_by = Auth::user()->id;
+        $post->content = $request->input('content');
+        $post->summary = $request->input('summary');
+        $post->editor_id = $request->input('editor_id');
+        $post->title = $request->filled('title') ? $request->input('title') : $request->input('short_title');
+        $post->redirect_link = $request->input('redirect_link') ?? '';
+        $post->slug = $request->filled('title') ? Str::slug($post->title) : Str::slug($post->short_title);
+        $post->seo_title = $request->filled('seo_title') ? ($request->input('seo_title')) : ($request->filled('title') ? $request->input('title') : request()->input('short_title'));
+        $post->published_at = $request->input('published_at'); // tarih carbon now a eşit veya ileri tarihse tarihi kaydet yoksa kaydetme eski tarih kalsın
+        if($request->hasFile('cover_img')) {
+            $post->cover_id = $post->attachment('cover_img');
+        }
+        if($request->hasFile('headline_img')) {
+            $post->headline_id = $post->attachment('headline_img');
+        }
+        if ((new \Date($request->input('published_at'))) > (new \Date())) {
+            $post->status = 2;
+        }
+        $tags = $request->get('tags');
+        $tagIds = [];
+        foreach($tags as $tag)
+        {
+            $tag = Tag::firstOrCreate(['name' => $tag, 'slug' => Str::slug($tag)]);
+            $tagIds[] = $tag->id;
+        }
+
+        $post->save();
+        $post->tags()->sync($tagIds);
+        $post->categories()->sync($request->input('category_id'));
+
+        return response()->json(['success' => 'success'], 200);
+
+        
+    } 
 
 
     public function destroy($id)

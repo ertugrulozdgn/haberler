@@ -23,7 +23,7 @@ SendForm.init = function(el, referrer) {
         contentType: false,
         success: function(response) {
             alertify.success("İşlem Başarılı");
-            //window.location.replace(referrer);      // controller da dd ile request leri ekranda bastırmak için bu satırı yorum yap(incele diyip network kısmına gel)
+            window.location.replace(referrer);      // controller da dd ile request leri ekranda bastırmak için bu satırı yorum yap(incele diyip network kısmına gel)
         },
         error: function(response) {
             var response_errors = [];
