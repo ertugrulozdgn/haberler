@@ -17,6 +17,7 @@ class CreatePostSortingsTable extends Migration
             $table->id();
             $table->tinyInteger('location');
             $table->tinyInteger('status');
+            $table->text('posts')->nullable();
         });
     }
 

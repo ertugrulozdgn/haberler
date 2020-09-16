@@ -16,9 +16,10 @@ Route::group([
         Route::resource('page','Admin\PageController');
         Route::resource('news', 'Post\NewsController');
         Route::get('sorting', 'Post\PostSortingController@index');
+        Route::post('sorting/update-location', 'Post\PostSortingController@sort');
 
         Route::get('deneme', function () {
-            return view('cms.deneme3');
+            return view('cms.deneme4');
         });
     });
 

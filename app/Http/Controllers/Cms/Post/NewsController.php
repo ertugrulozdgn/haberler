@@ -7,6 +7,7 @@ use App\Http\Requests\Cms\NewsRequest;
 use App\Models\Attachment;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostSorting;
 use App\Models\Tag;
 use App\Models\User;
 use App\Observers\PostObserver;
@@ -22,7 +23,7 @@ class NewsController extends Controller
     {
 
         $posts = Post::orderBy('published_at', 'desc')->with('categories')->get();  //post-categroy ilişkisindeki post->category->name değerini almak için with('categories') yazdım. Post modelin içindeki func adı categories.
-
+        
         return view('cms.post.news.index', compact('posts'));
     }
 
@@ -103,6 +104,7 @@ class NewsController extends Controller
         }
 
         $post->save();
+
         $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
 
@@ -211,5 +213,17 @@ class NewsController extends Controller
         } catch(\Exception $ex) {
             return 0;
         }
+    }
+
+
+    public function takesorting()
+    {
+        $location = [2,3];
+
+        $take = config('haberler.app.sorting_type_limit')[2];
+
+        $posts = Post::all();
+
+        $posts = Post::whereLocation($location); 
     }
 }

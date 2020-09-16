@@ -2,7 +2,10 @@
 
 return [
     'app' => [
-        'sorting_type_limit' => [2 => 20, 3 => 4],
+        'sorting_type_limit' => [
+            2 => 5, 
+            3 => 4
+        ],
     ],
 
 

@@ -9,9 +9,11 @@ require('./table');
 require('multiselect');
 //require('select2');
 require('fontawesome-4.7');
-require('jquery-ui');
 require('bootstrap-tagsinput');
-require('jquery');
+
+//import 'jquery-ui/ui/widgets/sortable';
+require('jquery-ui/ui/widgets/sortable');
+//require('jquery-ui');
 require('imask');
 require('moment')
 
@@ -29,6 +31,7 @@ Table.init();
 App.imagePreview();
 App.multiSelect();
 App.textEditor();
+App.sortable(); 
 //App.select2();
 
 
