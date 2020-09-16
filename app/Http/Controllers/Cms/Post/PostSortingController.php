@@ -13,7 +13,7 @@ class PostSortingController extends Controller
     {
         $location = request()->query('location');  //querty ile url deki location ı aldık.
 
-        $take = config('haberler.app.sorting_type_limit')[$location];  //gelen location değeri ne ise config içinde belirlediğimiz limit değerini getirdik. manşet ise limiti sürmanşet ise limit.
+        $take = config('haberler.app.sorting_type_limit')[$location];  //gelen location değeri ne ise config içinde belirlediğimiz limit değerini getirdik. manşet ise limiti sürmanşet ise limit.  
 
         $post_sorting = Post::where('location', $location)->get();  // sıralanalacak olan postun location ne ise o postları çektik.
 
