@@ -1,0 +1,49 @@
+.container-header {
+    position: relative !important;
+}
+
+header {
+    font-family: 'Roboto', sans-serif;
+}
+
+header#app-header {
+    a.icon-logo {
+        width: 130px;
+        height: 85px;
+        display: block;
+        background-repeat: no-repeat;
+        margin-top: -10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #fff200;
+        background-size: 97px;
+        background-position: center;
+    }
+}
+
+nav {
+    .nav-link {
+        font-size: 12px;
+        font-weight: bold;
+        padding: 15px 12px !important; 
+        color: #4c4e4d !important;
+    }
+
+    .fa {
+        margin-right: 20px;
+        color:#4c4e4d !important;
+        font-size: 17px !important;
+        padding: 5px 0;
+    }
+
+    .fa-search {
+        margin-left: 25px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-header {
+        
+    }
+}

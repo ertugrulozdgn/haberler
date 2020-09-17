@@ -8,7 +8,6 @@ require('./table');
 // NPM Packages
 require('multiselect');
 //require('select2');
-require('fontawesome-4.7');
 require('bootstrap-tagsinput');
 
 //import 'jquery-ui/ui/widgets/sortable';
