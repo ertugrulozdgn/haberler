@@ -13,8 +13,8 @@ require('bootstrap-tagsinput');
 //import 'jquery-ui/ui/widgets/sortable';
 require('jquery-ui/ui/widgets/sortable');
 //require('jquery-ui');
-require('imask');
-require('moment')
+// require('imask');
+// require('moment')
 
 import alertifyjs from 'alertifyjs';
 window.alertify = alertifyjs;
@@ -30,7 +30,7 @@ Table.init();
 App.imagePreview();
 App.multiSelect();
 App.textEditor();
-App.sortable(); 
+App.sortable();
 //App.select2();
 
 

@@ -7,23 +7,26 @@
     <link rel="stylesheet" href="{{ mix('assets/web/css/build.css') }}">
 
     <title>Vox</title>
+
+      <style>
+
+      </style>
   </head>
   <body>
-    
-  @widget('web.header')
+
+{{--  @widget('web.header')--}}
 
 {{-- id="app-header" ekle buraya --}}
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header id="app-header">
+  <nav class="navbar-light bg-light">
     <div class="container">
-      <a href="/" class="icon-logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-        <ul class="navbar-nav mr-auto">
+
+      <div class="header-menu" id="navbarSupportedContent">
+          <div class="header-logo">
+              <a href="/" class="icon-logo"></a>
+          </div>
+
+          <ul class=" navbar-nav header-menu-link">
           <li class="nav-item">
             <a class="nav-link" href="#">CORONAVIRUS</a>
           </li>
@@ -36,15 +39,15 @@
             <a class="nav-link" href="#">RECODE</a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item disable-item">
             <a class="nav-link" href="#">THE GOODS</a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item disable-item">
             <a class="nav-link" href="#">FUTURE PERFECT</a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item disable-item">
             <a class="nav-link" href="#">THE HIGHLIGHT</a>
           </li>
 
@@ -54,12 +57,15 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item disable-item-2" href="#">Another 1</a>
+                <a class="dropdown-item disable-item-2" href="#">Another 2</a>
+                <a class="dropdown-item disable-item-2" href="#">Another 3</a>
             </div>
           </li>
         </ul>
 
-        <ul class="navbar-nav">
+        <ul class="navbar-nav header-menu-social">
           <li>
             <a href=""><i class="fa fa-twitter"></i></a>
           </li>
@@ -80,7 +86,7 @@
             <a href=""><i class="fa fa-search"></i></a>
           </li>
         </ul>
-        
+
       </div>
     </div>
   </nav>

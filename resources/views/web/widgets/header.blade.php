@@ -1,4 +1,4 @@
-{{-- <header id="app-header">
+ <header id="app-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container container-header">
            <div class="collapse navbar-collapse mr-5">
@@ -8,7 +8,7 @@
             </button>
            </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             
+
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                   <a class="nav-link" href="#">CORONAVIRUS</a>
@@ -70,4 +70,4 @@
             </div>
         </div>
     </nav>
-</header> --}}
+</header>
