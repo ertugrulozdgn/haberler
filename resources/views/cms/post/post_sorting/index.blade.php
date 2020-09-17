@@ -6,11 +6,8 @@
         <br>
             <div class="box box-danger">
                 <div class="box-header with-border">
-                <h3 class="box-title vertical-middle"><i class="fa fa-newspaper-o"></i> {{ $location == 2 ? 'Manşet Sıralama' : 'Sürmanşet Sıralama' }}</h3>
-
-                <span class="pull-right"><a href="{{ action('Cms\Post\NewsController@create') }}" class="btn btn-success">Yeni</a></span>
+                <h3 class="box-title vertical-middle"><i class="fa fa-align-center"></i> {{ $location == 2 ? 'Manşet Sıralama' : 'Sürmanşet Sıralama' }}</h3>
                 </div>
-
                 <div class="box-body">
                     <table class="table table-stripped">
                         <thead>
@@ -24,7 +21,7 @@
                             </tr>
                             <tbody id="sortable" data-action="{{ action('Cms\Post\PostSortingController@sort', ['location' => $location]) }}">
                                 @foreach ($posts as $post)
-                                <tr id="item-{{ $post->id }}" class="active">                        
+                                <tr id="item-{{ $post->id }}" class="alert alert-primary">                        
                                     <td class="vertical-middle sortable"><i class="fa fa-align-justify"></i></td>
                                     <td class="vertical-middle">{{ $post->id }}</td>
                                     <td class="vertical-middle">{{ $post->title }}</td>
@@ -32,7 +29,7 @@
                                     <td class="vertical-middle">{{ $post->hit }}</td>
                                     <td class="vertical-middle" width='5px'><a href="{{ $post->edit_link }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                     <td class="vertical-middle" width='5px'><a href="{{ $post->delete_link }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
-                                </tr>      
+                                </tr> 
                                 @endforeach
                                 @foreach ($other_posts as $post)
                                 <tr id="item-{{ $post->id }}">                        

@@ -27,7 +27,7 @@
                                 @foreach ($posts as $post)
                                 <tr class=" {{ $post->status == 0 ? ('alert alert-light') : ( $post->status == 2 ? 'alert alert-primary' : '' ) }}">
                                     
-                                <td class="vertical-middle"><img class="img-fluid" width="100px" src="{{ $post->cover_image }}" alt=""></td>
+                                    <td class="vertical-middle"><img class="img-fluid" width="100px" src="{{ $post->cover_image }}" alt=""></td>
                                     <td class="vertical-middle">
                                         {{ $post->title }} <br>
                                         @foreach ($post->categories as $category)

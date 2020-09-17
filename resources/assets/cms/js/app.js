@@ -43,6 +43,7 @@ App.sortable = function() {
                         // console.log(msg);
                         if (msg) {
                             alertify.success("İşlem Başarılı");
+                            
                         } else {
                             alertify.error("İşlem Başarısız");
                         }

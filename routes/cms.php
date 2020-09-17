@@ -17,6 +17,7 @@ Route::group([
         Route::resource('news', 'Post\NewsController');
         Route::get('sorting', 'Post\PostSortingController@index');
         Route::post('sorting/update-location', 'Post\PostSortingController@sort');
+        Route::resource('setting','Admin\SettingController');
 
         Route::get('deneme', function () {
             return view('cms.deneme4');

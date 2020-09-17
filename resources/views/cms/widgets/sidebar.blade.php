@@ -39,6 +39,7 @@
               </span>
           </a>
           <ul class="treeview-menu">
+            <li class="sidebar-menu-margin"><a href="{{ action('Cms\Admin\SettingController@index') }}">Ayarlar</a></li>
             <li class="sidebar-menu-margin"><a href="{{ action('Cms\Admin\UserController@index') }}">Editörler</a></li>
             <li class="sidebar-menu-margin"><a href="{{ action('Cms\Admin\PageController@index') }}">Sayfalar</a></li>
             <li class="sidebar-menu-margin"><a href="{{ action('Cms\Admin\CategoryController@index') }}">Kategoriler</a></li>
