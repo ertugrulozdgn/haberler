@@ -5574,9 +5574,9 @@ module.exports = {
   !*** ./node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js ***!
   \**********************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-(function ($) {
+/* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {(function ($) {
   "use strict";
 
   var defaultOptions = {
@@ -6238,8 +6238,9 @@ module.exports = {
   $(function() {
     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
   });
-})(window.jQuery);
+})(__webpack_provided_window_dot_jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -6271,9 +6272,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/affix.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: affix.js v3.3.5
  * http://getbootstrap.com/javascript/#affix
  * ========================================================================
@@ -6436,6 +6437,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -6444,9 +6446,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/alert.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: alert.js v3.3.5
  * http://getbootstrap.com/javascript/#alerts
  * ========================================================================
@@ -6541,6 +6543,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -6549,9 +6552,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/button.js ***!
   \**********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: button.js v3.3.5
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
@@ -6672,6 +6675,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -6680,9 +6684,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/carousel.js ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: carousel.js v3.3.5
  * http://getbootstrap.com/javascript/#carousel
  * ========================================================================
@@ -6920,6 +6924,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -6928,9 +6933,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/collapse.js ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: collapse.js v3.3.5
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
@@ -7142,6 +7147,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -7150,9 +7156,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/dropdown.js ***!
   \************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: dropdown.js v3.3.5
  * http://getbootstrap.com/javascript/#dropdowns
  * ========================================================================
@@ -7318,6 +7324,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -7326,9 +7333,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/modal.js ***!
   \*********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: modal.js v3.3.5
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
@@ -7666,6 +7673,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -7674,9 +7682,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/popover.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: popover.js v3.3.5
  * http://getbootstrap.com/javascript/#popovers
  * ========================================================================
@@ -7785,6 +7793,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -7793,9 +7802,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/scrollspy.js ***!
   \*************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: scrollspy.js v3.3.5
  * http://getbootstrap.com/javascript/#scrollspy
  * ========================================================================
@@ -7968,6 +7977,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -7976,9 +7986,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/tab.js ***!
   \*******************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: tab.js v3.3.5
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
@@ -8134,6 +8144,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -8142,9 +8153,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/tooltip.js ***!
   \***********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: tooltip.js v3.3.5
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
@@ -8659,6 +8670,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -8667,9 +8679,9 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
   !*** ./node_modules/bootstrap3/js/transition.js ***!
   \**************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/* ========================================================================
+/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
  * Bootstrap: transition.js v3.3.5
  * http://getbootstrap.com/javascript/#transitions
  * ========================================================================
@@ -8729,6 +8741,7 @@ __webpack_require__(/*! ../../js/affix.js */ "./node_modules/bootstrap3/js/affix
 
 }(jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -39485,9 +39498,9 @@ return jQuery;
   !*** ./node_modules/multiselect/js/jquery.multi-select.js ***!
   \************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-/*
+/* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {/*
 * MultiSelect v0.9.12
 * Copyright (c) 2012 Louis Cuny
 *
@@ -40021,8 +40034,9 @@ return jQuery;
     });
 }
 
-}(window.jQuery);
+}(__webpack_provided_window_dot_jQuery);
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -42920,9 +42934,9 @@ module.exports = function(module) {
   !*** ./resources/assets/cms/js/app.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-window.App = {};
+/* WEBPACK VAR INJECTION */(function($) {window.App = {};
 
 App.imagePreview = function () {
   $('.select_image').on('change', function () {
@@ -42981,6 +42995,7 @@ App.sortable = function () {
 //             tags: true,
 //         });
 // }
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -42991,7 +43006,7 @@ App.sortable = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery, __webpack_provided_window_dot_$) {window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /*
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -43000,7 +43015,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
-  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+  __webpack_provided_window_dot_$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
   __webpack_require__(/*! bootstrap3 */ "./node_modules/bootstrap3/dist/js/npm.js");
 } catch (e) {}
@@ -43026,6 +43041,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -43078,9 +43094,9 @@ App.sortable(); //App.select2();
   !*** ./resources/assets/cms/js/send_form.js ***!
   \**********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* WEBPACK VAR INJECTION */(function($) {function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 window.SendForm = {};
 
@@ -43122,6 +43138,7 @@ SendForm.init = function (el, referrer) {
   });
   return false;
 };
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -43130,9 +43147,9 @@ SendForm.init = function (el, referrer) {
   !*** ./resources/assets/cms/js/table.js ***!
   \******************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-window.Table = {};
+/* WEBPACK VAR INJECTION */(function($) {window.Table = {};
 
 Table.init = function () {
   Table.deleteRecord();
@@ -43169,6 +43186,7 @@ Table.deleteRecord = function () {
     return false;
   });
 };
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
