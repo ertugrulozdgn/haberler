@@ -7,5 +7,9 @@ Route::group([
     'namespace' => config('routes.namespaces.web')
 ], function () {
     Route::get('/', 'HomeController@index');
+
+    Route::get('/deneme', function() {
+        return view('web.deneme');
+    });
 });
 
