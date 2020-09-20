@@ -1,0 +1,38 @@
+.subheadlines {
+    display: flex;
+    flex-direction: column;
+
+    @include media-breakpoint-down(lg) {
+        flex-direction: row;
+        justify-content: space-between;
+
+        > a:first-child {
+            margin-right: .5rem;
+        }
+
+        > a:last-child {
+            margin-left: .5rem;
+        }
+    }
+
+    > a {
+        position: relative;
+        color: #FFF;
+
+        &:hover {
+        }
+
+        > img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        > h2 {
+            margin: 0;
+            position: absolute;
+            font-size: 1.25rem;
+            bottom: .5rem;
+            left: .5rem;
+        }
+    }
+}

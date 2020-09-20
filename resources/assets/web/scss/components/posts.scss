@@ -1,39 +1,44 @@
-.subheadlines {
-    display: flex;
-    flex-direction: column;
-
-    @include media-breakpoint-down(lg) {
-        flex-direction: row;
-        justify-content: space-between;
-
-        > a:first-child {
-            margin-right: .5rem;
-        }
-
-        > a:last-child {
-            margin-left: .5rem;
-        }
-    }
-
-    > a {
-        position: relative;
-        color: #FFF;
+.posts {
+    a {
+        text-decoration: none;
+        color: #0a0a0a;
 
         &:hover {
-            color: red;
+            color: #bb2323;
         }
 
-        > img {
+        img {
             max-width: 100%;
             height: auto;
         }
 
-        > h2 {
-            margin: 0;
-            position: absolute;
-            font-size: 1.25rem;
-            bottom: .5rem;
-            left: .5rem;
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+
+            @include media-breakpoint-down(md) {
+                font-size: 0.9rem;
+                margin-left: -15px;
+            }
+        }
+    }
+
+    span {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .subinformation {
+        span:first-child {
+            color:  #bb2323;
+        }
+
+        @include media-breakpoint-down(md) {
+            margin: -10px 0 0 -15px;
         }
     }
 }
+
+
+
+

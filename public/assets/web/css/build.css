@@ -11613,10 +11613,6 @@ header .header-menu {
   color: #FFF;
 }
 
-.subheadlines > a:hover {
-  color: red;
-}
-
 .subheadlines > a > img {
   max-width: 100%;
   height: auto;
@@ -11628,5 +11624,55 @@ header .header-menu {
   font-size: 1.25rem;
   bottom: 0.5rem;
   left: 0.5rem;
+}
+
+.posts a {
+  text-decoration: none;
+  color: #0a0a0a;
+}
+
+.posts a:hover {
+  color: #bb2323;
+}
+
+.posts a img {
+  max-width: 100%;
+  height: auto;
+}
+
+.posts a h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@media (max-width: 991.98px) {
+  .posts a h2 {
+    font-size: 0.9rem;
+    margin-left: -15px;
+  }
+}
+
+.posts span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.posts .subinformation span:first-child {
+  color: #bb2323;
+}
+
+@media (max-width: 991.98px) {
+  .posts .subinformation {
+    margin: -10px 0 0 -15px;
+  }
+}
+
+.sideposts a {
+  text-decoration: none;
+  color: #0a0a0a;
+}
+
+.sideposts a:hover {
+  color: #bb2323;
 }
 
