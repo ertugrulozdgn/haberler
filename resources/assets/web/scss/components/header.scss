@@ -1,7 +1,3 @@
-.container-header {
-    position: relative !important;
-}
-
 header {
     font-family: 'Roboto', sans-serif;
 }
@@ -12,10 +8,7 @@ header#app-header {
         height: 85px;
         display: block;
         background-repeat: no-repeat;
-        margin-top: -10px;
-        //position: absolute;
-        top: 0;
-        left: 0;
+        margin-top:0;
         background-color: #fff200;
         background-size: 97px;
         background-position: center;
@@ -23,6 +16,7 @@ header#app-header {
 }
 
 nav {
+    height: 60px;
     .nav-link {
         font-size: 12px;
         font-weight: bold;
@@ -30,7 +24,7 @@ nav {
         color: #4c4e4d !important;
     }
 
-    .fa {
+    i {
         margin-right: 20px;
         color:#4c4e4d !important;
         font-size: 17px !important;
@@ -42,21 +36,28 @@ nav {
     }
 }
 
+
 header .header-menu {
     display: flex; //flex de hersey yan yana dizilir
-    justify-content: space-around; // elemanları dizmek için boşluklu
+    justify-content: space-around; // elemanları dizmek için boşluklu // mr-auto verdiğim için buna gerek kalmadı
     align-items: center; //dikeyde hizalama
 }
 
 .header-menu .header-menu-link, .header-menu .header-menu-social  {
     display: flex;
     flex-direction: row;
-    margin-top: -20px;
+    margin-top: -10px;
 }
 .header-menu .header-menu-link .disable-item-2 {
     display: none;
 }
+
+
 @media (max-width: 576px) {
+    nav {
+        height: 110px;
+    }
+
     .header-menu .header-menu-link .disable-item-2 {
         display: block;
     }
@@ -73,11 +74,12 @@ header .header-menu {
     header#app-header {
         a.icon-logo {
             width: 100vw;
-            height: 85px;
+            height: 70px;
+            background-size: 60px;
         }
     }
     .header-menu .header-menu-link  {
-        margin-top: 5px;
+        margin-top: 0;
         justify-content: space-between;
         width: 100vw;
     }

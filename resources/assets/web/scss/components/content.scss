@@ -1,0 +1,96 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.header-news {
+    h2 {
+        color: white !important;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+    
+  
+        display: flex;
+        
+        justify-content: center;
+        
+        align-items: center;
+    }
+    .swiper-pagination {
+        background-color: #f8f9fa;
+        height: 28px;
+    }
+    .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        color: #000;
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.2);
+    }
+    .swiper-pagination-bullet-active {
+        color: black;
+        background: #F0E51C;
+    }
+    .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+    }
+    .headline-news-text {
+      position: absolute;
+      // color: white;
+      left: 0;
+      bottom: 8%;
+      padding: 20px;
+      text-align: justify;
+    }
+    .sub-headline-news-text {
+      font-size: 1.2rem !important;
+      text-align: justify;
+      // text-decoration: none;
+      // color: #fff;
+    }
+    hr {
+      background-color: #fff200;
+    }
+  
+} // MANŞET HABER CSS BİTİŞ// 
+
+ 
+  .normal-news-text {
+    font-size: 22px;
+    margin-left: -5px;
+  }
+
+  @media (max-width: 576px) {
+    .headline-news-text {
+      font-size: 1.1rem;
+    }
+    .sub-headline-news-text {
+      font-size: 0.8rem !important;
+      margin-bottom: -15px;
+      text-align: initial;
+    }
+      // Manşet haber responsive css bitiş// 
+
+      .normal-news-text {
+        font-size: 1rem;
+        margin-left: 0;
+        margin-top: 5px;
+      }  
+  }
+
+
+
+
+  
