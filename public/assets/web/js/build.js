@@ -29677,15 +29677,24 @@ Slider.headlines();
 window.Slider = {};
 
 Slider.headlines = function () {
-  headlineSlider = new Swiper('.headline-slider', {
-    loop: true,
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    autoplay: {
-      delay: 8000
-    },
+  // headlineSlider = new Swiper('.headline-slider', {
+  //     loop: true,
+  //     slidesPerView: 1,
+  //     slidesPerGroup: 1,
+  //     autoplay: {
+  //         delay: 8000
+  //     },
+  //     pagination: {
+  //         el: '.swiper-pagination',
+  //     },
+  // });
+  var swiper = new Swiper('.swiper-container', {
     pagination: {
-      el: '.swiper-pagination'
+      el: '.swiper-pagination',
+      clickable: true,
+      renderBullet: function renderBullet(index, className) {
+        return '<span class="' + className + '">' + (index + 1) + '</span>';
+      }
     }
   });
 };
@@ -29699,7 +29708,7 @@ Slider.headlines = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\haberler\resources\assets\web\js\build.js */"./resources/assets/web/js/build.js");
+module.exports = __webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/assets/web/js/build.js */"./resources/assets/web/js/build.js");
 
 
 /***/ })

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
 
-    @include media-breakpoint-down(lg) {
+    @include media-breakpoint-down(md) {
         flex-direction: row;
         justify-content: space-between;
 
@@ -33,6 +33,10 @@
             font-size: 1.25rem;
             bottom: .5rem;
             left: .5rem;
+
+            @include media-breakpoint-down(md) {
+                font-size: 0.9rem;
+            }
         }
     }
 }

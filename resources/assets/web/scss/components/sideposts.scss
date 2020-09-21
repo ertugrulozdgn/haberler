@@ -1,10 +1,26 @@
 .sideposts {
+    h3 {
+        font-size: 21.6px;
+        color: #ED2B23;
+        padding: 0 0 16px;
+    }
+
     a {
         text-decoration: none;
-        color: #0a0a0a;
+        color: #6E6666;
 
         &:hover  {
             color: #bb2323;
         }
     }
+}
+
+.sideposts-hidden {
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}
+
+hr {
+    background-color: #fff200;
 }

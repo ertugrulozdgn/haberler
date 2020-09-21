@@ -12,9 +12,7 @@
 	<body>
 		@widget('Web\Header')
 		@yield('content')
-		<footer>
-
-		</footer>
+		@widget('Web\Footer')
 	<script src="{{ mix("assets/web/js/build.js") }}"></script>
 	</body>
 </html>

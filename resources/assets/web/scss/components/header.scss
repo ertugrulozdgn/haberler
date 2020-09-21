@@ -1,86 +1,58 @@
-header {
-    font-family: 'Roboto', sans-serif;
-}
-
 header#app-header {
-    a.icon-logo {
-        width: 130px;
-        height: 85px;
-        display: block;
-        background-repeat: no-repeat;
-        margin-top:0;
-        background-color: #fff200;
-        background-size: 97px;
-        background-position: center;
-    }
-}
-
-nav {
+    background-color: #f8f9fa !important;
     height: 60px;
-    .nav-link {
-        font-size: 12px;
-        font-weight: bold;
-        padding: 15px 12px !important;
-        color: #4c4e4d !important;
+    @include media-breakpoint-down(md) {
+        height: 45px;
     }
-
-    i {
-        margin-right: 20px;
-        color:#4c4e4d !important;
-        font-size: 17px !important;
-        padding: 5px 0;
-    }
-
-    .fa-search {
-        margin-left: 25px !important;
-    }
-}
-
-
-header .header-menu {
-    display: flex; //flex de hersey yan yana dizilir
-    justify-content: space-around; // elemanları dizmek için boşluklu // mr-auto verdiğim için buna gerek kalmadı
-    align-items: center; //dikeyde hizalama
-}
-
-.header-menu .header-menu-link, .header-menu .header-menu-social  {
-    display: flex;
-    flex-direction: row;
-    margin-top: -10px;
-}
-.header-menu .header-menu-link .disable-item-2 {
-    display: none;
-}
-
-
-@media (max-width: 576px) {
+    
     nav {
-        height: 110px;
-    }
+        > a.icon-logo {
+            width: 130px;
+            height: 85px;
+            display: block;
+            background-repeat: no-repeat;
+            margin-top:0;
+            background-color: #fff200;
+            background-size: 97px;
+            background-position: center;
+            margin-right: 1.5rem;
 
-    .header-menu .header-menu-link .disable-item-2 {
-        display: block;
-    }
-    .header-menu .header-menu-link .disable-item{
-        display: none;
-    }
+            @include media-breakpoint-down(md) {
+                width: 92px;
+                height: 60px;
+                background-size: 70px;
+            }
+        }
 
-    .header-menu .header-menu-social  {
-        display: none;
-    }
-    header .header-menu {
-        flex-direction: column;
-    }
-    header#app-header {
-        a.icon-logo {
-            width: 100vw;
-            height: 70px;
-            background-size: 60px;
+        > ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 60px;
+            @include media-breakpoint-down(md) {
+                height: 45px;
+            }
+
+            > li {
+                margin-right: 1rem;
+
+                @include media-breakpoint-down(md) {
+                    &:nth-child(n+4) {
+                        display: none;
+                    }
+                }
+
+                > a {
+                    font-size: .75rem;
+                    font-weight: bold;
+                    color: #4c4e4d;
+
+                    > i {
+                        font-size: .875rem;
+                    }
+                }
+            }
         }
     }
-    .header-menu .header-menu-link  {
-        margin-top: 0;
-        justify-content: space-between;
-        width: 100vw;
-    }
 }
+
