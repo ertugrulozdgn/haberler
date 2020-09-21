@@ -59,7 +59,7 @@
         &:hover {
             background-color: #bb2323;
         }
-    } 
+    }
 
     @include media-breakpoint-down(md) {
         .a {
@@ -95,7 +95,7 @@
         > a {
             text-decoration: none;
             &:hover {
-                background-color: #bb2323;
+                color: #bb2323;
             }
             > h2 {
                 font-size: 1.25rem;
@@ -123,9 +123,9 @@
 
             @include media-breakpoint-down(xs) {
                 // display: none;
-                font-size: .525rem;
+                font-size: .625rem;
             }
-            
+
         }
     }
 }
