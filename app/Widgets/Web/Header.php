@@ -4,7 +4,7 @@ namespace App\Widgets\Web;
 
 use Arrilot\Widgets\AbstractWidget;
 
-class Header extends AbstractWidget
+class header extends AbstractWidget
 {
     /**
      * The configuration array.

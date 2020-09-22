@@ -1,16 +1,28 @@
 .sideposts {
-    h3 {
+    > h3 {
         font-size: 21.6px;
-        color: #ED2B23;
+        color: #bb2323;
         padding: 0 0 16px;
+        margin: 0;
+        text-align: center;
+        letter-spacing: .1rem;
     }
 
-    a {
-        text-decoration: none;
-        color: #6E6666;
-
-        &:hover  {
-            color: #bb2323;
+    > div {
+        margin-bottom: 1rem;
+        > a {
+            text-decoration: none;
+            color: #6E6666;
+    
+            &:hover  {
+                color: #bb2323;
+            }
+    
+            > img {
+                width: 100%;
+                height: auto;
+            }
+    
         }
     }
 }

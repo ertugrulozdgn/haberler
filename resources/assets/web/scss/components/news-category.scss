@@ -1,0 +1,103 @@
+.category-title {
+    > h1 {
+        font-weight: 900;
+        text-align: center;
+        color: #4C4E4D;
+        font-size: 2rem;
+        font-style: italic;
+        @include media-breakpoint-down(md) {
+            font-size: 1.5rem;
+        }
+    }
+
+    > hr {
+        border: 2px solid #fff200;
+        margin-top: 0;
+        @include media-breakpoint-down(md) {
+            border: 1px solid #fff200;
+        }
+    }
+}
+
+.category-headline {
+    > a {
+        text-decoration: none;
+        color: #4C4E4D;
+
+        &:hover {
+            color: #000;
+        }
+
+        > img {
+            width: 100%;
+            height: auto;
+        }
+
+        > h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-left: .5rem;
+            margin-top: .5rem;
+            @include media-breakpoint-down(md) {
+                font-size: 1.125rem;
+            }
+        }
+    }
+}
+
+.category-image-left-post {
+    display: flex;
+    border-top: 1px solid #d1d1d1;
+    margin-bottom: 1rem;
+
+    > a {
+        flex-basis: 35%;
+        @include media-breakpoint-down(md) {
+            flex-basis: 40%;
+        }
+
+        > img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .category-info {
+        flex-basis: 65%;
+        padding-left: 1rem;
+        @include media-breakpoint-down(md) {
+            flex-basis: 60%;
+        }
+
+        > a {
+            text-decoration: none;
+            color: #4C4E4D;
+            &:hover {
+                color: #000;
+            }
+
+            > h2 {
+                font-size: 1.25rem;
+                font-weight: 700;
+                margin-top: .5rem;
+                @include media-breakpoint-down(md) {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        > div {
+            font-size: .825rem;
+            @include media-breakpoint-down(md) {
+                font-size: .625rem;
+            }
+            > span {
+                &:first-child {
+                    font-weight: 500;
+                    color: #ed2b23;
+                }
+            }
+            
+        }
+    }
+}

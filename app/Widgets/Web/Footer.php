@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Widgets\web;
+namespace App\Widgets\Web;
 
 use Arrilot\Widgets\AbstractWidget;
 
-class Footer extends AbstractWidget
+class footer extends AbstractWidget
 {
     /**
      * The configuration array.

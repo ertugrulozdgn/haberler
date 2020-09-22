@@ -1,87 +1,3 @@
-.posts {
-    a {
-        text-decoration: none;
-        color: #0a0a0a;
-
-        &:hover {
-            color: #bb2323;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-
-            @include media-breakpoint-down(md) {
-                font-size: 0.9rem;
-                margin-left: -15px;
-            }
-        }
-    }
-
-    span {
-        font-size: 0.8rem;
-        font-weight: 500;
-    }
-
-    .subinformation {
-        span:first-child {
-            color:  #bb2323;
-        }
-
-        @include media-breakpoint-down(md) {
-            margin: -10px 0 0 -15px;
-        }
-    }
-}
-
-.post-old {
-    .a {
-        padding: 32px 16px;
-    }
-
-    p {
-        margin: 0;
-    }
-
-    h2 {
-        font-size: 2rem !important;
-        margin-bottom: 25px;
-    }
-
-    .badge {
-        border-radius: 0;
-
-        &:hover {
-            background-color: #bb2323;
-        }
-    }
-
-    @include media-breakpoint-down(md) {
-        .a {
-            padding: 16px 8px;
-        }
-
-        p {
-            display: none;
-        }
-
-        .subinformation {
-            margin: 0;
-        }
-
-        h2 {
-            margin: 0 !important;
-            font-size: 1.4rem !important;
-        }
-    }
-}
-
-
 .post {
     margin-bottom: 1.5rem;
 
@@ -90,17 +6,20 @@
             max-width: 100%;
             height: auto;
         }
+
+        
     }
     > .info {
         > a {
             text-decoration: none;
-            &:hover {
-                color: #bb2323;
-            }
+
             > h2 {
                 font-size: 1.25rem;
                 font-weight: 700;
                 color: #000;
+                &:hover {
+                    color: #bb2323;
+                }
 
                 @include media-breakpoint-down(md) {
                     font-size: 1.125rem;
@@ -113,7 +32,8 @@
         }
 
         > div {
-            font-size: .75rem;
+            font-size: .825rem;
+
             span {
                 &:first-child {
                     font-weight: 500;
@@ -192,7 +112,6 @@
         }
     }
 }
-
 
 
 

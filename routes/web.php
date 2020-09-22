@@ -8,6 +8,11 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController@index');
 
+    Route::get('/detail', 'Post\NewsController@show');
+
+    Route::get('/category', 'Post\NewsController@index');
+
+
     Route::get('/deneme', function() {
         return view('web.deneme');
     });
