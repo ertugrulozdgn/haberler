@@ -53,6 +53,7 @@
                     <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
                 </a>
                 <div class="info">
+                    <span class="badge badge-danger">TEKNOLOJI</span>
                     <a href="">
                         <h2>What the heck is going on with TikTok and Oracle, explained</h2>
                     </a>
@@ -68,6 +69,7 @@
                     <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
                 </a>
                 <div class="info">
+                    <span class="badge badge-danger">TEKNOLOJI</span>
                     <a href="">
                         <h2>What the heck is going on with TikTok and Oracle, explained</h2>
                     </a>
@@ -100,6 +102,7 @@
                     <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
                 </a>
                 <div class="info">
+                    <span class="badge badge-danger">TEKNOLOJI</span>
                     <a href="">
                         <h2>What the heck is going on with TikTok and Oracle, explained</h2>
                     </a>
@@ -115,6 +118,7 @@
                     <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
                 </a>
                 <div class="info">
+                    <span class="badge badge-danger">TEKNOLOJI</span>
                     <a href="">
                         <h2>What the heck is going on with TikTok and Oracle, explained</h2>
                     </a>

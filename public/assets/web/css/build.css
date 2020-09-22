@@ -11643,6 +11643,21 @@ header#app-header nav > ul > li > a > i {
   height: auto;
 }
 
+.post > .info > span {
+  font-size: 0.615rem;
+  border-radius: 0;
+}
+
+.post > .info > span:hover {
+  background-color: #bb2323;
+}
+
+@media (max-width: 767.98px) {
+  .post > .info > span {
+    display: none;
+  }
+}
+
 .post > .info > a {
   text-decoration: none;
 }

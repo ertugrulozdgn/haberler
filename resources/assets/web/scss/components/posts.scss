@@ -10,6 +10,18 @@
         
     }
     > .info {
+
+        > span {
+            font-size: .615rem;
+            border-radius: 0;
+            &:hover {
+                background-color: #bb2323;
+            }
+            @include media-breakpoint-down(sm) {
+                display: none;
+            }
+        }
+
         > a {
             text-decoration: none;
 
