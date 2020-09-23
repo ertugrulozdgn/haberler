@@ -19,7 +19,7 @@
                         </tr>
                         <tbody>
                         @foreach($categories as $category)
-                            <tr>
+                            <tr class=" {{ $category->show_in_menu == 1 ? 'alert alert-primary' : ''}} ">
                                 <td>{{$category->name}}</td>
                                 <td width='5px'><a href="{{ action('Cms\Admin\CategoryController@edit', [$category->id]) }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                             </tr>

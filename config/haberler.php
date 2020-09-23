@@ -3,8 +3,8 @@
 return [
     'app' => [
         'sorting_type_limit' => [
-            2 => 5, 
-            3 => 4
+            2 => 3, 
+            3 => 2
         ],
     ],
 

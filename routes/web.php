@@ -8,7 +8,9 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController@index');
 
-    Route::get('/detail', 'Post\NewsController@show');
+    Route::get('/detail', 'Post\PostController@show');
+
+    Route::get('/tag', 'Post\PostController@tag');
 
     Route::get('/category', 'Post\NewsController@index');
 

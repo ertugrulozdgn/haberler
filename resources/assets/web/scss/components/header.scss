@@ -34,7 +34,7 @@ header#app-header {
             }
 
             > li {
-                margin-right: 1rem;
+                margin-right: 1.5rem;
 
                 @include media-breakpoint-down(md) {
                     &:nth-child(n+4) {
@@ -46,7 +46,7 @@ header#app-header {
                     font-size: .75rem;
                     font-weight: bold;
                     color: #4c4e4d;
-
+                
                     > i {
                         font-size: .875rem;
                     }

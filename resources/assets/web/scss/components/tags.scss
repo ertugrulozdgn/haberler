@@ -1,0 +1,52 @@
+.tags-title {
+    > span {
+        font-weight: 100;
+        color: #4C4E4D;
+        margin: 0;
+        text-transform: uppercase;
+        @include media-breakpoint-down(md) {
+            font-size: 1rem;
+        }
+    }
+
+    > h1 {
+        font-weight: 900;
+        color: #4C4E4D;
+        font-size: 2rem;
+        font-style: italic;
+        text-transform: uppercase;
+        margin: 0;
+        @include media-breakpoint-down(md) {
+            font-size: 1.5rem;
+        }
+    }
+
+    >hr {
+        border: 2px solid #fff200;
+        margin-top: 0;
+    }
+
+}
+
+.tags {
+    > a {
+        text-decoration: none;
+        color: #4C4E4D;
+        > img {
+            width: 100%;
+            height: auto;
+        }
+
+        >h2 {
+            font-size: 1.25rem;
+            margin-top: .5rem;
+            @include media-breakpoint-down(md) {
+                font-size: 1.125rem;
+            }
+
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+}

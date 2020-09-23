@@ -17,7 +17,6 @@ class Post extends Model
    protected $dates = ['deleted_at', 'published_at'];
 
    
-
     //Relationships
     public function tags()
     {

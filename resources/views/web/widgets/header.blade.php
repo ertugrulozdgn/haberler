@@ -3,31 +3,13 @@
 		<nav class="d-flex">
 			<a href="/" class="icon-logo"></a>
 			<ul class="d-flex justify-content-between align-items-center mr-auto">
+				@foreach ($categories as $category)
 				<li>
-					<a href="#">CORONAVIRUS</a>
+					<a href="#">{{ $category->name }}</a>
 				</li>
+				@endforeach
 
-				<li>
-					<a href="#">OPEN SORUCED</a>
-				</li>
-
-				<li>
-					<a href="#">RECODE</a>
-				</li>
-
-				<li>
-					<a href="#">THE GOODS</a>
-				</li>
-
-				<li>
-					<a href="#">FUTURE PERFECT</a>
-				</li>
-
-				<li>
-					<a href="#">THE HIGHLIGHT</a>
-				</li>
-
-				<li>
+				{{-- <li>
 					<a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					MORE
 					</a>
@@ -38,7 +20,7 @@
 						<a class="dropdown-item disable-item-2" href="#">Another 2</a>
 						<a class="dropdown-item disable-item-2" href="#">Another 3</a>
 					</div>
-				</li>
+				</li> --}}
         	</ul>
 			<ul class="d-flex justify-content-between align-items-center">
 				<li>

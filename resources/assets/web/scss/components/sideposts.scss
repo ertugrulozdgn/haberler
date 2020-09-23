@@ -10,9 +10,23 @@
 
     > div {
         margin-bottom: 1rem;
+
         > a {
             text-decoration: none;
             color: #6E6666;
+
+            > span {
+                &:first-child {
+                    position: absolute;
+                    left: 5px;
+                    top: 30px;
+                    background: #4f7177;
+                    border-radius: 50%;
+                    color: white;
+                    padding: 3px 10px;
+                    font-weight: 700;
+                }
+            }
     
             &:hover  {
                 color: #bb2323;

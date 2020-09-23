@@ -15,9 +15,11 @@ App.imagePreview = function() {
 
 
 App.textEditor = function() {
-    CKEDITOR.replace('editor', {
-        height:400
-    });
+    if($('#editor').length > 0) {
+        CKEDITOR.replace('editor', {
+            height:400
+        });
+    }
 }
 
 App.multiSelect = function() {

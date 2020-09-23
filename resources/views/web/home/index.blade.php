@@ -6,38 +6,32 @@
         <div class="col-lg-8">
             <div class="swiper-container headline-slider" id="headlines">
                 <div class="swiper-wrapper">
+                    @foreach ($headlines as $headline)
                     <a href="" class="swiper-slide">
-                        <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
+                        <img src="{{ $headline->cover_image }} " alt="">
                         <div class="img-shadow"></div>
-                        <h2>Ehliyetler çipli kimlik kartına entegre oluyor</h2>
+                        <h2>{{ $headline->title }}</h2>
                     </a>
-                    <a href="" class="swiper-slide">
-                        <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
-                        <div class="img-shadow"></div>
-                        <h2>Apple Watch ile spor yapanlara 2100 TL ödeme yapılacak!</h2>
-                    </a>
-                    <a href="" class="swiper-slide">
-                        <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
-                        <div class="img-shadow"></div>
-                        <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
-                    </a>
+                    @endforeach
 				</div>
 				<div class="swiper-pagination"></div>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="subheadlines">
+                @foreach ($sub_headlines as $sub_headline)
                 <a href="">
-                    <img src="https://i.teknolojioku.com/2/350/220/storage/files/images/2020/09/15/2020-nissan-qashqai-fiyatlari-1Tnq_cover.jpg.webp" alt="">
+                    <img src="{{ $sub_headline->cover_image }}" alt="">
                     <div class="img-shadow"></div>
-                    <h2>Ehliyetler çipli kimlik kartına entegre oluyor</h2>
+                    <h2>{{ $sub_headline->title }}</h2>
 
                 </a>
-                <a href="">
+                @endforeach
+                {{-- <a href="">
                     <img src="https://i.teknolojioku.com/2/350/220/storage/files/images/2020/08/14/gm-20-pro-01-F1WW_cover.jpg.webp" alt="">
                     <div class="img-shadow"></div>
                     <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
-                </a>
+                </a> --}}
 			</div>
 		</div>
 
@@ -50,7 +44,7 @@
         <div class="col-lg-8">
             <div class="post image-left-post">
                 <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
+                    <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
                 </a>
                 <div class="info">
                     <span class="badge badge-danger">TEKNOLOJI</span>
@@ -66,7 +60,7 @@
             </div>
             <div class="post image-left-post">
                 <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
+                    <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
                 </a>
                 <div class="info">
                     <span class="badge badge-danger">TEKNOLOJI</span>
@@ -82,7 +76,7 @@
             </div>
             <div class="post big-post">
                 <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
+                    <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
                 </a>
                 <div class="info">
                     <a href="">
@@ -99,7 +93,7 @@
             </div>
             <div class="post image-left-post">
                 <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
+                    <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
                 </a>
                 <div class="info">
                     <span class="badge badge-danger">TEKNOLOJI</span>
@@ -115,7 +109,7 @@
             </div>
             <div class="post image-left-post">
                 <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
+                    <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
                 </a>
                 <div class="info">
                     <span class="badge badge-danger">TEKNOLOJI</span>
@@ -131,30 +125,8 @@
             </div>
         </div>
 
-        <div class="col-lg-4 sideposts-hidden">
-            <div class="sideposts">
-                <h3>EN ÇOK OKUNANLAR</h3>
-
-               <div>
-                <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
-                    <span>This theory might explain “Covid toes” and other mysteries of the disease</span>
-                </a>
-               </div>
-               <div>
-                <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
-                    <span>This theory might explain “Covid toes” and other mysteries of the disease</span>
-                </a>
-               </div>
-               <div>
-                <a href="">
-                    <img src="{{ asset('/storage/file/images/2020/09/18/deneme2_cover_img_5f647b7d3433c.jpg') }} " alt="">
-                    <span>This theory might explain “Covid toes” and other mysteries of the disease</span>
-                </a>
-               </div>
-            </div>
-        </div>
+        @widget('Web\Viewed')
+        
     </div>
 </div>
 

@@ -2,10 +2,9 @@
 
 namespace App\Widgets\Web;
 
-use App\Models\Category;
 use Arrilot\Widgets\AbstractWidget;
 
-class header extends AbstractWidget
+class viewed extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -20,8 +19,6 @@ class header extends AbstractWidget
      */
     public function run()
     {
-        $categories = Category::where('show_in_menu', 1)->get();
-
-        return view('web.widgets.header', compact('categories'));
+        return view('web.widgets.viewed');
     }
 }

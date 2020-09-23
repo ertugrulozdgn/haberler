@@ -7,7 +7,7 @@ require('./table');
 
 // NPM Packages
 require('multiselect');
-//require('select2');
+require('select2');
 require('bootstrap-tagsinput');
 
 //import 'jquery-ui/ui/widgets/sortable';

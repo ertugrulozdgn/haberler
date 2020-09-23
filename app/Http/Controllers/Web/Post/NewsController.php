@@ -11,8 +11,4 @@ class NewsController extends Controller
         return view('web.post.news.index');
     }
 
-    public function show()
-    {
-        return view('web.post.news.show');
-    }
 }
