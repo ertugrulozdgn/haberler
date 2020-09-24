@@ -8,7 +8,10 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController@index');
 
-    Route::get('/detail', 'Post\PostController@show');
+    Route::get('/{slug}-{id}', 'Post\PostController@show')->where([
+        'slug' => '[a-zA-Z-0-9-]+',
+        'id' => '[0-9]+'
+    ]);
 
     Route::get('/tag', 'Post\PostController@tag');
 

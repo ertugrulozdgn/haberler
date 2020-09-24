@@ -193,11 +193,11 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-2">
-                                    {{ Form::label('show_in_mainpage', 'Anasayfada', ['class' => 'control-label', 'style' => 'padding-bottom:15px']) }}
+                                    {{ Form::label('show_on_mainpage', 'Anasayfada', ['class' => 'control-label', 'style' => 'padding-bottom:15px']) }}
                                 </div>
                                 <div class="col-lg-10">
                                     @foreach($show_in_mainpage as $key => $value)
-                                        {{ Form::radio('show_in_mainpage', $key, $edit > 0 ? ($post->show_in_mainpage == $key ? true : false) : ($value == 'Görünsün' ? true : false), ['class' => 'iradio']) }} {{ $value }}
+                                        {{ Form::radio('show_on_mainpage', $key, $edit > 0 ? ($post->show_on_mainpage == $key ? true : false) : ($value == 'Görünsün' ? true : false), ['class' => 'iradio']) }} {{ $value }}
                                     @endforeach
                                 </div>
                             </div>

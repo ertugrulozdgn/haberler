@@ -11596,16 +11596,19 @@ header#app-header nav > ul > li > a > i {
 
   .subheadlines > a:first-child {
     margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .subheadlines > a:last-child {
     margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
 .subheadlines > a {
   position: relative;
   color: #FFF;
+  margin-bottom: 1rem;
 }
 
 .subheadlines > a > img {
@@ -11648,6 +11651,7 @@ header#app-header nav > ul > li > a > i {
 .post > .info > span {
   font-size: 0.615rem;
   border-radius: 0;
+  background-color: #4f7177;
 }
 
 .post > .info > span:hover {
@@ -11683,7 +11687,8 @@ header#app-header nav > ul > li > a > i {
 
 @media (max-width: 575.98px) {
   .post > .info > a > h2 {
-    font-size: 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.125rem;
   }
 }
 
@@ -11693,7 +11698,7 @@ header#app-header nav > ul > li > a > i {
 
 .post > .info > div span:first-child {
   font-weight: 500;
-  color: #ed2b23;
+  color: #bb2323;
 }
 
 @media (max-width: 575.98px) {
@@ -11733,11 +11738,13 @@ header#app-header nav > ul > li > a > i {
 
 .big-post > .info {
   padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 @media (max-width: 991.98px) {
   .big-post > .info {
-    padding-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -11763,8 +11770,15 @@ header#app-header nav > ul > li > a > i {
 
 @media (max-width: 991.98px) {
   .big-post > .info > a > h2 {
-    font-size: 1.25rem;
-    margin: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .big-post > .info > a > h2 {
+    font-size: 1.125rem;
+    margin-bottom: 0.125;
   }
 }
 
@@ -11772,11 +11786,18 @@ header#app-header nav > ul > li > a > i {
   color: #000;
   margin: 0;
   font-weight: 100;
+  text-align: justify;
 }
 
 @media (max-width: 991.98px) {
   .big-post > .info > a > p {
-    display: none;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .big-post > .info > a > p {
+    font-size: 0.75rem;
   }
 }
 
@@ -12014,6 +12035,11 @@ footer {
   .news-detail-content > p {
     font-size: 1rem;
   }
+}
+
+.news-detail-content > p > img {
+  width: 100% !important;
+  height: auto !important;
 }
 
 .recommended {

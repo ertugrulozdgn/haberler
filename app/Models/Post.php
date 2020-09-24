@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Jenssegers\Date\Date;
 use Storage;
 
 class Post extends Model
@@ -71,12 +72,16 @@ class Post extends Model
 
     public function getCoverImageAttribute()
     {
-        return env('APP_URL') . $this->cover_img->public_path;
+        if(!empty($this->cover_img)) {
+            return env('APP_URL') . $this->cover_img->public_path;
+        }
     }
 
     public function getHeadlineImageAttribute()
     {
-        return env('APP_URL') . $this->headline_img->public_path;
+        if(!empty($this->headline_img)) {
+            return env('APP_URL') . $this->headline_img->public_path;
+        }
     }
 
     public function getEditLinkAttribute()
@@ -103,7 +108,29 @@ class Post extends Model
         }
     }
 
+    public function getLinkAttribute() 
+    {
+        if(!empty($this->redirect_link)) {
+            return $this->redirect_link;
+        }
+        
+        return  action('Web\Post\PostController@show', [$this->slug, $this->id]);
+    }
+
     
+
+    //scopes
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function scopeShowMainPage($query)
+    {
+        return $query->where('show_on_mainpage', 1);
+    }
+
+  
 
     //Functions
     public function attachment($attachment_type)

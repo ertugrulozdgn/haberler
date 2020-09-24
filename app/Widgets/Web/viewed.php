@@ -2,6 +2,8 @@
 
 namespace App\Widgets\Web;
 
+use App\Data\PostData;
+use App\Models\Post;
 use Arrilot\Widgets\AbstractWidget;
 
 class viewed extends AbstractWidget
@@ -19,6 +21,14 @@ class viewed extends AbstractWidget
      */
     public function run()
     {
-        return view('web.widgets.viewed');
+        $posts_viewed = PostData::list([
+            'filters' => [
+                'show_on_mainpage' => 1,
+            ],
+            'order_by' => ['hit', 'desc'],
+            'count' => 4
+        ]);
+
+        return view('web.widgets.viewed', compact('posts_viewed'));
     }
 }

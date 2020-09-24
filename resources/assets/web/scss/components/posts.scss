@@ -15,6 +15,7 @@
         > span {
             font-size: .615rem;
             border-radius: 0;
+            background-color: #4f7177;
             &:hover {
                 background-color: #bb2323;
             }
@@ -40,7 +41,8 @@
                 }
 
                 @include media-breakpoint-down(xs) {
-                    font-size: 1rem;
+                    font-size: .875rem;
+                    margin-bottom: .125rem;
                 }
             }
         }
@@ -51,7 +53,7 @@
             span {
                 &:first-child {
                     font-weight: 500;
-                    color: #ed2b23;
+                    color: #bb2323;
                 }
             }
 
@@ -92,8 +94,10 @@
 
     > .info {
         padding-left: 2rem;
+        padding-right: 2rem;
         @include media-breakpoint-down(md) {
-            padding-left: 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
         > a {
             > span {
@@ -110,8 +114,12 @@
                 font-size: 2rem;
                 margin-bottom: 1rem;
                 @include media-breakpoint-down(md) {
-                    font-size: 1.25rem;
-                    margin: 0;
+                    font-size: 1.5rem;
+                    margin-bottom: .5rem;
+                }
+                @include media-breakpoint-down(xs) {
+                    font-size: 1.125rem;
+                    margin-bottom: .125;
                 }
             }
 
@@ -119,8 +127,12 @@
                 color: #000;
                 margin: 0;
                 font-weight: 100;
+                text-align: justify;
                 @include media-breakpoint-down(md) {
-                    display: none;
+                    font-size: 1rem;
+                }
+                @include media-breakpoint-down(xs) {
+                    font-size: .75rem;
                 }
             }
         }

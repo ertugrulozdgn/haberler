@@ -5,6 +5,7 @@ require('./app');
 require('./table');
 
 
+
 // NPM Packages
 require('multiselect');
 require('select2');

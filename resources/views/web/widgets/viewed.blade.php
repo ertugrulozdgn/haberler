@@ -2,24 +2,14 @@
     <div class="sideposts">
         <h3>EN ÇOK OKUNANLAR</h3>
 
+       @foreach ($posts_viewed as $post_viewed)
        <div>
-        <a href="">
+        <a href="{{ $post_viewed->link }}">
             <span>1</span>
-            <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-            <span>This theory might explain “Covid toes” and other mysteries of the disease</span>
+            <img src="{{ $post_viewed->cover_image }} " alt="">
+            <span>{{ $post_viewed->title }}</span>
         </a>
        </div>
-       <div>
-        <a href="">
-            <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-            <span>This theory might explain “Covid toes” and other mysteries of the disease</span>
-        </a>
-       </div>
-       <div>
-        <a href="">
-            <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-            <span>This theory might explain “Covid toes” and other mysteries of the disease</span>
-        </a>
-       </div>
+       @endforeach
     </div>
 </div>

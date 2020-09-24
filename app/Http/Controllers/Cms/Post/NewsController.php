@@ -72,7 +72,7 @@ class NewsController extends Controller
         $post->short_title = $request->input('short_title');
         $post->location = $request->input('location');
         $post->status = $request->input('status');
-        $post->show_on_mainpage = $request->input('show_in_mainpage');
+        $post->show_on_mainpage = $request->input('show_on_mainpage');
         $post->commentable = $request->input('commentable');
         $post->created_by = Auth::user()->id;
         $post->content = $request->input('content');
@@ -162,7 +162,7 @@ class NewsController extends Controller
         $post->short_title = $request->input('short_title');
         $post->location = $request->input('location');
         $post->status = $request->input('status');
-        $post->show_on_mainpage = $request->input('show_in_mainpage');
+        $post->show_on_mainpage = $request->input('show_on_mainpage');
         $post->commentable = $request->input('commentable');
         $post->updated_by = Auth::user()->id;
         $post->content = $request->input('content');

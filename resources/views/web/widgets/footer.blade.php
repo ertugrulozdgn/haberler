@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
         <div class="footer">
-            <a href="/" class="icon-logo"></a>
+            <a href="{{ action('Web\HomeController@index') }}" class="icon-logo"></a>
             <ul>
 				<li>
 					<a href="#">CORONAVIRUS</a>

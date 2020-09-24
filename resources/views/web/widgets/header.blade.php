@@ -1,7 +1,7 @@
 <header id="app-header" class="sticky-top">
     <div class="container">
 		<nav class="d-flex">
-			<a href="/" class="icon-logo"></a>
+			<a href="{{ action('Web\HomeController@index') }}" class="icon-logo"></a>
 			<ul class="d-flex justify-content-between align-items-center mr-auto">
 				@foreach ($categories as $category)
 				<li>
