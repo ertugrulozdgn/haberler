@@ -8,10 +8,10 @@
                 <div class="swiper-wrapper">
                     @foreach ($headlines as $headline)
                         <a href="{{ $headline->link }}" class="swiper-slide">
-                        <img src="{{ $headline->cover_image }} " alt="">
-                        <div class="img-shadow"></div>
-                        <h2>{{ $headline->title }}</h2>
-                    </a>
+                            <img src="{{ $headline->cover_image }} " alt="">
+                            <div class="img-shadow"></div>
+                            <h2>{{ $headline->title }}</h2>
+                        </a>
                     @endforeach
 				</div>
 				<div class="swiper-pagination"></div>
@@ -21,11 +21,10 @@
             <div class="subheadlines">
                 @foreach ($sub_headlines as $sub_headline)
                     <a href="{{ $sub_headline->link }}">
-                    <img src="{{ $sub_headline->cover_image }}" alt="">
-                    <div class="img-shadow"></div>
-                    <h2>{{ $sub_headline->title }}</h2>
-
-                </a>
+                        <img src="{{ $sub_headline->cover_image }}" alt="">
+                        <div class="img-shadow"></div>
+                        <h2>{{ $sub_headline->title }}</h2>
+                    </a>
                 @endforeach
 			</div>
 		</div>

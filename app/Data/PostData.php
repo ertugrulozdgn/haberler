@@ -5,6 +5,7 @@ namespace App\Data;
 use App\Models\Post;
 use App\Models\PostSorting;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class PostData 
 {
@@ -48,12 +49,23 @@ class PostData
         }
 
         $sorting = PostSorting::whereLocation($location)->first();
-        
         $posts = new Collection();
-        if(!empty($sorting)) {
+        if (!empty($sorting)) {
             $posts = $sorting->getPosts($count);
         }
         return $posts;
+
+        // return Cache::tags('sortings')->rememberForever(
+        //     ('sorting_' . $location . '_' . $count),
+        //     function () use ($location, $count) {
+        //         $sorting = PostSorting::whereLocation($location)->first();
+        //         $posts = new Collection();
+        //         if (!empty($sorting)) {
+        //             $posts = $sorting->getPosts($count);
+        //         }
+        //         return $posts;
+        //     }
+        // );
     }
 
 }

@@ -5,7 +5,7 @@ namespace App\Widgets\Web;
 use App\Models\Category;
 use Arrilot\Widgets\AbstractWidget;
 
-class header extends AbstractWidget
+class Sidemenu extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -20,8 +20,8 @@ class header extends AbstractWidget
      */
     public function run()
     {
-        $show_categories = Category::where('show_in_menu', 1)->get();
+        $categories = Category::all();
 
-        return view('web.widgets.header', compact('show_categories'));
+        return view('web.widgets.sidemenu', compact('categories'));
     }
 }

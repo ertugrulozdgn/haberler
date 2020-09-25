@@ -15,7 +15,7 @@ Route::group([
 
     Route::get('/tag', 'Post\PostController@tag');
 
-    Route::get('/category', 'Post\NewsController@index');
+    Route::get('/{slug}', 'Post\NewsController@index');
 
 
     Route::get('/deneme', function() {

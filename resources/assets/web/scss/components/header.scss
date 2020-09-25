@@ -31,15 +31,23 @@ header#app-header {
             height: 60px;
             @include media-breakpoint-down(md) {
                 height: 45px;
+
+                &.social-hidden {
+                    display: none;
+
+                    > li {
+                        &:last-child {
+                            display: block;
+                        }
+                    } 
+                }
             }
 
             > li {
                 margin-right: 1.5rem;
 
                 @include media-breakpoint-down(md) {
-                    &:nth-child(n+4) {
-                        display: none;
-                    }
+                    display: none
                 }
 
                 > a {

@@ -11503,6 +11503,14 @@ header#app-header nav > ul {
   header#app-header nav > ul {
     height: 45px;
   }
+
+  header#app-header nav > ul.social-hidden {
+    display: none;
+  }
+
+  header#app-header nav > ul.social-hidden > li:last-child {
+    display: block;
+  }
 }
 
 header#app-header nav > ul > li {
@@ -11510,7 +11518,7 @@ header#app-header nav > ul > li {
 }
 
 @media (max-width: 991.98px) {
-  header#app-header nav > ul > li:nth-child(n+4) {
+  header#app-header nav > ul > li {
     display: none;
   }
 }
@@ -11819,17 +11827,6 @@ header#app-header nav > ul > li > a > i {
   color: #6E6666;
 }
 
-.sideposts > div > a > span:first-child {
-  position: absolute;
-  left: 5px;
-  top: 30px;
-  background: #4f7177;
-  border-radius: 50%;
-  color: white;
-  padding: 3px 10px;
-  font-weight: 700;
-}
-
 .sideposts > div > a:hover {
   color: #bb2323;
 }
@@ -12070,9 +12067,9 @@ footer {
   font-size: 1.125rem;
 }
 
-@media (max-width: 991.98px) {
-  .recommended-hidden {
-    display: none;
+@media (max-width: 575.98px) {
+  .recommended > a > span {
+    font-size: 0.875rem;
   }
 }
 
@@ -12281,5 +12278,102 @@ footer {
 
 .tags > a > h2:hover {
   color: #000;
+}
+
+#main {
+  padding: 1rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+@media (max-width: 991.98px) {
+  #main {
+    padding: 0.5rem;
+  }
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #f8f9fa;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidenav > span {
+  display: table;
+  margin: 0 auto;
+}
+
+.sidenav > span > a {
+  text-decoration: none;
+  color: #4c4e4d;
+  line-height: 3rem;
+  font-size: 1rem;
+  font-weight: 100;
+  padding-left: 1rem;
+}
+
+.sidenav > a {
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  font-weight: 100;
+  color: #4c4e4d;
+  border-top: 1px solid #f1f1f1;
+}
+
+.sidenav > a:hover {
+  color: #000;
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 991.98px) {
+  .sidenav > a {
+    font-size: 0.875rem;
+  }
+}
+
+.sidenav > a.icon-logo {
+  width: 100%;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-color: #fff200;
+  background-size: 85px;
+  background-position: center;
+}
+
+.sidenav > a.icon-logo:hover {
+  background-color: #fff200;
+}
+
+@media (max-width: 991.98px) {
+  .sidenav > a.icon-logo {
+    background-size: 65px;
+  }
+}
+
+.sidenav > a.closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+}
+
+.sidenav > a.closebtn:hover {
+  background-color: #fff200;
+}
+
+.sidenav > a > i {
+  padding: 0 0.5rem;
+}
+
+.sidenav > hr {
+  margin: 0;
 }
 

@@ -13,6 +13,8 @@
 		@widget('Web\Header')
 		@yield('content')
 		@widget('Web\Footer')
+		
 	<script src="{{ mix("assets/web/js/build.js") }}"></script>
+	@yield('js')
 	</body>
 </html>

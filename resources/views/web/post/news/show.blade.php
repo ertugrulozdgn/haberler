@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="container recommended-hidden mt-3">
+    {{-- <div class="container recommended-hidden mt-3">
         <div class="news-detail-bottom-header">
             <h3>Önerilenler</h3>
         <hr>
@@ -48,6 +48,25 @@
                 </a>
             @endforeach
         </div>
+    </div> --}}
+
+    <div class="container mt-3">
+        <div class="news-detail-bottom-header">
+            <h3>Önerilenler</h3>
+        <hr>
+        </div>
+        <div class="row">
+            @foreach ($recommended_posts as $recommended_post)
+                <div class="col-6 col-lg-3">
+                    <div class="recommended">
+                        <a href="{{ $recommended_post->link }}">
+                            <img src="{{ $recommended_post->cover_image }} " alt="">
+                            <span>{{ $recommended_post->title }}</span>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 
     <div class="container mt-4">
@@ -57,21 +76,21 @@
         </div>
         <div class="row">
             @foreach ($last_posts as $other_post)
-            <div class="col-lg-6">
-                <div class="post image-left-post">
-                    <a href="">
-                        <img src="{{ $other_post->cover_image }} " alt="">
-                    </a>
-                    <div class="info">
+                <div class="col-lg-6">
+                    <div class="post image-left-post">
                         <a href="">
-                            <h2 class="info-header">{{ $other_post->title }}</h2>
+                            <img src="{{ $other_post->cover_image }} " alt="">
                         </a>
-                        <div>
-                            <span>{{ $other_post->created_by_name }}</span>
+                        <div class="info">
+                            <a href="">
+                                <h2 class="info-header">{{ $other_post->title }}</h2>
+                            </a>
+                            <div>
+                                <span>{{ $other_post->created_by_name }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
