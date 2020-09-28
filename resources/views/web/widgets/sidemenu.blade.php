@@ -10,7 +10,7 @@
     <hr>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     @foreach ($categories as $category)
-        <a href="#"><i class="fa fa-angle-right"></i> {{ $category->name }}</a>
+      <a href="{{ $category->link }}"><i class="fa fa-angle-right"></i> {{ $category->name }}</a>
     @endforeach
 </div>
 

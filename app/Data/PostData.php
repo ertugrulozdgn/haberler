@@ -6,23 +6,36 @@ use App\Models\Post;
 use App\Models\PostSorting;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class PostData 
 {
-    public static function get($slug, $id): ?Post
+    public static function get($slug, $id): ?Post // Post || null
     {
         $post = Post::active()->whereSlug($slug)->whereId($id)->first();
 
         return $post;
+
+        // return Cache::remember('post_' . $id, 360, function () use ($slug, $id) {
+        //     $post = Post::active()->whereSlug($slug)->whereId($id)->first();
+
+        //     return $post;
+        // });
     }
 
-    public static function list(array $param): Collection
+    public static function list(array $param): Collection //get işlemi olan Collection döner
     {
         $query = Post::active();
 
         if(array_key_exists('filters', $param) && !empty($param['filters'])) {   // Belirtilen anahtar veya indis dizide var mı
             foreach($param['filters'] as $key => $value) {                      //filters içindekileri key value diye dönderdik.
-                $query->where($key, $value);
+                if($key == 'categories') {
+                    $query->whereHas('categories', function ($cat) use ($value) {
+                        $cat->whereId($value);
+                    });
+                } else {
+                    $query->where($key, $value);
+                }
             }
         }
 
@@ -56,7 +69,7 @@ class PostData
         return $posts;
 
         // return Cache::tags('sortings')->rememberForever(
-        //     ('sorting_' . $location . '_' . $count),
+        //     ('sorting_' . $location . '_' . $count), 
         //     function () use ($location, $count) {
         //         $sorting = PostSorting::whereLocation($location)->first();
         //         $posts = new Collection();
@@ -66,6 +79,7 @@ class PostData
         //         return $posts;
         //     }
         // );
+
     }
 
 }

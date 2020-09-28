@@ -15,7 +15,9 @@ Route::group([
 
     Route::get('/tag', 'Post\PostController@tag');
 
-    Route::get('/{slug}', 'Post\NewsController@index');
+    Route::get('/{slug}', 'Post\NewsController@index')->where(
+        'slug', '[a-z0-9-]+'
+    );
 
 
     Route::get('/deneme', function() {
