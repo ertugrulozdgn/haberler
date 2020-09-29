@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Web\Post;
 
 use App\Data\PostData;
+use App\Data\TagData;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    //id gelecek slug gelecek func içine unutma
     public function show($slug, $id)
     {
         $post = PostData::get($slug, $id);
 
-        abort_if(empty($post), 404); //haber yoksa 404
+        abort_if(empty($post), 404);
 
         if(!empty($post->redirect_link)) {
             return redirect($post->redirect_link, 301);
@@ -28,14 +28,30 @@ class PostController extends Controller
             'post_type' => 0
             ],
             'except' => [$post->id],
-            'count' => 4
+            'count' => 4,
         ]);
 
         return view('web.post.news.show', compact('post', 'last_posts', 'recommended_posts'));
     }
 
-    public function tag() 
-    {    
-        return view('web.post.tag');
+    public function tag($slug) 
+    {    //Sistemde böyle bi tag var mı
+        $tag = TagData::get($slug);
+        //yoksa 404
+        abort_if(empty($tag), 404);
+        //Bu tag ile ilgili post lar
+        $posts = PostData::list([
+            'filters' => [
+                'tags' => $tag->id
+            ],
+            'cache_tag' => 'tag_posts_' . $slug
+        ]);
+
+        // $posts = Post::active()->whereHas('tags', function($t) use ($tag) {
+        //     $t->whereId($tag->id);
+        // })->get();
+
+
+        return view('web.post.tag', compact('tag', 'posts'));
     }
 }

@@ -17,4 +17,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(Post::class);
     }
+
+    public function getLinkAttribute() 
+    {
+        return action('Web\Post\PostController@tag', [$this->slug]);
+    }
 }

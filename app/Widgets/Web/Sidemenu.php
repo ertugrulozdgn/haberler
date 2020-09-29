@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Web;
 
+use App\Data\CategoryData;
 use App\Models\Category;
 use Arrilot\Widgets\AbstractWidget;
 
@@ -20,7 +21,7 @@ class Sidemenu extends AbstractWidget
      */
     public function run()
     {
-        $categories = Category::all();
+        $categories = CategoryData::sidemenu();
 
         return view('web.widgets.sidemenu', compact('categories'));
     }

@@ -102,7 +102,7 @@ class NewsController extends Controller
             $tag = Tag::firstOrCreate(['name' => $tag, 'slug' => Str::slug($tag)]);
             $tagIds[] = $tag->id;
         }
-
+        
         $post->save();
 
         $post->tags()->sync($tagIds);

@@ -27,8 +27,6 @@ class HomeController extends Controller
         $used_ids_sub = $sub_headlines->pluck('id')->toArray();
         $used_ids_total = array_merge($used_ids, $used_ids_sub);
 
-        // $posts = Post::whereNotIn('id', $used_ids_total)->whereStatus(1)->orderBy('published_at', 'desc')->take(15)->get();
-
         $posts = PostData::list([
             'filters' => [
                 'show_on_mainpage' => 1, 
@@ -36,7 +34,8 @@ class HomeController extends Controller
             ],
             'except' => $used_ids_total,
             'order_by' => ['published_at', 'desc'],
-            'count' => 15
+            'count' => 15,
+            'cache_tag' => 'posts'
         ]);
 
         return view('web.home.index', compact('headlines', 'sub_headlines', 'posts'));

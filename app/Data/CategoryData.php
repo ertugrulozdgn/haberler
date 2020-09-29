@@ -2,15 +2,30 @@
 
 namespace App\Data;
 
-use App\Models\Category;;
+use App\Models\Category;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryData
 {
-    public static function slug($slug): ?Category
+    public static function get($slug): ?Category
     {
-        $categories = Category::active()->whereSlug($slug)->first();
+        return Cache::tags('categories')->rememberForever('get_' . $slug, function () use ($slug) {
+            return Category::active()->whereSlug($slug)->first();
+        });
+    }
 
-        return $categories;
+    public static function menu(): Collection
+    {
+        return Cache::tags('categories')->rememberForever('menu', function () {
+            return Category::active()->where('show_in_menu', 1)->get();
+        });
+    }
+
+    public static function sidemenu()
+    {
+        return Cache::tags('categories')->rememberForever('sidemenu', function () {
+            return Category::active()->get();
+        });
     }
 }

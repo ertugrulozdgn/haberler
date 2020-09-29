@@ -12017,6 +12017,10 @@ footer {
   }
 }
 
+.news-detail-content {
+  margin-bottom: 1.5rem;
+}
+
 .news-detail-content > img {
   width: 100%;
   height: auto;
@@ -12037,6 +12041,25 @@ footer {
 .news-detail-content > p > img {
   width: 100% !important;
   height: auto !important;
+}
+
+.tags {
+  margin-bottom: 1.5rem;
+}
+
+.tags > span {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0.5rem;
+  line-height: 23px;
+}
+
+.tags > a.badge-secondary {
+  color: #000;
+  background-color: #F1F1F1;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  font-weight: 100;
 }
 
 .recommended {

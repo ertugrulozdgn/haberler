@@ -33,23 +33,15 @@
 
             </div>
         </div>
+        <div class="col-lg-8">
+            <div class="tags">
+                <span>Etiketler</span>
+                @foreach ($post->tags as $tag)
+                <a href="{{ $tag->link }}" class="badge badge-secondary">{{ $tag->name }}</a>
+                @endforeach
+            </div>
+        </div>
     </div>
-
-    {{-- <div class="container recommended-hidden mt-3">
-        <div class="news-detail-bottom-header">
-            <h3>Önerilenler</h3>
-        <hr>
-        </div>
-        <div class="recommended">
-            @foreach ($recommended_posts as $recommended_post)
-                <a href="{{ $recommended_post->link }}">
-                    <img src="{{ $recommended_post->cover_image }} " alt="">
-                    <span>{{ $recommended_post->title }}</span>
-                </a>
-            @endforeach
-        </div>
-    </div> --}}
-
     <div class="container mt-3">
         <div class="news-detail-bottom-header">
             <h3>Önerilenler</h3>

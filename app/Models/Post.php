@@ -19,6 +19,11 @@ class Post extends Model
 
    
     //Relationships
+    public function user()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
+    
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
@@ -37,9 +42,7 @@ class Post extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_post', 'post_id', 'category_id');
-    }
-
-    
+    }    
 
     //Attributes
     public function getCreatedByNameAttribute()

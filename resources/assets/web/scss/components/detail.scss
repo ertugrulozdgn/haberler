@@ -65,6 +65,7 @@
 
 
 .news-detail-content{
+    margin-bottom: 1.5rem;
     > img {
         width: 100%;
         height: auto;
@@ -80,6 +81,28 @@
         > img {
             width: 100% !important;
             height: auto !important;
+        }
+    }
+}
+
+.tags {
+    margin-bottom: 1.5rem;
+
+
+    > span {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin: .5rem;
+        line-height: 23px;
+    }
+
+    > a {
+        &.badge-secondary {
+            color: #000;
+            background-color: #F1F1F1;
+            font-size: .875rem;
+            margin-right: .5rem;
+            font-weight: 100;
         }
     }
 }

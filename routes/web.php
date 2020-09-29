@@ -13,15 +13,8 @@ Route::group([
         'id' => '[0-9]+'
     ]);
 
-    Route::get('/tag', 'Post\PostController@tag');
+    Route::get('/etiket/{slug}', 'Post\PostController@tag')->where('slug', '[a-z0-9-]+');
 
-    Route::get('/{slug}', 'Post\NewsController@index')->where(
-        'slug', '[a-z0-9-]+'
-    );
-
-
-    Route::get('/deneme', function() {
-        return view('web.deneme');
-    });
+    Route::get('/{slug}', 'Post\NewsController@index')->where('slug', '[a-z0-9-]+');
 });
 

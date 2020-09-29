@@ -12,16 +12,17 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index($slug) 
-    {
-        $category = CategoryData::slug($slug);
-
+    {   //Sistemde böyle bi category var mı
+        $category = CategoryData::get($slug);
+        //yoksa 404
         abort_if(empty($category), 404);
-        
+        //bu category ile ilgili post lar
         $header_posts = PostData::list([
             'filters' => [
                 'categories' => $category->id
             ],
-            'count' => 2
+            'count' => 2,
+            'cache_tag' => 'post_category_' . $category->id,
         ]);
 
         $used_ids = $header_posts->pluck('id')->toArray();
@@ -30,7 +31,8 @@ class NewsController extends Controller
             'filters' => [
                 'categories' => $category->id
             ],
-            'except' => $used_ids
+            'except' => $used_ids,
+            'cache_tag' => 'post_category_' . $category->id,
         ]);
 
         return view('web.post.news.index', compact('category', 'posts', 'header_posts'));

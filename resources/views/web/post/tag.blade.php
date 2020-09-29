@@ -3,61 +3,21 @@
 @section('content')
     <div class="container mt-5">
         <div class="tags-title">
-            <h1>Porsche</h1>
+            <h1>{{ $tag->name }}</h1>
             <span>Haberleri</span>
             <hr>
         </div>
         <div class="row">
+            @foreach ($posts as $post)
             <div class="col-lg-4">
                 <div class="tags">
-                    <a href="">
-                        <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-                        <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
+                    <a href="{{ $post->link }}">
+                        <img src="{{ $post->cover_image }}" alt="">
+                        <h2>{{ $post->title }}</h2>
                     </a>
                 </div>
             </div>
-
-            <div class="col-lg-4">
-                <div class="tags">
-                    <a href="">
-                        <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-                        <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="tags">
-                    <a href="">
-                        <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-                        <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="tags">
-                    <a href="">
-                        <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-                        <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="tags">
-                    <a href="">
-                        <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-                        <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="tags">
-                    <a href="">
-                        <img src="{{ asset('/storage/file/images/2020/09/23/deneme_cover_img_5f6b2e385581e.jpg') }} " alt="">
-                        <h2>iPhone 11 fiyatında kaçırılmayacak indirim! Hem de Türkiye'de!</h2>
-                    </a>
-                </div>
-            </div>            
+            @endforeach
         </div>
     </div>
 @endsection
