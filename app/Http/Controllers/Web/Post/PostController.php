@@ -20,7 +20,13 @@ class PostController extends Controller
             return redirect($post->redirect_link, 301);
         }
 
-        $recommended_posts = Post::active()->whereNotIn('id', [$post->id])->inRandomOrder()->limit(4)->get();
+        $recommended_posts = PostData::list([
+            'filters' => [
+                'show_on_mainpage' => 1
+            ],
+            'except' => [$post->id],
+            'random' => 4
+        ]);
 
         $last_posts = PostData::list([
             'filters' => [

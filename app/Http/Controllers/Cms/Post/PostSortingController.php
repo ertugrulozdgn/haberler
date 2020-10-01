@@ -49,40 +49,11 @@ class PostSortingController extends Controller
         $post_ids = array_slice($items, 0, $take);  //
         $post_ids = array_map('intval', $post_ids);
 
-        $post_sorting->posts = json_encode($post_ids);
+        $post_sorting->posts = json_encode((array) $post_ids);
         
         $post_sorting->save();
 
         return response()->json(['success' => 'success'], 200);
     }
 
-
-
-
-    // public function store() 
-    // {
-    //     $location = (int) request()->query('location');
-
-    //     $post_sorting = PostSorting::whereLocation($location)->first();
-
-    //     if(!$post_sorting) {
-    //         $post_sorting = new PostSorting();
-    //     }
-
-    //     $post_sorting->location = (int) $location;
-    //     $post_sorting->posts = null;
-    //     $post_sorting->status = 1;
-    //     $post_sorting->save();
-
-
-
-        
-    // }
-
-    // public function store(Request $request) 
-    // {
-    //     $sortedList = PostSorting::where('location', $request->location)->first();
-    //     $sortedList->posts = json_encode($request->sortings);
-    //     $sortedList->save();
-    // }
 }

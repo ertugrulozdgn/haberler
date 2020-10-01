@@ -16,7 +16,6 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             return action('Cms\Auth\LoginController@login');
-        
         } 
     }
 }

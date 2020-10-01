@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -40,8 +41,30 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function login(Request $request)
+    {
+        $request->flash();
+
+        $credentials = $request->only('email','password');
+        $credentials['status'] = 1;
+        $remember_token = $request->filled('remember') ? true : false;  //dd() ile kontrol ettiğimizde remembere_token sonucu "on" dönüyor. Bu yüzden bir if koşulu yaptık.
+
+        if (Auth::attempt($credentials,$remember_token)) // attempt veritabanında arar.
+        {
+            return redirect()->intended(action('Cms\DashboardController@index'));
+
+        } else {
+            if($credentials['status'] == 1) {
+                return back()->with('error', 'Erişim Yetkiniz Yoktur');
+            } else {
+                return back()->with('error','Email veya Şifre Hatalı!');
+            }
+        }
+    }
+
     public function showLoginForm()
     {
+    
         $form_referrer = action('Cms\Admin\UserController@index');
 
         return view('cms.auth.login', compact('form_referrer'));

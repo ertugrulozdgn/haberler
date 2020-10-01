@@ -105,10 +105,26 @@ class NewsController extends Controller
         
         $post->save();
 
+        if($post->location != 1 && $post->status == 1) {
+            $post_sorting = PostSorting::whereLocation($post->location)->first();
+
+            $post_ids = json_decode($post_sorting->posts);
+            
+            if (!in_array($post->id, $post_ids)) {
+                $post_ids = array_merge([$post->id], $post_ids);
+                if (count($post_ids) > config('haberler.app.sorting_type_limit')[$post->location]) {
+                    array_pop($post_ids);
+                }
+                $post_sorting->posts = json_encode($post_ids);
+                $post_sorting->save();
+            }
+        }
+
         $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
 
-        return response()->json(['success' => 'success'], 200);
+        // return response()->json(['success' => 'success'], 200);
+        return back();
     }
 
 
@@ -191,10 +207,35 @@ class NewsController extends Controller
         }
 
         $post->save();
+
+        // if($post->location != 1 && $post->status == 1) {
+        //     $post_sorting = PostSorting::whereLocation($post->location)->first();
+
+        //     $post_ids = json_decode($post_sorting->posts);
+
+        //     if (!in_array($post->id, $post_ids)) {
+        //         $post_ids = array_merge([$post->id], $post_ids);
+        //         if(count($post_ids) > config('haberler.app.sorting_type_limit')[$post->location]) {
+        //             array_pop($post_ids);
+        //         }
+        //         $post_sorting->posts = json_encode($post_ids);
+        //         $post_sorting->save();
+        //     }
+        // } 
+
+
+        $post_sorting = PostSorting::whereLocation(2)->first();
+        $post_ids = json_decode($post_sorting->posts);
+        if(in_array($post->id, $post_ids)) {
+            dd(true);
+        }
+
         $post->tags()->sync($tagIds);
         $post->categories()->sync($request->input('category_id'));
 
-        return response()->json(['success' => 'success'], 200);
+        return back();
+
+        //return response()->json(['success' => 'success'], 200);
 
         
     } 

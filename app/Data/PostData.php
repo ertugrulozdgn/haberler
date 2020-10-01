@@ -23,8 +23,8 @@ class PostData
         return Cache::tags($cache_tag)->remember(md5(json_encode($param)), $cache_minutes, function () use ($param) {
             $query = Post::with(['categories', 'cover_img', 'user'])->active();
 
-            if(array_key_exists('filters', $param) && !empty($param['filters'])) {   // Belirtilen anahtar veya indis dizide var mı
-                foreach($param['filters'] as $key => $value) {                      //filters içindekileri key value diye dönderdik.
+            if(array_key_exists('filters', $param) && !empty($param['filters'])) {  
+                foreach($param['filters'] as $key => $value) {                     
                     if($key == 'categories' || $key == 'tags') {
                         $query->whereHas($key, function ($a) use ($value) {
                             $a->whereId($value);
@@ -47,6 +47,10 @@ class PostData
                 $query->orderBy($param['order_by'][0], $param['order_by'][1]);
             } else {
                 $query->orderBy('published_at', 'desc');
+            }
+
+            if(array_key_exists('random', $param)) {
+                $query->inRandomOrder()->limit($param['random']);
             }
             return $query->get();
         });
