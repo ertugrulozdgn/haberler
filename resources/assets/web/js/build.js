@@ -12,7 +12,6 @@ import Swiper from 'swiper';
 global.Swiper = Swiper;
 
 
-
 require('./sliders');
 
 Slider.headlines();

@@ -18,14 +18,6 @@ Route::group([
         Route::get('sorting', 'Post\PostSortingController@index');
         Route::post('sorting/update-location', 'Post\PostSortingController@sort');
         Route::resource('setting','Admin\SettingController');
-
-        Route::get('deneme', function () {
-            return view('cms.deneme4');
-        });
-    });
-
-    Route::get('ertu', function() {
-        echo asset('/storage/file/images/2020/09/14/deneme_cover_img_5f5f1c46eb57b.jpg');
     });
 });
 

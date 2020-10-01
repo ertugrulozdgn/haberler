@@ -1,0 +1,3 @@
+window.Weather = {};
+
+Weather.headline()

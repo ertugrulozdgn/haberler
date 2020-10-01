@@ -1,5 +1,6 @@
 @extends('web.layouts.master')
 
+@section('title', config('settings.mainpage_title'))
 @section('content')
 <div class="container mt-5">
     <div class="row">
@@ -30,8 +31,9 @@
 		</div>
 
     </div>
-    <hr id="">
 </div>
+
+@widget('Web\Weather')
 
 <div class="container">
     <div class="row">
@@ -83,5 +85,4 @@
         
     </div>
 </div>
-
 @endsection

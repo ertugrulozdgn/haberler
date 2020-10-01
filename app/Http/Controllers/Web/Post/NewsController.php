@@ -54,8 +54,5 @@ class NewsController extends Controller
         // return view('web.post.news.index', compact('category', 'posts', 'header_posts'));
 
 //-----------------------------------------------------
-
-        
     }
-
 }

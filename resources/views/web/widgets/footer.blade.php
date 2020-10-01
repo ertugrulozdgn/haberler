@@ -3,23 +3,11 @@
         <div class="footer">
             <a href="{{ action('Web\HomeController@index') }}" class="icon-logo"></a>
             <ul>
-				<li>
-					<a href="#">CORONAVIRUS</a>
-				</li>
-
-				<li>
-					<a href="#">OPEN SORUCED</a>
-				</li>
-
-				<li>
-					<a href="#">RECODE</a>
-                </li>
+				@foreach ($pages as $page)
                 <li>
-					<a href="#">CONTACT</a>
-                </li>
-                <li>
-					<a href="#">RECODE</a>
-                </li>
+                    <a href="{{ $page->link }}">{{ $page->title }}</a>
+				</li>
+                @endforeach
             </ul>
             <div class="information">
                 <span>BILGIN PRO</span>

@@ -10,7 +10,7 @@ class CategoryData
 {
     public static function get($slug): ?Category
     {
-        return Cache::tags('categories')->rememberForever('get_' . $slug, function () use ($slug) {
+        return Cache::tags('categories')->rememberForever('category_' . $slug, function () use ($slug) {
             return Category::active()->whereSlug($slug)->first();
         });
     }
@@ -22,7 +22,7 @@ class CategoryData
         });
     }
 
-    public static function sidemenu()
+    public static function sidemenu(): Collection
     {
         return Cache::tags('categories')->rememberForever('sidemenu', function () {
             return Category::active()->get();

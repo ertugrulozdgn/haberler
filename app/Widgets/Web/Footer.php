@@ -2,7 +2,10 @@
 
 namespace App\Widgets\Web;
 
+use App\Data\PageData;
+use App\Models\Page;
 use Arrilot\Widgets\AbstractWidget;
+
 
 class footer extends AbstractWidget
 {
@@ -19,6 +22,8 @@ class footer extends AbstractWidget
      */
     public function run()
     {
-        return view('web.widgets.footer');
+        $pages = PageData::footer();
+
+        return view('web.widgets.footer', compact('pages'));
     }
 }

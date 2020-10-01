@@ -22,4 +22,5 @@ class Tag extends Model
     {
         return action('Web\Post\PostController@tag', [$this->slug]);
     }
+
 }

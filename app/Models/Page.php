@@ -15,4 +15,16 @@ class Page extends Model
 
         return $show_in_footer[$this->show_in_footer] ?? 'Göster';
     }
+
+    //attributes
+    public function getLinkAttribute()
+    {
+        return action('Web\PageController@show', [$this->slug]);
+    }
+
+    //scopes
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }

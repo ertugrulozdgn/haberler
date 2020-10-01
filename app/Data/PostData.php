@@ -11,8 +11,8 @@ class PostData
 {
     public static function get($slug, $id): ?Post // Post || null
     {
-        return Cache::remember('post_' . $id, 360, function () use ($slug, $id) {
-            return Post::active()->whereSlug($slug)->whereId($id)->first();
+        return Cache::remember('post_' . $slug . '_' . $id, 360, function () use ($slug, $id) {
+            return Post::with(['categories', 'cover_img', 'tags', 'user'])->active()->whereSlug($slug)->whereId($id)->first();
         });
     }
 
@@ -21,7 +21,7 @@ class PostData
         $cache_tag = isset($param['cache_tag']) ? $param['cache_tag'] : '';
         $cache_minutes = isset($param['cache_minutes']) ? $param['cache_minutes'] : 60;
         return Cache::tags($cache_tag)->remember(md5(json_encode($param)), $cache_minutes, function () use ($param) {
-            $query = Post::with('user')->active();
+            $query = Post::with(['categories', 'cover_img', 'user'])->active();
 
             if(array_key_exists('filters', $param) && !empty($param['filters'])) {   // Belirtilen anahtar veya indis dizide var mı
                 foreach($param['filters'] as $key => $value) {                      //filters içindekileri key value diye dönderdik.

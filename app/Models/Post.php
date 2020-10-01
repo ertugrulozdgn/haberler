@@ -21,7 +21,7 @@ class Post extends Model
     //Relationships
     public function user()
     {
-        return $this->hasOne(User::class,'id','user_id');
+        return $this->hasOne(User::class,'id','editor_id');
     }
     
     public function tags()
@@ -47,7 +47,7 @@ class Post extends Model
     //Attributes
     public function getCreatedByNameAttribute()
     {
-        return User::where('id', $this->created_by)->first()->name;
+        return $this->user->name;//User::where('id', $this->created_by)->first()->name;
     }
 
 
@@ -154,6 +154,6 @@ class Post extends Model
         return $attachment->id;
 
         // $this->$column = $attcehmentent->id;
-      //$post->cover_id = $attcehmentent->id;
+        // $post->cover_id = $attcehmentent->id;
     }
 }

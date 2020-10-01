@@ -13,4 +13,5 @@ class TagData
             return Tag::whereSlug($slug)->first();
        });
     }
+
 }

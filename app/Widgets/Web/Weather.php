@@ -2,12 +2,9 @@
 
 namespace App\Widgets\Web;
 
-use App\Data\CategoryData;
-use App\Data\PageData;
-use App\Models\Category;
 use Arrilot\Widgets\AbstractWidget;
 
-class Sidemenu extends AbstractWidget
+class Weather extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -22,10 +19,6 @@ class Sidemenu extends AbstractWidget
      */
     public function run()
     {
-        $categories = CategoryData::sidemenu();
-
-        $pages = PageData::footer();
-
-        return view('web.widgets.sidemenu', compact('categories', 'pages'));
+        return view('web.widgets.weather');
     }
 }

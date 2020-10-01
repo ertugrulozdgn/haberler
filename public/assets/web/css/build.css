@@ -11863,7 +11863,7 @@ footer {
 .footer a {
   text-decoration: none;
   color: black;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .footer a.icon-logo {
@@ -11886,10 +11886,11 @@ footer {
   align-items: center;
   height: 150px;
   margin: 0;
+  padding: 0;
 }
 
 .footer ul li {
-  margin-right: 10px;
+  margin-right: 1.5rem;
 }
 
 @media (max-width: 991.98px) {
@@ -11897,6 +11898,7 @@ footer {
     flex-direction: column;
     font-size: 0.5rem;
     justify-content: center;
+    padding-left: 2rem;
   }
 }
 
@@ -11913,7 +11915,7 @@ footer {
 
 @media (max-width: 991.98px) {
   .footer .information span {
-    font-size: 0.5rem;
+    font-size: 0.625rem;
   }
 }
 
@@ -12341,6 +12343,12 @@ footer {
   padding-left: 1rem;
 }
 
+.sidenav > div {
+  padding: 0.25rem;
+  text-align: center;
+  background-color: #E7E7E7;
+}
+
 .sidenav > a {
   padding: 0.5rem;
   text-decoration: none;
@@ -12398,5 +12406,18 @@ footer {
 
 .sidenav > hr {
   margin: 0;
+}
+
+.page-header > h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #4c4e4d;
+  margin: 0;
+}
+
+.page-header > hr {
+  border: 1px solid #fff200;
+  margin-top: 0;
 }
 

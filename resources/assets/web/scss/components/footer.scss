@@ -13,7 +13,7 @@ footer {
         a{
             text-decoration: none;
             color: black;
-            font-size: .75rem;
+            font-size: .875rem;
             &.icon-logo {
                 width: 120px;
                 height: 150px;
@@ -31,13 +31,15 @@ footer {
             align-items: center;
             height: 150px;
             margin: 0;
+            padding: 0;
             li {
-                margin-right: 10px;
+                margin-right: 1.5rem;
             }
             @include media-breakpoint-down(md) {
                 flex-direction: column;
                 font-size: .5rem;
                 justify-content: center;
+                padding-left: 2rem;
             }
 
         }
@@ -50,7 +52,7 @@ footer {
             span {
                 font-size: 0.8125rem;
                 @include media-breakpoint-down(md) {
-                    font-size: 0.5rem;
+                    font-size: 0.625rem;
                 }
                 &:first-child {
                     font-size: 1.125rem;
