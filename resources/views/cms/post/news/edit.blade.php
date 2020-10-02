@@ -31,7 +31,7 @@
                             <div class="col-lg-10">
                                 @foreach ($location as $value => $name)
                                     {{ Form::radio('location', $value, $edit > 0 ? ($post->location == $value ? true : false) : ($name == 'Normal' ? true : false), ['class' => 'iradio']) }} {{ $name }}
-                                @endforeach
+                                @endforeach 
                             </div>
                         </div>
                         </div>

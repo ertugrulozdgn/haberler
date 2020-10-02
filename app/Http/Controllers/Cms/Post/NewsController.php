@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 class NewsController extends Controller
 {
@@ -109,6 +110,8 @@ class NewsController extends Controller
             $post_sorting = PostSorting::whereLocation($post->location)->first();
 
             $post_ids = json_decode($post_sorting->posts);
+            $post_ids_1 = $post_sorting->posts;
+            dd($post_ids, $post_ids_1);
             
             if (!in_array($post->id, $post_ids)) {
                 $post_ids = array_merge([$post->id], $post_ids);
@@ -175,6 +178,8 @@ class NewsController extends Controller
     public function update(NewsRequest $request, $id)
     {
         $post = Post::find($id);
+        $old_location = $post->location;
+        $old_status = $post->status;
         $post->short_title = $request->input('short_title');
         $post->location = $request->input('location');
         $post->status = $request->input('status');
@@ -205,29 +210,43 @@ class NewsController extends Controller
             $tag = Tag::firstOrCreate(['name' => $tag, 'slug' => Str::slug($tag)]);
             $tagIds[] = $tag->id;
         }
-
+    
+        
         $post->save();
 
-        // if($post->location != 1 && $post->status == 1) {
-        //     $post_sorting = PostSorting::whereLocation($post->location)->first();
+        // addHeadline
+        // fixHeadline
+        // removeHeadline
 
-        //     $post_ids = json_decode($post_sorting->posts);
+        if ($post->location != 1 && $post->status == 1) {
+            $post_sorting = PostSorting::whereLocation($post->location)->first();
 
-        //     if (!in_array($post->id, $post_ids)) {
-        //         $post_ids = array_merge([$post->id], $post_ids);
-        //         if(count($post_ids) > config('haberler.app.sorting_type_limit')[$post->location]) {
-        //             array_pop($post_ids);
-        //         }
-        //         $post_sorting->posts = json_encode($post_ids);
-        //         $post_sorting->save();
-        //     }
-        // } 
+            $post_ids = json_decode($post_sorting->posts);
 
+            if (!in_array($post->id, $post_ids)) {
+                $post_ids = array_merge([$post->id], $post_ids);
+                if(count($post_ids) > config('haberler.app.sorting_type_limit')[$post->location]) {
+                    array_pop($post_ids);
+                }
+                $post_sorting->posts = json_encode($post_ids);
+                $post_sorting->save();
+            }
+        } else{//Senoryalar doğrultusunda else-elseif ler düzeltilecek.
+            $post_sorting = PostSorting::whereLocation($old_location)->whereStatus(1)->first();
+            $post_ids = json_decode($post_sorting->posts); //sortingdeki posts lar
+            if(in_array($post->id ,$post_ids)) {
+                $take_post = array_search($post->id, $post_ids);
+                unset($post_ids[$take_post]);   
+            }
+            if(count($post_ids) < config('haberler.app.sorting_type_limit')[$old_location]) {
+                $take = config('haberler.app.sorting_type_limit')[$post_sorting->location] - count($post_ids); 
+                // limit olarak 3 adet var. unset ile haberi sildiğimiz için post_ids=2 adet oldu. limit değerinden post_ids çıkarında sonuç 1 kaldı.Yani 1 post eklicez.
+                $other_posts = Post::active()->whereLocation($post_sorting->location)->whereNotIn('id', (array)$post_ids)->orderBy('published_at', 'desc')->take($take)->get()->pluck('id')->toArray();
 
-        $post_sorting = PostSorting::whereLocation(2)->first();
-        $post_ids = json_decode($post_sorting->posts);
-        if(in_array($post->id, $post_ids)) {
-            dd(true);
+                $post_ids = array_merge($post_ids, $other_posts);
+                $post_sorting->posts = json_encode($post_ids);
+                $post_sorting->save();               
+            }         
         }
 
         $post->tags()->sync($tagIds);
@@ -267,4 +286,13 @@ class NewsController extends Controller
 
         $posts = Post::whereLocation($location); 
     }
+
+    // $post_sorting = PostSorting::get();
+    //         $post_ids = array_merge(json_decode($post_sorting[0]->posts), json_decode($post_sorting[1]->posts));
+    //         if (in_array($post->id, $post_ids)) {
+    //             $take_post = array_search($post->id, $post_ids);
+    //             unset($post_ids[$take_post]);
+    //             dd($post_ids);
+
+    //         }
 }
