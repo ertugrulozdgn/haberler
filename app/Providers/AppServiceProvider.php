@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        config()->set('settings', Setting::pluck('value', 'key')->all());
         Post::observe(PostObserver::class);
+        config()->set('settings', Setting::pluck('value', 'key')->all());
     }
 }

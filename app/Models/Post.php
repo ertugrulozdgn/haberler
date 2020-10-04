@@ -17,7 +17,7 @@ class Post extends Model
 
    protected $dates = ['deleted_at', 'published_at'];
 
-   
+
     //Relationships
     public function user()
     {
@@ -29,7 +29,7 @@ class Post extends Model
     //     return $this->hasOne(User::class,'id','created_by');
     // }
 
-    
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
@@ -39,7 +39,7 @@ class Post extends Model
     {
         return $this->hasOne(Attachment::class, 'id', 'cover_id');
     }
-    
+
     public function headline_img()
     {
         return $this->hasOne(Attachment::class, 'id', 'headline_id');
@@ -48,12 +48,12 @@ class Post extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_post', 'post_id', 'category_id');
-    }    
+    }
 
     //Attributes
     public function getCreatedByNameAttribute()
     {
-        return $this->user->name; 
+        return $this->user->name;
         //return User::where('id', $this->created_by)->first()->name;
     }
 
@@ -118,16 +118,16 @@ class Post extends Model
         }
     }
 
-    public function getLinkAttribute() 
+    public function getLinkAttribute()
     {
         if(!empty($this->redirect_link)) {
             return $this->redirect_link;
         }
-        
+
         return  action('Web\Post\PostController@show', [$this->slug, $this->id]);
     }
 
-    
+
 
     //scopes
     public function scopeActive($query)
@@ -140,11 +140,11 @@ class Post extends Model
         return $query->where('show_on_mainpage', 1);
     }
 
-  
+
 
     //Functions
     public function attachment($attachment_type)
-    {   
+    {
         $file_name = $this->slug. '_' . $attachment_type. '_' . uniqid(). '.' .request()->$attachment_type->getClientOriginalExtension();
         $storage_path = request()->$attachment_type->storeAs('file/images/' . date('Y/m/d'), $file_name);
 
@@ -163,5 +163,4 @@ class Post extends Model
         // $this->$column = $attcehmentent->id;
         // $post->cover_id = $attcehmentent->id;
     }
-
 }
