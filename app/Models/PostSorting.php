@@ -12,7 +12,7 @@ class PostSorting extends Model
 
     public function getPosts(int $take): Collection
     {
-        return Cache::tags('post_sorting')->remember('post_sorting_' . $take, 60, function () use ($take) {
+        //return Cache::tags('post_sorting')->remember('post_sorting_' . $take, 60, function () use ($take) {
             $post_ids = array_slice(json_decode($this->posts), 0, $take);
 
             $get_posts = Post::with(['cover_img', 'user'])->active()->whereIn('id', $post_ids)->get();
@@ -24,6 +24,6 @@ class PostSorting extends Model
                 }
             }
             return $posts;
-        });
+        //});
     }
 }

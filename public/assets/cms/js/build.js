@@ -49177,8 +49177,7 @@ __webpack_require__(/*! multiselect */ "./node_modules/multiselect/js/jquery.mul
 
 __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
 
-__webpack_require__(/*! bootstrap-tagsinput */ "./node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"); //import 'jquery-ui/ui/widgets/sortable';
-
+__webpack_require__(/*! bootstrap-tagsinput */ "./node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js");
 
 __webpack_require__(/*! jquery-ui/ui/widgets/sortable */ "./node_modules/jquery-ui/ui/widgets/sortable.js"); //require('jquery-ui');
 // require('imask');
@@ -49190,6 +49189,7 @@ window.alertify = alertifyjs__WEBPACK_IMPORTED_MODULE_0___default.a; // require(
 // require('ckeditor');
 
 Table.init();
+SendForm.init();
 App.imagePreview();
 App.multiSelect();
 App.textEditor();
@@ -49223,7 +49223,8 @@ SendForm.init = function (el, referrer) {
     processData: false,
     contentType: false,
     success: function success(response) {
-      alertify.success("İşlem Başarılı"); //window.location.replace(referrer);      // controller da dd ile request leri ekranda bastırmak için bu satırı yorum yap(incele diyip network kısmına gel)
+      alertify.success("İşlem Başarılı");
+      window.location.replace(referrer); // controller da dd ile request leri ekranda bastırmak için bu satırı yorum yap(incele diyip network kısmına gel)
     },
     error: function error(response) {
       var response_errors = [];

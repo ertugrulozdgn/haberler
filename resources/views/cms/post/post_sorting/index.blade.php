@@ -20,27 +20,29 @@
                                 <th style="width: 50px">İşlemler</th>
                             </tr>
                             <tbody id="sortable" data-action="{{ action('Cms\Post\PostSortingController@sort', ['location' => $location]) }}">
+                                @php $i = 1 @endphp
                                 @foreach ($posts as $post)
                                 <tr id="item-{{ $post->id }}" class="alert alert-primary">                        
                                     <td class="vertical-middle sortable"><i class="fa fa-align-justify"></i></td>
-                                    <td class="vertical-middle">{{ $post->id }}</td>
+                                    <td class="vertical-middle">{{ $i }}</td>
                                     <td class="vertical-middle">{{ $post->title }}</td>
                                     <td class="vertical-middle">{{ $post->published_at->format('d.m.Y H:i') }}</td>
                                     <td class="vertical-middle">{{ $post->hit }}</td>
                                     <td class="vertical-middle" width='5px'><a href="{{ $post->edit_link }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                     <td class="vertical-middle" width='5px'><a href="{{ $post->delete_link }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
                                 </tr> 
+                                @php $i++ @endphp    
                                 @endforeach
                                 @foreach ($other_posts as $post)
                                 <tr id="item-{{ $post->id }}">                        
                                     <td class="vertical-middle sortable"><i class="fa fa-align-justify"></i></td>
-                                    <td class="vertical-middle">{{ $post->id }}</td>
+                                    <td class="vertical-middle">{{ $i++ }}</td>
                                     <td class="vertical-middle">{{ $post->title }}</td>
                                     <td class="vertical-middle">{{ $post->published_at->format('d.m.Y H:i') }}</td>
                                     <td class="vertical-middle">{{ $post->hit }}</td>
                                     <td class="vertical-middle" width='5px'><a href="{{ $post->edit_link }}"><i class="fa fa-pencil-square fa-lg"></i></a></td>
                                     <td class="vertical-middle" width='5px'><a href="{{ $post->delete_link }}" data-action="delete"><i  class="fa fa-trash-o fa-lg"></i></a></td>
-                                </tr>      
+                                </tr>  
                                 @endforeach  
                             </tbody>
                         </thead>

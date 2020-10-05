@@ -11,7 +11,6 @@ require('multiselect');
 require('select2');
 require('bootstrap-tagsinput');
 
-//import 'jquery-ui/ui/widgets/sortable';
 require('jquery-ui/ui/widgets/sortable');
 //require('jquery-ui');
 // require('imask');
@@ -27,6 +26,8 @@ window.alertify = alertifyjs;
 
 
 Table.init();
+
+SendForm.init();
 
 App.imagePreview();
 App.multiSelect();

@@ -71,30 +71,7 @@ class NewsController extends Controller
     {
         $post = new Post();
         $post->post_type = 0;
-        $post->short_title = request()->input('short_title');
-        $post->location = request()->input('location');
-        $post->status = request()->input('status');
-        $post->show_on_mainpage = request()->input('show_on_mainpage');
-        $post->commentable = request()->input('commentable');
-        $post->content = request()->input('content');
-        $post->summary = request()->input('summary');
-        $post->editor_id = request()->input('editor_id');
-        $post->title = request()->filled('title') ? request()->input('title') : request()->input('short_title');
-        $post->redirect_link = request()->input('redirect_link') ?? '';
-        $post->slug = request()->filled('title') ? Str::slug($post->title) : Str::slug($post->short_title);
-        $post->seo_title = request()->filled('seo_title') ? (request()->input('seo_title')) : (request()->filled('title') ? request()->input('title') : request()->input('short_title'));
-        $post->published_at = request()->input('published_at');
-
-        if(request()->hasFile('cover_img')) {
-            $post->cover_id = $post->attachment('cover_img');
-        }
-        if(request()->hasFile('headline_img')) {
-            $post->headline_id = $post->attachment('headline_img');
-        }
-
-        if ((new \Date(request()->input('published_at'))) > (new \Date())) {
-            $post->status = 2;
-        }
+        $post->defaultAddModel();
         $tags = $request->get('tags');
         $tagIds = [];
         foreach($tags as $tag)
@@ -105,26 +82,10 @@ class NewsController extends Controller
         $post->save();
         $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
-
-//        if($post->location != 1 && $post->status == 1) {
-//            $post_sorting = PostSorting::whereLocation($post->location)->first();
-//
-//            $post_ids = json_decode($post_sorting->posts);
-//            $post_ids_1 = $post_sorting->posts;
-//            dd($post_ids, $post_ids_1);
-//
-//            if (!in_array($post->id, $post_ids)) {
-//                $post_ids = array_merge([$post->id], $post_ids);
-//                if (count($post_ids) > config('haberler.app.sorting_type_limit')[$post->location]) {
-//                    array_pop($post_ids);
-//                }
-//                $post_sorting->posts = json_encode($post_ids);
-//                $post_sorting->save();
-//            }
-//        }
-
-        // return response()->json(['success' => 'success'], 200);
-        return back();
+        $post->setHeadline();
+        
+        return response()->json(['success' => 'success'], 200);
+ 
     }
 
 
@@ -139,7 +100,6 @@ class NewsController extends Controller
         $edit = 1;
 
         $post = Post::find($id);
-
 
         $form_referrer = action('Cms\Post\NewsController@index');
 
@@ -177,32 +137,7 @@ class NewsController extends Controller
         $post = Post::find($id);
         PostObserver::$old_location = $post->location;
         PostObserver::$old_status = $post->status;
-        $old_location = $post->location;
-        $old_status = $post->status;
-        $post->short_title = request()->input('short_title');
-        $post->location = request()->input('location');
-        $post->status = request()->input('status');
-        $post->show_on_mainpage = request()->input('show_on_mainpage');
-        $post->commentable = request()->input('commentable');
-        $post->content = request()->input('content');
-        $post->summary = request()->input('summary');
-        $post->editor_id = request()->input('editor_id');
-        $post->title = request()->filled('title') ? request()->input('title') : request()->input('short_title');
-        $post->redirect_link = request()->input('redirect_link') ?? '';
-        $post->slug = request()->filled('title') ? Str::slug($post->title) : Str::slug($post->short_title);
-        $post->seo_title = request()->filled('seo_title') ? (request()->input('seo_title')) : (request()->filled('title') ? request()->input('title') : request()->input('short_title'));
-        $post->published_at = request()->input('published_at');
-
-        if(request()->hasFile('cover_img')) {
-            $post->cover_id = $post->attachment('cover_img');
-        }
-        if(request()->hasFile('headline_img')) {
-            $post->headline_id = $post->attachment('headline_img');
-        }
-
-        if ((new \Date(request()->input('published_at'))) > (new \Date())) {
-            $post->status = 2;
-        }
+        $post->defaultAddModel();
         $tags = $request->get('tags');
         $tagIds = [];
         foreach($tags as $tag)
@@ -212,47 +147,11 @@ class NewsController extends Controller
         }
         $post->save();
 
-        // addHeadline
-        // fixHeadline
-        // removeHeadline
-
-        if ($post->location != 1 && $post->status == 1) {
-            $post_sorting = PostSorting::whereLocation($post->location)->first();
-
-            $post_ids = json_decode($post_sorting->posts);
-
-            if (!in_array($post->id, $post_ids)) {
-                $post_ids = array_merge([$post->id], $post_ids);
-                if(count($post_ids) > config('haberler.app.sorting_type_limit')[$post->location]) {
-                    array_pop($post_ids);
-                }
-                $post_sorting->posts = json_encode($post_ids);
-                $post_sorting->save();
-            }
-        } else{//Senoryalar doğrultusunda else-elseif ler düzeltilecek.
-            $post_sorting = PostSorting::whereLocation($old_location)->whereStatus(1)->first();
-            $post_ids = json_decode($post_sorting->posts); //sortingdeki posts lar
-            if(in_array($post->id ,$post_ids)) {
-                $take_post = array_search($post->id, $post_ids);
-                unset($post_ids[$take_post]);
-            }
-            if(count($post_ids) < config('haberler.app.sorting_type_limit')[$old_location]) {
-                $take = config('haberler.app.sorting_type_limit')[$post_sorting->location] - count($post_ids);
-                // limit olarak 3 adet var. unset ile haberi sildiğimiz için post_ids=2 adet oldu. limit değerinden post_ids çıkarında sonuç 1 kaldı.Yani 1 post eklicez.
-                $other_posts = Post::active()->whereLocation($post_sorting->location)->whereNotIn('id', (array)$post_ids)->orderBy('published_at', 'desc')->take($take)->get()->pluck('id')->toArray();
-
-                $post_ids = array_merge($post_ids, $other_posts);
-                $post_sorting->posts = json_encode($post_ids);
-                $post_sorting->save();
-            }
-        }
-
         $post->tags()->sync($tagIds);
         $post->categories()->sync($request->input('category_id'));
+        $post->setHeadline();
 
-        return back();
-
-        //return response()->json(['success' => 'success'], 200);
+        return response()->json(['success' => 'success'], 200);
 
 
     }
@@ -274,16 +173,16 @@ class NewsController extends Controller
     }
 
 
-    public function takesorting()
-    {
-        $location = [2,3];
+    // public function takesorting()
+    // {
+    //     $location = [2,3];
 
-        $take = config('haberler.app.sorting_type_limit')[2];
+    //     $take = config('haberler.app.sorting_type_limit')[2];
 
-        $posts = Post::all();
+    //     $posts = Post::all();
 
-        $posts = Post::whereLocation($location);
-    }
+    //     $posts = Post::whereLocation($location);
+    // }
 
     // $post_sorting = PostSorting::get();
     //         $post_ids = array_merge(json_decode($post_sorting[0]->posts), json_decode($post_sorting[1]->posts));
@@ -309,4 +208,39 @@ class NewsController extends Controller
 //                $post_sorting->save();
 //            }
 //        }
+    //-------------------------------------------
+        // addHeadline
+        // fixHeadline
+        // removeHeadline
+
+        // if ($post->location != 1 && $post->status == 1) {
+        //     $post_sorting = PostSorting::whereLocation($post->location)->first();
+
+        //     $post_ids = json_decode($post_sorting->posts);
+
+        //     if (!in_array($post->id, $post_ids)) {
+        //         $post_ids = array_merge([$post->id], $post_ids);
+        //         if(count($post_ids) > config('haberler.app.sorting_type_limit')[$post->location]) {
+        //             array_pop($post_ids);
+        //         }
+        //         $post_sorting->posts = json_encode($post_ids);
+        //         $post_sorting->save();
+        //     }
+        // } else{//Senoryalar doğrultusunda else-elseif ler düzeltilecek.
+        //     $post_sorting = PostSorting::whereLocation($old_location)->whereStatus(1)->first();
+        //     $post_ids = json_decode($post_sorting->posts); //sortingdeki posts lar
+        //     if(in_array($post->id ,$post_ids)) {
+        //         $take_post = array_search($post->id, $post_ids);
+        //         unset($post_ids[$take_post]);
+        //     }
+        //     if(count($post_ids) < config('haberler.app.sorting_type_limit')[$old_location]) {
+        //         $take = config('haberler.app.sorting_type_limit')[$post_sorting->location] - count($post_ids);
+        //         // limit olarak 3 adet var. unset ile haberi sildiğimiz için post_ids=2 adet oldu. limit değerinden post_ids çıkarında sonuç 1 kaldı.Yani 1 post eklicez.
+        //         $other_posts = Post::active()->whereLocation($post_sorting->location)->whereNotIn('id', (array)$post_ids)->orderBy('published_at', 'desc')->take($take)->get()->pluck('id')->toArray();
+
+        //         $post_ids = array_merge($post_ids, $other_posts);
+        //         $post_sorting->posts = json_encode($post_ids);
+        //         $post_sorting->save();
+        //     }
+        // }
 }

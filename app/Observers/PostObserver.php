@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\PostSorting;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostObserver
 {
@@ -42,7 +43,7 @@ class PostObserver
      */
     public function deleted(Post $post)
     {
-        //
+        $this->removeHeadline($post);
     }
 
     /**
@@ -104,18 +105,17 @@ class PostObserver
             return true;
         }
 
-        if ($post->location != self::$old_location || $post->status != 1) { //post->location = normal old = manşet // post->location = manşet
+        if ($post->location != self::$old_location || $post->status != 1) {
             $this->removeHeadline($post);
         }
 
-        if (array_key_exists($post->location, config('haberler.app.sorting_type_limit')) && $post->status == 1 ) {
-            $post_sorting = PostSorting::whereLocation($post->location)->whereStatus(1)->first();
+        if (array_key_exists($post->location, config('haberler.app.sorting_type_limit')) && $post->status == 1) {
+            $post_sorting = PostSorting::where('location', $post->location)->whereStatus(1)->first();
 
-            if (empty($post_sorting)) {
+            if(empty($post_sorting)) {
                 $post_sorting = new PostSorting();
                 $post_sorting->location = $post->location;
                 $post_sorting->status = 1;
-                $post_sorting->posts = json_encode([]);
             }
 
             $post_ids = json_decode($post_sorting->posts);
@@ -131,16 +131,27 @@ class PostObserver
         }
     }
 
-    public function removerHeadline(Post $post)
+    public function removeHeadline(Post $post)
     {
         $location = is_null(self::$old_location) ? $post->location : self::$old_location;
 
-        $post_sorting = PostSorting::whereLocation($location)->whereStatus(1)->first();
-        $post_ids = json_decode($post_sorting->posts);
-        if (in_array($post_ids, $post_ids)) {
-            $take_post = array_search($post->id, $post_ids);
-            unset($post_ids[$take_post]);
+        if (!empty($location)) {
+            $post_sorting = PostSorting::whereLocation($location)->whereStatus(1)->first();
+
+            if ($post_sorting) {
+                $post_ids = json_decode($post_sorting->posts);
+                if (in_array($post->id, $post_ids)) {
+                    $take_post = array_search($post->id, $post_ids);
+                    unset($post_ids[$take_post]);
+                }
+                if (count($post_ids) < config('haberler.app.sorting_type_limit')[$location]) {
+                    $take = config('haberler.app.sorting_type_limit')[$location] - count($post_ids);
+                    $other_posts = Post::active()->whereLocation($location)->whereNotIn('id', (array)$post_ids)->orderBy('published_at', 'desc')->take($take)->get()->pluck('id')->toArray();
+                    $post_ids = array_merge($post_ids, $other_posts);
+                }
+                $post_sorting->posts = json_encode($post_ids);
+                $post_sorting->save();
+            }
         }
-        $post_sorting->save();
     }
 }

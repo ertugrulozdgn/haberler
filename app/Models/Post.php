@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Jenssegers\Date\Date;
-use Storage;
 
 class Post extends Model
 {
@@ -16,6 +13,12 @@ class Post extends Model
     use SoftDeletes;
 
    protected $dates = ['deleted_at', 'published_at'];
+
+   protected $observables = [
+       'defaultAddModel',
+       'setHeadline',
+       'removeHeadline',
+   ];
 
 
     //Relationships
@@ -140,6 +143,22 @@ class Post extends Model
         return $query->where('show_on_mainpage', 1);
     }
 
+
+    //custom event functions
+    public function defaultAddModel()
+    {
+        $this->fireModelEvent('defaultAddModel');
+    }
+
+    public function setHeadline()
+    {
+        $this->fireModelEvent('setHeadline', false);
+    }
+
+    public function removeHeadline()
+    {
+        $this->fireModelEvent('removeHeadline', false);
+    }
 
 
     //Functions
