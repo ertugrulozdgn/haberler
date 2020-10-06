@@ -20,8 +20,6 @@
                 </div>
             @endforeach
         </div>
-    </div>
-    <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8">
                 @foreach ($posts as $post)

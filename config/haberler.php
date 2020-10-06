@@ -2,6 +2,7 @@
 
 return [
     'app' => [
+        'title' => '',
         'sorting_type_limit' => [
             2 => 3, 
             3 => 2

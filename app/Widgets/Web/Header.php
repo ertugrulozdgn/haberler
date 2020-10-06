@@ -21,7 +21,7 @@ class header extends AbstractWidget
      */
     public function run()
     {
-        $show_categories = CategoryData::menu();
+        $show_categories = CategoryData::menu(1);
 
         return view('web.widgets.header', compact('show_categories'));
     }

@@ -154,4 +154,9 @@ class PostObserver
             }
         }
     }
+
+    public function cleanCache(Post $post)
+    {
+        
+    }   
 }

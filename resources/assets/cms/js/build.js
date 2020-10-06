@@ -27,7 +27,7 @@ window.alertify = alertifyjs;
 
 Table.init();
 
-SendForm.init();
+// SendForm.init();
 
 App.imagePreview();
 App.multiSelect();

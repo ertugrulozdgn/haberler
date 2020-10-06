@@ -15,17 +15,16 @@ class CategoryData
         });
     }
 
-    public static function menu(): Collection
+    public static function menu($show_in_menu = null): Collection
     {
-        return Cache::tags('categories')->rememberForever('menu', function () {
-            return Category::active()->where('show_in_menu', 1)->get();
-        });
-    }
-
-    public static function sidemenu(): Collection
-    {
-        return Cache::tags('categories')->rememberForever('sidemenu', function () {
-            return Category::active()->get();
+        return Cache::tags('categories')->rememberForever('menu_' . $show_in_menu, function () use ($show_in_menu) {
+            $query = Category::active();
+            
+            if (!empty($show_in_menu)) {
+                $query->where('show_in_menu', $show_in_menu);
+            }
+            
+            return $query->get();
         });
     }
 }

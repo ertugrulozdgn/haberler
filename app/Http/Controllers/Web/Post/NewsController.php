@@ -35,6 +35,8 @@ class NewsController extends Controller
             'cache_tag' => 'post_category_' . $category->id,
         ]);
 
+        config(['haberler.app.title' => $category->seo_title]);
+
         return view('web.post.news.index', compact('category', 'posts', 'header_posts'));
 
 //-----------------------------------------------------

@@ -22,7 +22,7 @@ class Sidemenu extends AbstractWidget
      */
     public function run()
     {
-        $categories = CategoryData::sidemenu();
+        $categories = CategoryData::menu();
 
         $pages = PageData::footer();
 

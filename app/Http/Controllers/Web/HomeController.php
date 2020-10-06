@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App;
 use App\Data\PostData;
 use App\Http\Controllers\Controller;
+use App\Models\CrawlerPost;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -38,6 +39,10 @@ class HomeController extends Controller
             'cache_tag' => 'posts'
         ]);
 
-        return view('web.home.index', compact('headlines', 'sub_headlines', 'posts'));
+        $crawler_posts = CrawlerPost::orderBy('published_at', 'desc')->take(6)->get();
+
+        config(['haberler.app.title' => 'Haberler Anasayfa']);
+
+        return view('web.home.index', compact('headlines', 'sub_headlines', 'posts', 'crawler_posts'));
     }
 }

@@ -3,23 +3,25 @@
 @section('content')
     <div class="container mt-5">
         <div class="news-detail">
+            <div class="d-flex justify-content-between mb-3 align-items-center">
+                <div class="d-flex align-items-center">
+                    @foreach ($post->categories as $category)
+                    <span class="badge badge-secondary mr-2">{{ $category->name }}</span>
+                    @endforeach
+                    <span class="mr-1">{{ $post->created_by_name . ' | '}}</span>
+                    <time class="text-muted">{{ $post->published_at->format('j l F, Y') }}</time>
+                </div>
+                <div class="social">
+                    <a href="">
+                        <i class="fa fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa fa-twitter fa-lg"></i>
+                    </a>
+                </div>
+            </div>
             <h1>{{ $post->title }}</h1>
             <p>{{ $post->summary }}</p>
-            @foreach ($post->categories as $category)
-            <span class="badge badge-secondary">{{ $category->name }}</span>
-            @endforeach
-            <br>
-            <span>{{ $post->created_by_name }}</span>
-            <span>|</span>
-            <time class="text-muted">{{ $post->published_at->format('j l F, Y') }}</time>
-            <div class="social">
-                <a href="">
-                    <i class="fa fa-facebook fa-lg"></i>
-                </a>
-                <a href="">
-                    <i class="fa fa-twitter fa-lg"></i>
-                </a>
-            </div>
             <hr>
             <div class="row">
                 <div class="col-lg-8">

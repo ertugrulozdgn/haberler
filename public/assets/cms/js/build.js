@@ -49188,8 +49188,8 @@ __webpack_require__(/*! jquery-ui/ui/widgets/sortable */ "./node_modules/jquery-
 window.alertify = alertifyjs__WEBPACK_IMPORTED_MODULE_0___default.a; // require('tinymce');
 // require('ckeditor');
 
-Table.init();
-SendForm.init();
+Table.init(); // SendForm.init();
+
 App.imagePreview();
 App.multiSelect();
 App.textEditor();

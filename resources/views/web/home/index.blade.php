@@ -33,6 +33,18 @@
     </div>
 </div>
 
+<div class="container">
+    <div class="row">
+        @foreach ($crawler_posts as $item)
+            <div class="col-12 col-md-4 col-lg-2">
+                <a href="{{ $item->link }}" target="_blank">
+                    {{ $item->title }}
+                </a>
+            </div>
+        @endforeach
+    </div>
+</div>
+
 @widget('Web\Weather')
 
 <div class="container">
