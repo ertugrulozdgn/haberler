@@ -66,7 +66,7 @@
                         <div>
                             <span>{{ $post->created_by_name }}</span>
                             <span>|</span>
-                            <time class="text-muted">{{ $post->published_at->format('j l F, Y') }}</time>
+                            <time class="text-muted">{{ $post->published_at->format('j l F, Y') }}</time><br>
                         </div>
                     </div>
                 </div>

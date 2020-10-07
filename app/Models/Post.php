@@ -18,6 +18,7 @@ class Post extends Model
        'defaultAddModel',
        'setHeadline',
        'removeHeadline',
+       'cleanCache'
    ];
 
 
@@ -158,6 +159,11 @@ class Post extends Model
     public function removeHeadline()
     {
         $this->fireModelEvent('removeHeadline', false);
+    }
+
+    public function cleanCache()
+    {
+        $this->fireModelEvent('cleanCache');
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Data;
 
 use App\Models\Post;
 use App\Models\PostSorting;
+use App\Support\CacheHelper;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 

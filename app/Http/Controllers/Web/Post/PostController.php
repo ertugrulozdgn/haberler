@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function show($slug, $id)
-    {   //Sistemde slug ve id olan post var mı
+    {   //Sistemde id olan post var mı
         $post = PostData::get($id);
         //yoksa 404
         abort_if(empty($post), 404);
-
+        //yanlıs slug yönlendirmesinde slug ı düzeltip haber detaya tekrar gönderiyor.
         if ($post->slug != $slug) {
             return redirect($post->link, 301);
         }

@@ -83,6 +83,7 @@ class NewsController extends Controller
         $post->tags()->sync($tagIds);
         $post->categories()->attach($request->input('category_id'));
         $post->setHeadline();
+        $post->cleanCache();
         
         return response()->json(['success' => 'success'], 200);
  
@@ -150,6 +151,7 @@ class NewsController extends Controller
         $post->tags()->sync($tagIds);
         $post->categories()->sync($request->input('category_id'));
         $post->setHeadline();
+        $post->cleanCache();
 
         return response()->json(['success' => 'success'], 200);
 

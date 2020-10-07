@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Post;
 use App\Models\PostSorting;
 use App\Models\Tag;
+use App\Support\CacheHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -44,6 +45,7 @@ class PostObserver
     public function deleted(Post $post)
     {
         $this->removeHeadline($post);
+        $this->cleanCache($post);
     }
 
     /**
@@ -157,6 +159,6 @@ class PostObserver
 
     public function cleanCache(Post $post)
     {
-        
+        CacheHelper::posts($post);
     }   
 }
