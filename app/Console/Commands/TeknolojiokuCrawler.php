@@ -59,7 +59,11 @@ class TeknolojiokuCrawler extends Command
             $post->site = 'teknolojioku';
             $post->title = (string) $item->title;
             $post->link = (string) $item->link;
-            $post->original_id = Str::afterLast($post->link, '-');o
+            $post->status = 1;
+            if (Str::contains($post->link, '?out=1')) {
+                $post->status = 0;
+            }  
+            $post->original_id = Str::afterLast($post->link, '-');
             $post->published_at = new \Date((string)$item->pubDate);
             if (CrawlerPost::where('site', 'teknolojioku')->where('original_id', $post->original_id)->count() == 0) {
                 $post->save();

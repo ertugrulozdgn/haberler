@@ -16,9 +16,13 @@ class CreateCrawlerPostsTable extends Migration
         Schema::create('crawler_posts', function (Blueprint $table) {
             $table->id();
             $table->string("site");
-            $table->string("title");
             $table->string("link");
             $table->string("original_id");
+            $table->tinyInteger('status')->unsigned();
+            $table->string("image");
+            $table->string("title");
+            $table->string("summary");
+            $table->string("content");
             $table->dateTime("published_at");
             $table->timestamps();
         });
