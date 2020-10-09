@@ -72,27 +72,26 @@ class TeknolojiokuCrawlerDetail extends Command
                 $image = $image[0];
                 $image = Str::afterLast($image, 'lazy-src="');
                 $image = Str::before($image, '" style=');
-                $image = str_replace('/{mode}/{width}/{height}', '', $image);        
+                $image = str_replace('/{mode}/{width}/{height}', '', $image);  
                 $content = $html->find('div[class=content-text]', 0)->innerText();
                 $content = Str::before($content, ' <p><strong><div');
-    
-                $post->image = $image;
-                $post->summary = $summary;
-                $post->content = $content;
-                if (!$content || !$summary || !$image) {
-                    $post->status = 0;
-                    $this->info('Pasife Alındı => ' . $post->title);
-                }
-                if (empty($post->content) || empty($post->summary) || empty($post->image)) {
-                    $this->info('İçerik Eklendi => ' . $post->title);
+                
+                if ($content) { //figcation değilse
+                    $post->image = $image;
+                    $post->summary = $summary;
+                    $post->content = $content;
                     $post->save();
+                    $this->info('İçerik Kayıt Edildi => ' . $post->title);
+
                 } else {
-                    $this->info('Kayıtlı İçerik => ' . $post->title);
+                    $post->status = 0;
+                    $post->save();
+                    $this->info('Pasife Alındı => ' . $post->title);
                 }
             }
         } 
         $this->info('Kayıtlı İçerik Bulunmamaktadır.');
-        //il haber hep kayıtlı içerik
+
 
         // $posts = CrawlerPost::get();
         // if (!empty($posts)) {
@@ -113,8 +112,8 @@ class TeknolojiokuCrawlerDetail extends Command
         //             $post->image = $image;
         //             $post->summary = $summary;
         //             $post->content = $content;
-        //             $post->save();
-        //             $this->info('İçerik Eklendi => ' . $post->title);
+        //             //$post->save();
+        //             //$this->info('İçerik Eklendi => ' . $post->title);
         //             if (!$post->content || !$post->summary || !$post->image) {
         //                 $post->save();
         //                 $this->info('İçerik Eklendi => ' . $post->title);
