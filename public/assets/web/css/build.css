@@ -12421,3 +12421,36 @@ footer {
   margin-top: 0;
 }
 
+.another > a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+
+.another > a > img {
+  width: 100%;
+  height: auto;
+}
+
+.another > a > span {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+}
+
+@media (max-width: 575.98px) {
+  .another > a > span {
+    font-size: 0.875rem;
+  }
+}
+
+.another > a > span.badge-secondary {
+  position: absolute;
+  border-radius: 0;
+  font-size: 0.75rem;
+  color: white;
+}
+

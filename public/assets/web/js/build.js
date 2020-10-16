@@ -36690,7 +36690,7 @@ Slider.headlines = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ertugrulozdogan/Code/haberler/resources/assets/web/js/build.js */"./resources/assets/web/js/build.js");
+module.exports = __webpack_require__(/*! /Users/ertugrulozdogan/Code/ertugrul/haberler/resources/assets/web/js/build.js */"./resources/assets/web/js/build.js");
 
 
 /***/ })

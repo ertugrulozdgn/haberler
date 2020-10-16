@@ -8,7 +8,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title vertical-middle"><i class="fa fa-newspaper-o"></i> Haberler</h3>
 
-                <span class="pull-right"><a href="{{ action('Cms\Post\NewsController@create') }}" class="btn btn-success">Yeni</a></span>
+                    <span class="pull-right" style="margin-left: 5px"><a href="{{ action('Cms\Post\NewsController@create') }}" class="btn btn-success">Yeni</a></span>
+                    <span class="pull-right"><a href="{{ action('Cms\Post\NewsController@create') }}" class="btn btn-primary">İçerik Botu</a></span>    
                 </div>
 
                 <div class="box-body">

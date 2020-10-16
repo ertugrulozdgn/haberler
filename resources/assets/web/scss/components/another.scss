@@ -1,0 +1,29 @@
+.another {
+    > a {
+        text-decoration: none;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        margin-right: 1rem;
+        > img {
+            width: 100%;
+            height: auto;
+        }
+        
+        > span {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            @include media-breakpoint-down(xs) {
+                font-size: .875rem;
+            }
+            &.badge-secondary {
+                position: absolute;
+                border-radius: 0;
+                font-size: 0.75rem;
+                color: white;
+            }
+        }
+    }
+}

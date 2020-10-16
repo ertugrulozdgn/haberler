@@ -33,18 +33,6 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        @foreach ($crawler_posts as $item)
-            <div class="col-12 col-md-4 col-lg-2">
-                <a href="{{ $item->link }}" target="_blank">
-                    {{ $item->title }}
-                </a>
-            </div>
-        @endforeach
-    </div>
-</div>
-
 @widget('Web\Weather')
 
 <div class="container">
@@ -78,15 +66,12 @@
                     </a>
                     <div class="info">
                         <a href="{{ $post->link }}">
-                            <span class="badge badge-secondary">TEKNOLJI</span>
+                            @foreach ($post->categories as $category)
+                                <span class="badge badge-secondary">{{ $category->name }}</span>
+                            @endforeach
                             <h2>{{ $post->title }}</h2>
                             <p>{{ $post->summary }}</p>
                         </a>
-                        {{-- <div>
-                            <span>Ertuğrul Özdoğan</span>
-                            <span>|</span>
-                            <time class="text-muted" datetime="2020-09-19T13:00:00+03:00">19 Mayıs Cuma, 2020</time>
-                        </div> --}}
                     </div>
                 </div>
                 @endif
@@ -94,7 +79,29 @@
         </div>
 
         @widget('Web\Viewed')
-        
+
+
+        <div class="news-detail-bottom-header">
+            <h3>Başka Başka</h3>
+            <hr>
+        </div>
+        <div class="row">
+            @foreach ($crawler_posts as $item)
+                <div class="col-lg-6">
+                    <div class="post image-left-post">
+                        <a href="{{ $item->link }}">
+                            <img src="{{ $item->image }} " alt="">
+                        </a>
+                        <div class="info">
+                            <span class="badge badge-secondary">{{ $item->site }}</span>
+                            <a href="{{ $item->link }}">
+                            <h2>{{ $item->title }}</h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 </div>
 @endsection

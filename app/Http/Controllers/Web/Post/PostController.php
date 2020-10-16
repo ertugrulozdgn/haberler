@@ -34,7 +34,7 @@ class PostController extends Controller
 
         $recommended_posts = $recommended_posts->filter(function($item) use ($post) {
             return $item->id != $post->id;
-        })->values()->slice(0, 4);
+        })->shuffle()->values()->slice(0, 4);
 
         $used_ids = $recommended_posts->pluck('id')->toArray();
         $used_ids[] = $post->id;

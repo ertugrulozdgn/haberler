@@ -26,7 +26,7 @@ class viewed extends AbstractWidget
                 'show_on_mainpage' => 1,
             ],
             'order_by' => ['hit', 'desc'],
-            'count' => 4
+            'count' => 6
         ]);
 
         return view('web.widgets.viewed', compact('posts_viewed'));

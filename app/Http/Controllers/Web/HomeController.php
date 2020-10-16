@@ -39,7 +39,7 @@ class HomeController extends Controller
             'cache_tag' => 'posts'
         ]);
 
-        $crawler_posts = CrawlerPost::orderBy('published_at', 'desc')->take(6)->get();
+        $crawler_posts = CrawlerPost::orderBy('published_at', 'desc')->take(8)->get();
 
         config(['haberler.app.title' => 'Haberler Anasayfa']);
 
